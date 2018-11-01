@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.framework.dao.DeptstaDao">
+  <resultMap id="BaseResultMap" type="com.vanguard8.framework.entity.Deptsta">
+    <id column="ds_id" jdbcType="INTEGER" property="dsId" />
+    <result column="ds_code" jdbcType="VARCHAR" property="dsCode" />
+    <result column="ds_name" jdbcType="VARCHAR" property="dsName" />
+    <result column="ds_total_name" jdbcType="VARCHAR" property="dsTotalName" />
+    <result column="ds_flag" jdbcType="TINYINT" property="dsFlag" />
+    <result column="lock_flag" jdbcType="TINYINT" property="lockFlag" />
+    <!--<result property="haveChild" />-->
+  </resultMap>
+  <sql id="Base_Column_List">
+    ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_deptsta
+    where ds_id = #{dsId,jdbcType=INTEGER}
+  </select>
+
+  <!--根据dsCode查询某记录-->
+  <select id="selectByDsCode" parameterType="String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_deptsta
+    where ds_code = #{dsCode}
+  </select>
+
+  <!--查询某个dsCode下最大的dsCode-->
+  <select id="selectMaxCode" parameterType="String" resultType="String">
+    select ds_code from sys_deptsta where length(ds_code)=length(#{dsCode})+3 and ds_code like concat(#{dsCode},'___') order by ds_code desc limit 1
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_deptsta
+    where ds_id = #{dsId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.vanguard8.framework.entity.Deptsta">
+    <selectKey keyProperty="dsId" order="BEFORE" resultType="java.lang.Integer">
+      select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1
+    </selectKey>
+    insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name,
+      ds_flag, lock_flag)
+    values (#{dsId,jdbcType=INTEGER}, #{dsCode,jdbcType=VARCHAR}, #{dsName,jdbcType=VARCHAR}, #{dsTotalName,jdbcType=VARCHAR},
+      #{dsFlag,jdbcType=TINYINT}, #{lockFlag,jdbcType=TINYINT})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.vanguard8.framework.entity.Deptsta">
+    <selectKey keyProperty="dsId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_deptsta
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dsCode != null">
+        ds_code,
+      </if>
+      <if test="dsName != null">
+        ds_name,
+      </if>
+      <if test="dsTotalName != null">
+        ds_total_name,
+      </if>
+      <if test="dsFlag != null">
+        ds_flag,
+      </if>
+      <if test="lockFlag != null">
+        lock_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dsCode != null">
+        #{dsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dsName != null">
+        #{dsName,jdbcType=VARCHAR},
+      </if>
+      <if test="dsTotalName != null">
+        #{dsTotalName,jdbcType=VARCHAR},
+      </if>
+      <if test="dsFlag != null">
+        #{dsFlag,jdbcType=TINYINT},
+      </if>
+      <if test="lockFlag != null">
+        #{lockFlag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.framework.entity.Deptsta">
+    update sys_deptsta
+    <set>
+      <if test="dsCode != null">
+        ds_code = #{dsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dsName != null">
+        ds_name = #{dsName,jdbcType=VARCHAR},
+      </if>
+      <if test="dsTotalName != null">
+        ds_total_name = #{dsTotalName,jdbcType=VARCHAR},
+      </if>
+      <if test="dsFlag != null">
+        ds_flag = #{dsFlag,jdbcType=TINYINT},
+      </if>
+      <if test="lockFlag != null">
+        lock_flag = #{lockFlag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ds_id = #{dsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vanguard8.framework.entity.Deptsta">
+    update sys_deptsta
+    set ds_code = #{dsCode,jdbcType=VARCHAR},
+      ds_name = #{dsName,jdbcType=VARCHAR},
+      ds_total_name = #{dsTotalName,jdbcType=VARCHAR},
+      ds_flag = #{dsFlag,jdbcType=TINYINT},
+      lock_flag = #{lockFlag,jdbcType=TINYINT}
+    where ds_id = #{dsId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectNextLevel" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from sys_deptsta
+    where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=#{dsId}),''),'___')
+    order by ds_flag desc,ds_code
+  </select>
+</mapper>

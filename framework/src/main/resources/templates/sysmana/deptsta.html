@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>DeptStationView</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#GridDeptStation').treegrid({
+                url: '/deptsta/getDeptsta',
+                idField: 'id',
+                treeField: 'text',
+                border: false,
+                fit: true,
+                fitColumns: true,
+                toolbar: '#divToolbar',
+                columns: [ [
+                    {field: 'text', title: '部门(岗位)名称', width: 160},
+                    {field: 'id', title: '编码', width: 100},
+                    {field: 'dsCode', title: '级别码', width: 100},
+                    {
+                        field: 'dSFlag', title: '部门(岗位)标志', width: 160,
+                        formatter: function (value, rec) {
+                            var s = "";
+                            if (rec.attributes.dsFlag == 0) {
+                                s = "部门";
+                            }
+                            else {
+                                s = "岗位";
+                            }
+                            if (rec.attributes.lockFlag == 1) {
+                                s += "[锁定]";
+                            }
+                            else if (rec.attributes.lockFlag == 2) {
+                                s += "[复用职位]";
+                            }
+                            return s;
+                        }
+                    }
+                ] ]
+            });
+
+            $('#FormPlay').form({
+                url: '/deptsta/saveDeptsta',
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result && result.success) {
+                        $.messager.alert("操作成功", result.message);
+                        $('#GridDeptStation').treegrid('reload', result.data);
+                        CloseDialog();
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.message);
+                    }
+                }
+            });
+
+            $('#FormFunc').form({
+                url: '/Sysmana/WriteStatFunc',
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result && result.Success) {
+                        $.messager.alert("操作成功", result.Message);
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.Message);
+                    }
+                }
+            });
+
+            $('#FormDept').form({
+                url: '/Sysmana/WriteStatDept',
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result && result.Success) {
+                        $.messager.alert("操作成功", result.Message);
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.Message);
+                    }
+                }
+            });
+        });
+
+        function ShowDialogPlay(stitle, playflag) {
+            var row = $('#GridDeptStation').treegrid('getSelected');
+            if (row != null) {
+                if ((playflag == '2' || playflag == '3') && (row.attributes.lockFlag == 1)) {
+                    $.messager.alert("操作失败", "被系统锁定的项目不允许进行编辑与删除！");
+                    return;
+                }
+                $('#DialogPlay').show().dialog({
+                    title: stitle,
+                    width: 380,
+                    modal: true
+                });
+                $('#DSID').val(row.id);
+                $('#PlayDSName').val(row.text);
+                $('#trDSName').show();
+                if (playflag == "1") {
+                    $('#PlayFlag').combobox({
+                        valueField: 'value',
+                        textField: 'text',
+                        editable: false,
+                        panelHeight: 'auto',
+                        data: [
+                            {value: '0', text: '新增同级别部门'},
+                            {value: '1', text: '新增下一级部门'},
+                            {value: '2', text: '新增同级别岗位'},
+                            {value: '3', text: '新增下一级岗位'},
+                            {value: '6', text: '新增同级复用职位'}
+                        ]
+                    });
+                    $('#PlayFlag').combobox('setValue', '0');
+                    $('#DSName').val("");
+                    $('#DSName').focus();
+                }
+                else if (playflag == "2") {
+                    $('#PlayFlag').combobox({
+                        valueField: 'value',
+                        textField: 'text',
+                        editable: false,
+                        panelHeight: 'auto',
+                        data: [
+                            {value: '4', text: '编辑当前部门(岗位)'}
+                        ]
+                    });
+                    $('#PlayFlag').combobox('setValue', '4');
+                    $('#DSName').val(row.text);
+                    $('#DSName').focus();
+                } else if (playflag == "3") {
+                    $('#PlayFlag').combobox({
+                        valueField: 'value',
+                        textField: 'text',
+                        editable: false,
+                        panelHeight: 'auto',
+                        data: [
+                            {value: '5', text: '删除当前部门(岗位)'}
+                        ]
+                    });
+                    $('#PlayFlag').combobox('setValue', '5');
+                    $('#trDSName').hide();
+                }
+
+            }
+            else {
+                $.messager.alert("操作失败", "未选择要操作的数据行！");
+            }
+        }
+
+        function CloseDialog() {
+            $('#DialogPlay').dialog('close');
+        }
+
+        function CheckSelectedStat() {
+            var row = $('#GridDeptStation').treegrid('getSelected');
+            if (row == null || row.attributes.dsFlag == "1") {
+                $.messager.alert("操作失败", "请先选择要操作的岗位！");
+                return false;
+            }
+            return true;
+        }
+
+        function ShowDialogFunc() {
+            var row = $('#GridDeptStation').treegrid('getSelected');
+            if (row == null || row.attributes.dsFlag == "1") {
+                $.messager.alert("操作失败", "请先选择要操作的岗位！");
+                return;
+            }
+
+            var DSID = row.id;
+
+            $('#FuncDSID').val(DSID);
+
+            $('#DialogFunc').dialog({
+                title: '设置功能模块权限',
+                height: 500,
+                width: 380,
+                modal: true
+            });
+
+            $('#treeFunc').tree({
+                url: '/Sysmana/GetFuncWithRight?DSID=' + DSID,
+                fit: true,
+                checkbox: true
+            });
+        }
+
+        function SaveFuncStr() {
+            var nodes = $('#treeFunc').tree('getChecked');
+            var s = "";
+            for (var i = 0; i < nodes.length; i++) {
+                s += nodes[i].id;
+            }
+            $('#SelectedFuncStr').val(s);
+            $('#FormFunc').form('submit');
+        }
+
+        function ShowDialogDept() {
+            var row = $('#GridDeptStation').treegrid('getSelected');
+            if (row == null || row.attributes.DSFlag == "1") {
+                $.messager.alert("操作失败", "请先选择要操作的岗位！");
+                return;
+            }
+            if (row.attributes.LockFlag != '0') {
+                $.messager.alert("操作失败", "被系统锁定的岗位与复用职位不允许进行业务范围权限变更！");
+                return;
+            }
+
+            var DSID = row.id;
+
+            $('#DeptDSID').val(DSID);
+
+            $('#DialogDept').dialog({
+                title: '设置业务范围权限',
+                height: 500,
+                width: 380,
+                modal: true
+            });
+
+            $('#treeDept').tree({
+                url: '/Sysmana/GetBussDeptWithRight?DSID=' + DSID,
+                fit: true,
+                checkbox: true
+            });
+        }
+
+        function SaveDeptStr() {
+            var nodes = $('#treeDept').tree('getChecked');
+            var s = "";
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].id.length == 6) {
+                    s += nodes[i].id;
+                }
+            }
+            $('#SelectedDeptStr').val(s);
+            $('#FormDept').form('submit');
+        }
+    </script>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'center'" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
+    <table id="GridDeptStation">
+    </table>
+    <div id="divToolbar">
+        <input type="button" value="新增" onclick="ShowDialogPlay('新增', '1');"/>
+        <input type="button" value="编辑" onclick="ShowDialogPlay('编辑', '2');"/>
+        <input type="button" value="删除" onclick="ShowDialogPlay('删除', '3');"/>
+        ||
+        <input type="button" value="为岗位设置功能模块权限" onclick="ShowDialogFunc();"/>
+        <input type="button" value="为岗位设置业务范围权限" onclick="ShowDialogDept();"/>
+    </div>
+    <div id="DialogPlay" style="display: none">
+        <form id="FormPlay" method="post">
+            <table class="tbDialog" style="width: 100%">
+                <tr style="height: 30px">
+                    <th>
+                        <label for="DSID">选中记录编码</label>
+                    </th>
+                    <td>
+                        <input id="DSID" name="dsId" class="easyui-validatebox" readonly="readonly"/></td>
+                </tr>
+                <tr style="height: 30px">
+                    <th>选中记录名称</th>
+                    <td>
+                        <input id="PlayDSName" name="PlayDSName" class="easyui-validatebox" readonly="readonly"/></td>
+                </tr>
+                <tr id="trPlayType" style="height: 30px">
+                    <th>
+                        <label for="PlayFlag">操作方式 </label>
+                    </th>
+                    <td>
+                        <input id="PlayFlag" name="playFlag"/></td>
+                </tr>
+                <tr id="trDSName" style="height: 30px">
+                    <th>
+                        <label for="DSName">新部门(岗位)名称 </label>
+                    </th>
+                    <td>
+                        <input id="DSName" name="dsName" class="easyui-validatebox"/></td>
+                </tr>
+                <tr style="height: 30px">
+                    <th></th>
+                    <td>
+                        <input type="submit" value="确定"/>
+                        <input type="button" value="取消" onclick="CloseDialog();"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="DialogFunc">
+        <div id="divLayout" class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'center',split:false,border:false">
+                <table id="treeFunc"></table>
+            </div>
+            <div data-options="region:'south',split:false,border:false">
+                <form id="FormFunc" method="post"><input id="FuncDSID" name="FuncDSID" type="hidden"/><input
+                        id="SelectedFuncStr" name="SelectedFuncStr" type="hidden"/>
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:center">
+                                <input type="button" value="保存" onclick="SaveFuncStr();"/>
+                                <input type="button" value="取消" onclick="$('#DialogFunc').dialog('close');"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="DialogDept">
+        <div id="divLayout2" class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'center',split:false,border:false">
+                <table id="treeDept"></table>
+            </div>
+            <div data-options="region:'south',split:false,border:false">
+                <form id="FormDept" method="post"><input id="DeptDSID" name="DeptDSID" type="hidden"/><input
+                        id="SelectedDeptStr" name="SelectedDeptStr" type="hidden"/>
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:center">
+                                <input type="button" value="保存" onclick="SaveDeptStr();"/>
+                                <input type="button" value="取消" onclick="$('#DialogDept').dialog('close');"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

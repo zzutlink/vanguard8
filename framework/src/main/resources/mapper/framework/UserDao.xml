@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.framework.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.vanguard8.framework.entity.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="login_name" jdbcType="VARCHAR" property="loginName"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <!--<result column="ds_id" jdbcType="INTEGER" property="dsId" />-->
+        <!--<result column="flag_id" jdbcType="INTEGER" property="flagId" />-->
+        <result column="work_no" jdbcType="VARCHAR" property="workNo"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="error_count" jdbcType="INTEGER" property="errorCount"/>
+        <association property="deptsta" column="ds_id" resultMap="com.vanguard8.framework.dao.DeptstaDao.BaseResultMap"></association>
+        <association property="userFlag" column="flag_id" resultMap="com.vanguard8.framework.dao.UserDao.UserFlagMap"></association>
+    </resultMap>
+
+    <resultMap id="UserFlagMap" type="com.vanguard8.framework.entity.UserFlag">
+        <id column="flag_id" jdbcType="INTEGER" property="flagId"/>
+        <result column="flag_name" jdbcType="VARCHAR" property="flagName"/>
+    </resultMap>
+
+    <!--用户表关联状态表，关联岗位表-->
+    <sql id="user_column_list">
+        select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag
+          from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id
+          inner join sys_deptsta c on a.ds_id=c.ds_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <include refid="user_column_list"/>
+        where a.user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <!--通过登录名获取用户信息-->
+    <select id="selectByLoginname" parameterType="String" resultMap="BaseResultMap">
+        <include refid="user_column_list"/>
+        where a.flag_id=1 and a.login_name = #{loginName}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.vanguard8.framework.entity.User">
+        <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_user (user_name, login_name, salt,
+        password, ds_id, flag_id,
+        work_no, create_time, error_count
+        )
+        values (#{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR}, #{dsId,jdbcType=INTEGER}, #{flagId,jdbcType=INTEGER},
+        #{workNo,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{errorCount,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.vanguard8.framework.entity.User">
+        <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="loginName != null">
+                login_name,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="dsId != null">
+                ds_id,
+            </if>
+            <if test="flagId != null">
+                flag_id,
+            </if>
+            <if test="workNo != null">
+                work_no,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="errorCount != null">
+                error_count,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="loginName != null">
+                #{loginName,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="dsId != null">
+                #{dsId,jdbcType=INTEGER},
+            </if>
+            <if test="flagId != null">
+                #{flagId,jdbcType=INTEGER},
+            </if>
+            <if test="workNo != null">
+                #{workNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="errorCount != null">
+                #{errorCount,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.framework.entity.User">
+        update sys_user
+        <set>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="loginName != null">
+                login_name = #{loginName,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                salt = #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="workNo != null">
+                work_no = #{workNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="errorCount != null">
+                error_count = #{errorCount,jdbcType=INTEGER},
+            </if>
+        </set>
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.vanguard8.framework.entity.User">
+    update sys_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      ds_id = #{dsId,jdbcType=INTEGER},
+      flag_id = #{flagId,jdbcType=INTEGER},
+      work_no = #{workNo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      error_count = #{errorCount,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

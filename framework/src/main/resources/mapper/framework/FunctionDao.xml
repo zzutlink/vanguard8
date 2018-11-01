@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.framework.dao.FunctionDao">
+  <resultMap id="BaseResultMap" type="com.vanguard8.framework.entity.Function">
+    <id column="func_id" jdbcType="CHAR" property="funcId" />
+    <result column="func_code" jdbcType="VARCHAR" property="funcCode" />
+    <result column="func_name" jdbcType="VARCHAR" property="funcName" />
+    <result column="func_path" jdbcType="VARCHAR" property="funcPath" />
+    <result column="is_last" jdbcType="TINYINT" property="isLast" />
+  </resultMap>
+
+  <!--查询某岗位对应的功能权限-->
+  <select id="selectFunctions" parameterType="Integer" resultMap="BaseResultMap">
+          select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id
+          where b.ds_id=#{dsId} order by a.func_code
+    </select>
+
+  <sql id="Base_Column_List">
+    func_id, func_code, func_name, func_path, is_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_function
+    where func_id = #{funcId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_function
+    where func_id = #{funcId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vanguard8.framework.entity.Function">
+    <selectKey keyProperty="funcId" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_function (func_code, func_name, func_path, 
+      is_last)
+    values (#{funcCode,jdbcType=VARCHAR}, #{funcName,jdbcType=VARCHAR}, #{funcPath,jdbcType=VARCHAR}, 
+      #{isLast,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vanguard8.framework.entity.Function">
+    <selectKey keyProperty="funcId" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="funcCode != null">
+        func_code,
+      </if>
+      <if test="funcName != null">
+        func_name,
+      </if>
+      <if test="funcPath != null">
+        func_path,
+      </if>
+      <if test="isLast != null">
+        is_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="funcCode != null">
+        #{funcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funcName != null">
+        #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="funcPath != null">
+        #{funcPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isLast != null">
+        #{isLast,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.framework.entity.Function">
+    update sys_function
+    <set>
+      <if test="funcCode != null">
+        func_code = #{funcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funcName != null">
+        func_name = #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="funcPath != null">
+        func_path = #{funcPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isLast != null">
+        is_last = #{isLast,jdbcType=TINYINT},
+      </if>
+    </set>
+    where func_id = #{funcId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vanguard8.framework.entity.Function">
+    update sys_function
+    set func_code = #{funcCode,jdbcType=VARCHAR},
+      func_name = #{funcName,jdbcType=VARCHAR},
+      func_path = #{funcPath,jdbcType=VARCHAR},
+      is_last = #{isLast,jdbcType=TINYINT}
+    where func_id = #{funcId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,396 @@
+10:19:15.300 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 132132 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+10:19:15.304 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+10:19:15.307 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+10:19:19.269 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+10:19:19.270 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+10:19:19.396 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+10:19:20.492 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 5.961 seconds (JVM running for 7.842)
+10:21:38.677 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:21:38.677 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+10:21:38.684 logback DEBUG c.v.f.interceptor.AuthInterceptor - 未找到对应的session值
+10:21:38.710 logback DEBUG c.v.f.controller.LoginController - login/index
+10:21:39.101 logback DEBUG c.v.f.controller.LoginController - /login/code
+10:21:44.046 logback DEBUG c.v.f.controller.LoginController - admin----111
+10:21:44.078 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+10:21:44.211 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+10:21:44.233 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+10:21:44.316 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:21:44.316 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+10:21:44.625 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:21:44.625 logback DEBUG c.v.f.interceptor.AuthInterceptor - /function/getMenu
+10:21:44.626 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+10:21:44.630 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+10:21:44.635 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 9
+10:21:44.637 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+10:21:44.637 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+10:21:44.637 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+10:21:44.637 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+10:21:44.637 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+10:21:44.638 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+10:21:44.638 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+10:21:44.638 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+10:21:44.638 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+10:21:47.386 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:21:47.387 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/deptsta
+10:21:47.565 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:21:47.566 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:21:47.569 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:21:47.581 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+10:21:47.591 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 9
+10:21:49.673 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:21:49.674 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:21:49.676 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:21:49.677 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 15(Integer)
+10:21:49.681 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:21:59.454 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:21:59.454 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:21:59.457 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:21:59.459 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 15(Integer)
+10:21:59.464 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:21:59.467 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:21:59.472 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 009(String), 009(String)
+10:21:59.475 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 0
+10:24:30.237 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:24:30.250 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 009(String)
+10:24:30.254 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:24:30.256 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:24:30.259 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:24:30.265 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:24:30.266 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:24:33.562 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 132524 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+10:24:33.569 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+10:24:33.572 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+10:24:38.851 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+10:24:38.852 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+10:24:39.004 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+10:24:40.075 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 7.185 seconds (JVM running for 8.986)
+10:26:17.377 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:17.378 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+10:26:17.385 logback DEBUG c.v.f.interceptor.AuthInterceptor - 未找到对应的session值
+10:26:17.415 logback DEBUG c.v.f.controller.LoginController - login/index
+10:26:17.822 logback DEBUG c.v.f.controller.LoginController - /login/code
+10:26:21.858 logback DEBUG c.v.f.controller.LoginController - admin----111
+10:26:21.915 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+10:26:22.066 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+10:26:22.091 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+10:26:22.169 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:22.169 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+10:26:22.439 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:22.440 logback DEBUG c.v.f.interceptor.AuthInterceptor - /function/getMenu
+10:26:22.441 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+10:26:22.444 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+10:26:22.449 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 9
+10:26:22.450 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+10:26:22.450 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+10:26:22.450 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+10:26:22.450 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+10:26:22.450 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+10:26:22.450 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+10:26:22.451 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+10:26:22.451 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+10:26:22.451 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+10:26:25.893 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:25.893 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/deptsta
+10:26:26.073 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:26.073 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:26:26.076 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:26:26.085 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+10:26:26.091 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 9
+10:26:28.055 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:28.056 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:26:28.058 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:26:28.058 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 15(Integer)
+10:26:28.060 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:26:33.961 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:33.962 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:26:33.964 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:26:33.965 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 15(Integer)
+10:26:33.968 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:26:33.969 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:26:33.971 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 009(String), 009(String)
+10:26:33.972 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 0
+10:26:40.761 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:26:40.764 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 009(String)
+10:26:40.769 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:26:40.771 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:26:40.784 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:26:40.792 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:26:40.794 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:26:40.813 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 16(Integer), 009009001(String), fdsa(String), hjhh.fdsa(String), 0(Byte), 0(Byte)
+10:26:40.874 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:26:40.962 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:40.963 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:26:40.964 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:26:40.964 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 15(Integer)
+10:26:40.966 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:26:56.050 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:56.050 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:26:56.051 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:26:56.051 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 15(Integer)
+10:26:56.053 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:26:56.859 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:56.860 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:26:56.862 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:26:56.863 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 15(Integer)
+10:26:56.866 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:27:18.584 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:27:18.585 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:27:18.586 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:27:18.586 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 15(Integer)
+10:27:18.588 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 1
+10:27:20.380 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:27:20.381 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:27:20.382 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:27:20.383 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 16(Integer)
+10:27:20.387 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:27:40.812 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:27:40.813 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:27:40.815 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:27:40.816 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 13(Integer)
+10:27:40.823 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 1
+10:27:42.111 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:27:42.112 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:27:42.115 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:27:42.118 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 12(Integer)
+10:27:42.121 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:27:48.769 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:27:48.769 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:27:48.771 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:27:48.771 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 12(Integer)
+10:27:48.778 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:27:48.783 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:27:48.783 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 007(String), 007(String)
+10:27:48.785 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 0
+10:28:16.447 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:28:16.448 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 007(String)
+10:28:16.458 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:28:16.469 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:28:16.470 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:28:16.473 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:28:16.473 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:28:16.474 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 17(Integer), 007007001(String), ggggggg(String), fdsa.ggggggg(String), 0(Byte), 0(Byte)
+10:28:16.536 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:28:16.585 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:16.585 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:28:16.586 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:28:16.586 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 12(Integer)
+10:28:16.587 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:28:22.265 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:22.265 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:28:22.267 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:28:22.268 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 12(Integer)
+10:28:22.270 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:28:23.225 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:23.226 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:28:23.227 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:28:23.229 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 12(Integer)
+10:28:23.233 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:29:32.264 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 132524 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+10:29:32.265 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+10:29:32.265 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+10:32:23.157 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 131092 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+10:32:23.162 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+10:32:23.164 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+10:32:28.697 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+10:32:28.699 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+10:32:28.818 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+10:32:29.852 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 7.621 seconds (JVM running for 10.088)
+10:35:05.493 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:05.493 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+10:35:06.092 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:06.093 logback DEBUG c.v.f.interceptor.AuthInterceptor - /function/getMenu
+10:35:06.151 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+10:35:06.270 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+10:35:06.292 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 9
+10:35:06.294 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+10:35:06.294 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+10:35:06.294 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+10:35:06.294 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+10:35:06.294 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+10:35:06.295 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+10:35:06.295 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+10:35:06.295 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+10:35:06.295 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+10:35:09.235 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:09.236 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/deptsta
+10:35:09.392 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:09.392 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:35:09.443 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:35:09.458 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+10:35:09.466 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 9
+10:35:16.957 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:16.957 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:35:16.963 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:35:16.964 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 1(Integer)
+10:35:16.967 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:35:16.969 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:35:16.973 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: (String), (String)
+10:35:16.977 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 1
+10:35:26.476 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:35:26.478 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:35:26.488 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:35:26.489 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:35:26.516 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 18(Integer), 010(String), hhhhhh(String), hhhhhh(String), 0(Byte), 0(Byte)
+10:35:26.582 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:35:26.639 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:26.639 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:35:26.640 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:35:26.640 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+10:35:26.646 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 10
+10:35:37.427 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:37.428 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:35:37.430 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:35:37.430 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 18(Integer)
+10:35:37.436 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:35:37.437 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:35:37.438 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 010(String), 010(String)
+10:35:37.440 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 0
+10:35:37.442 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:35:37.444 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 010(String)
+10:35:37.446 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:35:37.447 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:35:37.447 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:35:37.449 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:35:37.449 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:35:37.451 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 19(Integer), 010001(String), hhhhh1(String), hhhhhh.hhhhh1(String), 0(Byte), 0(Byte)
+10:35:37.514 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:35:37.555 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:37.555 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:35:37.556 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:35:37.557 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 18(Integer)
+10:35:37.559 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 1
+10:35:47.222 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:47.222 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:35:47.224 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:35:47.224 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 19(Integer)
+10:35:47.230 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:35:47.231 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:35:47.232 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 010001(String), 010001(String)
+10:35:47.233 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 0
+10:35:47.235 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:35:47.237 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 010001(String)
+10:35:47.240 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:35:47.243 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:35:47.243 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:35:47.245 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:35:47.246 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:35:47.247 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 20(Integer), 010001001(String), hhh11(String), hhhhhh.hhhhh1.hhh11(String), 1(Byte), 0(Byte)
+10:35:47.299 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:35:47.388 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:47.388 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:35:47.390 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:35:47.390 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 19(Integer)
+10:35:47.396 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 1
+10:35:57.391 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:57.393 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:35:57.403 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:35:57.403 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 19(Integer)
+10:35:57.408 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:35:57.409 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:35:57.411 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 010(String), 010(String)
+10:35:57.413 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 1
+10:35:57.415 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:35:57.416 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 010(String)
+10:35:57.420 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:35:57.421 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:35:57.421 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:35:57.423 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:35:57.423 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:35:57.424 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 21(Integer), 010002(String), hhhh2(String), hhhhhh.hhhh2(String), 0(Byte), 0(Byte)
+10:35:57.524 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:35:57.565 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:57.565 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:35:57.566 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:35:57.566 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 18(Integer)
+10:35:57.568 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 2
+10:35:59.941 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:59.942 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:35:59.944 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:35:59.944 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 21(Integer)
+10:35:59.947 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 0
+10:36:13.261 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:36:13.261 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:36:13.263 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:36:13.264 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 21(Integer)
+10:36:13.267 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:36:13.268 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:36:13.269 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 010(String), 010(String)
+10:36:13.270 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 1
+10:36:13.271 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:36:13.272 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 010(String)
+10:36:13.274 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:36:13.275 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:36:13.275 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:36:13.276 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:36:13.276 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:36:13.277 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 22(Integer), 010003(String), hhhh33(String), hhhhhh.hhhh33(String), 1(Byte), 0(Byte)
+10:36:13.327 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:36:13.369 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:36:13.370 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:36:13.370 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:36:13.371 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 18(Integer)
+10:36:13.374 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 3
+10:36:25.449 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:36:25.449 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:36:25.450 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:36:25.450 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 21(Integer)
+10:36:25.451 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:36:25.452 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:36:25.452 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 010002(String), 010002(String)
+10:36:25.453 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 0
+10:36:25.454 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:36:25.454 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 010002(String)
+10:36:25.455 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:36:25.456 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:36:25.456 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:36:25.457 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:36:25.457 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:36:25.458 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 23(Integer), 010002001(String), hhhh22(String), hhhhhh.hhhh2.hhhh22(String), 1(Byte), 0(Byte)
+10:36:25.517 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:36:25.569 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:36:25.570 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:36:25.571 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:36:25.571 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 21(Integer)
+10:36:25.573 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 1
+10:36:36.520 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:36:36.520 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/saveDeptsta
+10:36:36.521 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_id = ? 
+10:36:36.521 logback DEBUG c.v.f.d.D.selectByPrimaryKey - ==> Parameters: 23(Integer)
+10:36:36.523 logback DEBUG c.v.f.d.D.selectByPrimaryKey - <==      Total: 1
+10:36:36.523 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==>  Preparing: select ds_code from sys_deptsta where length(ds_code)=length(?)+3 and ds_code like concat(?,'___') order by ds_code desc limit 1 
+10:36:36.523 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - ==> Parameters: 010(String), 010(String)
+10:36:36.524 logback DEBUG c.v.f.dao.DeptstaDao.selectMaxCode - <==      Total: 1
+10:36:36.525 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code = ? 
+10:36:36.525 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - ==> Parameters: 010(String)
+10:36:36.526 logback DEBUG c.v.f.dao.DeptstaDao.selectByDsCode - <==      Total: 1
+10:36:36.527 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==>  Preparing: select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1 
+10:36:36.527 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - ==> Parameters: 
+10:36:36.528 logback DEBUG c.v.f.d.DeptstaDao.insert!selectKey - <==      Total: 1
+10:36:36.529 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==>  Preparing: insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag) values (?, ?, ?, ?, ?, ?) 
+10:36:36.529 logback DEBUG c.v.framework.dao.DeptstaDao.insert - ==> Parameters: 24(Integer), 010004(String), ffgghh(String), hhhhhh.ffgghh(String), 1(Byte), 2(Byte)
+10:36:36.601 logback DEBUG c.v.framework.dao.DeptstaDao.insert - <==    Updates: 1
+10:36:36.642 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:36:36.642 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:36:36.643 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:36:36.643 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 18(Integer)
+10:36:36.646 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 4
+10:49:52.061 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 131092 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+10:49:52.061 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+10:49:52.061 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+10:49:59.878 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 131092 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+10:49:59.878 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+10:49:59.879 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+10:50:02.058 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+10:50:02.059 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+10:50:02.103 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+10:50:02.879 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 3.151 seconds (JVM running for 1063.087)
+10:50:05.552 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 131092 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+10:50:05.553 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+10:50:05.553 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+10:50:07.471 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+10:50:07.472 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+10:50:07.496 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+10:50:07.850 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.421 seconds (JVM running for 1068.058)

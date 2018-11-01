@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>BaseMana</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        $(function () {
+            $('#tableList').datagrid({
+                url: '/base/getList?bsId=' + [[${bsId}]],
+                pagination: true,
+                pageSize: 20,
+                pageList: [20, 30, 40, 50],
+                singleSelect: true,
+                fit: true,
+                fitColumns: true,
+                toolbar: '#divToolBar',
+                onLoadSuccess: function (data) {
+                    if (data.total == -1) {
+                        $.messager.alert("操作失败", '登录超时，请重新登录！');
+                    }
+                }
+            });
+
+            var data = $('#comboSrh').combobox('getData');
+            if (data.length > 0) {
+                $('#comboSrh').combobox('select', data[0].value);
+            }
+
+            $('#formPlay').form({
+                url: '/base/save',
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result != null && result.success) {
+                        var flag = $('#PlayFlag').val();
+                        //新增的话则成功一条可继续下一条，不关闭操作窗口
+                        //编辑与删除成功后均关闭窗口
+                        if (flag == "1") {
+                            $.messager.alert("新增成功", result.message);
+                            MyReset();
+                        }
+                        else {
+                            ClosePlayWindow();
+                        }
+                        $('#tableList').datagrid('reload');
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.message);
+                    }
+                }
+            });
+        });
+
+        function LoadGridData() {
+            $('#tableList').datagrid('load', {
+                paramName: $('#comboSrh').combobox('getValue'),
+                paramValue: $('#inputSrh').val()
+            });
+        }
+
+        function ShowPlayWindow(stitle) {
+            var height=$(document).height();
+console.info(height);
+            $('#divPlay').window({
+                width: 600,
+                height: height,//[[${showHeight}]],
+                collapsible: false,
+                minimizable: false,
+                maximizable: false,
+                resizable: false,
+                title: stitle,
+                modal: true
+            });
+        }
+
+        function Add() {
+            ShowPlayWindow('新增');
+            $('#PlayFlag').val("1");
+            MyReset();
+        }
+
+        function Edit() {
+            var row = $('#tableList').datagrid('getSelected');
+            if (row) {
+                ShowPlayWindow('编辑');
+                $('#PlayFlag').val("2");
+                var details = [[${details}]];
+                for (var i = 0; i < details.length; i++) {
+                    if(details[i].showFlag==1){
+                        $('#'+details[i].fieldCode).val(row[details[i].fieldCode]);
+                    }
+                }
+            }
+            else {
+                $.messager.alert("操作失败", "未选择要编辑的数据行！");
+            }
+        }
+
+        function Delete() {
+            var row = $('#tableList').datagrid('getSelected');
+            if (row) {
+                $('#PlayFlag').val("3");
+                ShowPlayWindow('删除');
+                //@Html.Raw(ViewBag.EditScriptStr)
+            }
+            else {
+                $.messager.alert("操作失败", "未选择要删除的数据行！");
+            }
+        }
+
+        function MyReset() {
+            var flag = $('#PlayFlag').val();
+            if (flag == "1") {
+                document.getElementById("formPlay").reset();
+                //@Html.Raw(ViewBag.AddScriptStr)
+            }
+            else if (flag == "2") {
+                Edit();
+            }
+        }
+
+        function ClosePlayWindow() {
+            $('#divPlay').window('close');
+        }
+
+
+    </script>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'center'" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
+    <div id="divToolBar" style="height: 60px">
+        <table style="border: 0">
+            <tr>
+                <td>
+                    <input type="button" value="新增" onclick="Add();"/>
+                    <input type="button" value="编辑" onclick="Edit();"/>
+                    <input type="button" value="删除" onclick="Delete();"/></td>
+            </tr>
+            <tr>
+                <td>查询字段
+                    <select id="comboSrh" class="easyui-combobox" style="width:200px"
+                            data-options="panelHeight:'auto',editable:false">
+                        <option th:each="detail:${details}" th:value="${detail.fieldCode}"
+                                th:text="${detail.fieldName}">
+                            fieldName
+                        </option>
+                    </select>
+                    查询内容
+                    <input id="inputSrh" type="text"/>
+                    <input type="button" value="查询" onclick="LoadGridData();"/></td>
+            </tr>
+        </table>
+    </div>
+    <table id="tableList">
+        <thead>
+        <tr>
+            <th th:each="detail:${details}"
+                th:attr="data-options=|field:'${detail.fieldCode}',width:${detail.showWidth},sortable:true|"
+                th:text="${detail.fieldName}">列标题
+            </th>
+        </tr>
+        </thead>
+    </table>
+    <div id="divPlay">
+        <div id="divPlayLayout" class="easyui-layout" data-options="fit:true">
+            <form id="formPlay" method="post">
+                <input id="PlayFlag" name="PlayFlag" type="hidden"/>
+                <input id="bsId" name="bsId" th:value="${bsId}" type="hidden"/>
+                <div data-options="region:'center',split:false,border:false">
+                    <div style="text-align: center">
+                        <table style="border:0px;width:560px">
+                            <tr height="10px">
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr th:each="detail:${details}" th:height="${detail.showHeight}">
+                                <td th:text="${detail.fieldName}" width="100px" style="text-align: right">字段名称</td>
+                                <td th:switch="${detail.fieldType}" style="text-align: left">
+                                    <input th:case="'1'" th:id="${detail.fieldCode}" th:name="${detail.fieldCode}" type="text" th:attr="style=|width:${detail.showWidth}px|"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div data-options="region:'south',split:false,border:false" style="height: 70px">
+                    <table style="border:0px;width:560px">
+                        <tr>
+                            <td width="100px"></td>
+                            <td>红色代表必填项；(*)代表不可重复项</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align: left">
+                                <input type="submit" value="提交" style="width: 80px"/>
+                                <input type="button" value="重置" style="width: 80px" onclick="MyReset();"/>
+                                <input type="button" value="关闭" style="width: 80px" onclick="ClosePlayWindow();"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

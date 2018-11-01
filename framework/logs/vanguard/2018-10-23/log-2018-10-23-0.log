@@ -1,0 +1,50 @@
+08:13:25.713 logback INFO  c.v.f.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 8480 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8\framework)
+08:13:25.717 logback DEBUG c.v.f.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+08:13:25.720 logback INFO  c.v.f.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+08:13:28.281 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+08:13:28.282 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+08:13:28.368 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+08:13:28.944 logback INFO  c.v.f.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 4.085 seconds (JVM running for 6.143)
+08:13:34.923 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:34.923 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+08:13:34.929 logback DEBUG c.v.f.interceptor.AuthInterceptor - session==null
+08:13:34.946 logback DEBUG c.v.f.c.core.LoginController - login/index
+08:13:35.295 logback DEBUG c.v.f.c.core.LoginController - /login/code
+08:13:40.683 logback DEBUG c.v.f.c.core.LoginController - admin----111
+08:13:40.701 logback DEBUG c.v.f.d.c.UserDao.getUserByLoginName - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.login_name=? and a.flag_id=1 limit 1 
+08:13:40.791 logback DEBUG c.v.f.d.c.UserDao.getUserByLoginName - ==> Parameters: admin(String)
+08:13:40.809 logback DEBUG c.v.f.d.c.UserDao.getUserByLoginName - <==      Total: 1
+08:13:40.904 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:40.904 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+08:13:41.183 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:41.183 logback DEBUG c.v.f.interceptor.AuthInterceptor - /function/getMenu
+08:13:41.184 logback DEBUG c.v.f.d.c.FunctionDao.getFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+08:13:41.187 logback DEBUG c.v.f.d.c.FunctionDao.getFunctions - ==> Parameters: 1(Integer)
+08:13:41.193 logback DEBUG c.v.f.d.c.FunctionDao.getFunctions - <==      Total: 9
+08:13:41.193 logback DEBUG c.v.f.c.core.FunctionController - 999---系统管理
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999001---个人密码修改
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999002---部门岗位管理(缓)
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999003---登录账号管理(缓)
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999004---系统参数设定(缓)
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999005---基础模板设定NOW
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999006---查询模板设定3
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999100---运行信息监控
+08:13:41.194 logback DEBUG c.v.f.c.core.FunctionController - 999101---基础模板测试
+08:13:44.919 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:44.919 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+08:13:46.979 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:46.979 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+08:13:47.590 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:47.590 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+08:13:48.184 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:48.184 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+08:13:48.642 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:48.642 logback DEBUG c.v.f.interceptor.AuthInterceptor - /sysmana/user
+08:13:48.780 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:48.780 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+08:13:48.812 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:48.812 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+08:13:49.420 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:49.421 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+08:13:49.984 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:13:49.984 logback DEBUG c.v.f.interceptor.AuthInterceptor - /sysmana/changePwd

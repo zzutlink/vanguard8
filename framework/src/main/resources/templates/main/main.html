@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <style type="text/css">
+        .menuLink1 {
+            background: none;
+            cursor: default;
+        }
+
+        .menuLink2 {
+            background: #E3E3E3;
+            cursor: pointer;
+        }
+
+        .accordionPanel div {font-size:12px}
+
+        .menuIcon {
+            background:url('/static/images/m.png') no-repeat center center;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            //在前台自动显示菜单的信息根据用户的信息
+            BindMenuDataGroupType();
+
+            //右键菜单click
+            $("#divMenu").menu({
+                onClick: function (item) {
+                    closeTab(this, item.name);
+                }
+            });
+
+            $(document).ready(function () {
+                //监听右键事件，创建右键菜单
+                $('#TabFunctions').tabs({
+                    onContextMenu: function (e, title, index) {
+                        e.preventDefault();
+                        if (index > 0) {
+                            $('#divMenu').menu('show', {
+                                left: e.pageX,
+                                top: e.pageY
+                            }).data("tabTitle", title);
+                        }
+                    }
+                });
+            });
+
+            FormLogOut = $('#FormLogOut').form({
+                url: '/login/logout',
+                success: function (data) {
+                    data = $.parseJSON(data);
+                    if (data && data.success) {
+                        window.location.href = "/login/index";
+                    }
+                }
+            });
+
+            // $('#FrameFirstPage').attr('src', '/Weixin/Buss/AutoRun');
+        })
+
+        function getDateTime() {
+            //分别获取年、月、日、时、分、秒
+            var myDate = new Date();
+            var year = myDate.getFullYear();
+            var month = myDate.getMonth() + 1;
+            var date = myDate.getDate();
+            var hours = myDate.getHours();
+            var minutes = myDate.getMinutes();
+            var seconds = myDate.getSeconds();
+
+            //月份的显示为两位数字如09月
+            if (month < 10) {
+                month = "0" + month;
+            }
+            if (date < 10) {
+                date = "0" + date;
+            }
+
+            //时间拼接
+            var dateTime = year + "年" + month + "月" + date + "日" + hours + "时" + minutes + "分" + seconds + "秒";
+            var divTime = document.getElementById("divTime");
+            divTime.innerHTML = dateTime;
+
+        }
+        window.setInterval("getDateTime()", 1000);//每隔1秒，调用一次getDateDemo()
+
+        //绑定前台菜单栏
+        function BindMenuDataGroupType() {
+            //根据异步读取发送过来的Json字符串
+            $.getJSON("/function/getMenu", {random:Math.random()}, function (data) {
+                $("#divAccordion").accordion({ fit: true });
+                //实现在菜单拦中的显示,遍历节点集合
+                for (var i = 0; i < data.length; i++) {
+                    var group = data[i]; //拿到组的信息
+                    //拿到内容的信息,每个菜单项构造成一个p标签
+                    var strMenuItemHTMl = "<table width='96%' align=\"center\">";
+                    for (var j = 0; j < group.items.length; j++) {
+                        var item = group.items[j];
+                        strMenuItemHTMl += "<tr height=\"24px\" class=\"menuLink\" onMouseOver=\"mouseOver(this);\" onMouseOut=\"mouseOut(this);\"><td style=\"padding-left:20px\" onclick=\"BindMenuClickHrefEvent('" + item.funcPath + "','" + item.funcName + "');\"><img src=\"/static/images/left_list.png\" style=\"vertical-align:middle\" /> " + item.funcName + "</td></tr>";
+                    }
+                    strMenuItemHTMl += "</table>";
+                    //EasyUI添加节点
+                    $("#divAccordion").accordion('add', {
+                        title: group.titleItem.funcName,
+                        content: strMenuItemHTMl,
+                        selected: false,
+                        iconCls: 'menuIcon',
+                        padding:15
+                    });
+                }
+            });
+        }
+
+        //实现用户单击导航栏跳转页面的方法
+        function BindMenuClickHrefEvent(surl, stitle) {
+            var TabFunctions = $('#TabFunctions').tabs();
+            if (TabFunctions.tabs('exists', stitle)) {
+                TabFunctions.tabs('select', stitle);
+            } else {
+                TabFunctions.tabs('add', {
+                    title: stitle,
+                    content: '<iframe src="' + surl + '" style="width: 100%; height: 99%; border:none"></iframe>',
+                    closable: true,
+                    selected: true
+                });
+            }
+        }
+
+        function mouseOver(obj) {
+            if (obj.className = "menuLink1")
+                obj.className = "menuLink2";
+        }
+
+        function mouseOut(obj) {
+            if (obj.className = "menuLink2")
+                obj.className = "menuLink1";
+        }
+
+        //删除Tabs
+        function closeTab(menu, type) {
+            var allTabs = $("#TabFunctions").tabs('tabs');
+            var allTabtitle = [];
+            $.each(allTabs, function (i, n) {
+                var opt = $(n).panel('options');
+                if (opt.closable)
+                    allTabtitle.push(opt.title);
+            });
+
+            switch (type) {
+                case "1":
+                    var curTabTitle = $(menu).data("tabTitle");
+                    $("#TabFunctions").tabs("close", curTabTitle);
+                    return false;
+                    break;
+                case "2":
+                    for (var i = 0; i < allTabtitle.length; i++) {
+                        $('#TabFunctions').tabs('close', allTabtitle[i]);
+                    }
+                    break;
+                case "3":
+                    for (var i = 0; i < allTabtitle.length; i++) {
+                        if ($(menu).data("tabTitle") != allTabtitle[i]) {
+                            $('#TabFunctions').tabs('close', allTabtitle[i]);
+                        }
+                    }
+                    break;
+            }
+        }
+    </script>
+</head>
+<body id="LayoutMain" class="easyui-layout">
+<div data-options="region:'north',split:false" style="height: 60px; background-image:url(/static/images/topbk.jpg)">
+    <form id="FormLogOut" method="post">
+        <table style="width: 99%">
+            <tr style="height:50px">
+                <td><img src="/static/images/logo_main.png" style="vertical-align:middle" /></td>
+                <td style="color:#FFFFFF;text-align: right;vertical-align:middle">当前时间：<label id="divTime"></label>
+                    <img src="/static/images/exit.png" onclick="$('#FormLogOut').submit();" style="vertical-align:middle;cursor:pointer" title="退出系统" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div data-options="region:'south',split:false" style="height: 30px; background-image:url(/static/images/footbk.jpg)">
+    <div style="position: absolute;width: 100%;margin-top:5px;">
+        <div id="divLoginUser" style="float:left;margin-left:10px;color:#8b8b8b;width:30%"><img src="/static/images/u.png" style="vertical-align:bottom;width:20px;height:20px" /> 登录人员：<span th:text="${userName}">USERNAME</span></div>
+        <div id="divLoginStation" style="float:left;color:#8b8b8b;width:30%"><img src="/static/images/s.png" style="vertical-align:bottom;width:20px;height:20px" /> 所属岗位：<span th:text="${dsName}">DSNAME</span></div>
+        <div id="divRight" style="float:right;margin-right:30px;color:#8b8b8b"><img src="/static/images/t.png" style="vertical-align:bottom;width:20px;height:20px" /> 技术支持：河南青禾软件科技有限公司 13526458168</div>
+    </div>
+</div>
+<div data-options="region:'west',title:'功能目录',split:true" style="width: 200px;">
+    <div id="divAccordion" class="easyui-accordion" data-options="border:false"></div>
+</div>
+<div data-options="region:'center'" style="overflow:hidden">
+    <div id="divMenu" class="easyui-menu" style="width: 120px;">
+        <div id="mm-tabclose" name="1">关闭</div>
+        <div id="mm-tabcloseall" name="2">全部关闭</div>
+        <div id="mm-tabcloseother" name="3">除此之外全部关闭</div>
+    </div>
+
+    <div id="TabFunctions" class="easyui-tabs" data-options="fit:true,border:false" style="overflow:hidden">
+        <div title="首页" style="padding: 20px;">
+            <iframe id="FrameFirstPage" src="" style="width: 100%; height: 99%; border: none"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>

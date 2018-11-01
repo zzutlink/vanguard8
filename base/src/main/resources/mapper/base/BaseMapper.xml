@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.base.dao.BaseDao">
+
+    <!--基础数据设置模板-->
+    <resultMap id="BaseMainRM" type="com.vanguard8.base.entity.BaseMain">
+        <id property="bsId" column="bs_id" jdbcType="INTEGER"/>
+        <result property="bsName" column="bs_name" jdbcType="VARCHAR"/>
+        <result property="fieldStr" column="field_str" jdbcType="VARCHAR"/>
+        <result property="tableStr" column="table_str" jdbcType="VARCHAR"/>
+        <result property="conditionStr" column="condition_str" jdbcType="INTEGER"/>
+        <result property="sortField" column="sort_field" jdbcType="VARCHAR"/>
+        <result property="tableName" column="table_name" jdbcType="VARCHAR"/>
+        <result property="checkUseTable" column="check_use_table" jdbcType="VARCHAR"/>
+        <result property="checkUseField" column="check_use_field" jdbcType="VARCHAR"/>
+        <result property="keyField" column="key_field" jdbcType="VARCHAR"/>
+        <result property="keyFieldLength" column="key_field_length" jdbcType="VARCHAR"/>
+        <collection property="baseDetails" resultMap="BaseDetailRM"></collection>
+    </resultMap>
+
+    <!--基础数据设置模板的明细-->
+    <resultMap id="BaseDetailRM" type="com.vanguard8.base.entity.BaseDetail">
+        <id column="detail_id" jdbcType="INTEGER" property="detailId" />
+        <!--<result column="bs_id" jdbcType="INTEGER" property="bsId" />-->
+        <result column="field_code" jdbcType="VARCHAR" property="fieldCode" />
+        <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+        <result column="field_type" jdbcType="TINYINT" property="fieldType" />
+        <result column="show_flag" jdbcType="TINYINT" property="showFlag" />
+        <result column="show_width" jdbcType="INTEGER" property="showWidth" />
+        <result column="show_height" jdbcType="INTEGER" property="showHeight"/>
+        <result column="search_flag" jdbcType="TINYINT" property="searchFlag" />
+        <result column="edit_flag" jdbcType="TINYINT" property="editFlag" />
+        <result column="ref_flag" jdbcType="TINYINT" property="refFlag" />
+        <result column="ref_string" jdbcType="VARCHAR" property="refString" />
+        <result column="ref_id_str" jdbcType="VARCHAR" property="refIdStr" />
+        <result column="ref_text_str" jdbcType="VARCHAR" property="refTextStr" />
+        <result column="readonly_flag" jdbcType="TINYINT" property="readonlyFlag" />
+        <result column="repeat_flag" jdbcType="TINYINT" property="repeatFlag" />
+        <result column="null_flag" jdbcType="TINYINT" property="nullFlag" />
+        <result column="default_value" jdbcType="VARCHAR" property="defaultValue" />
+    </resultMap>
+
+    <!--根据编号取某一条基础设置模板的数据-->
+    <select id="getBaseMain" parameterType="Integer" resultMap="BaseMainRM">
+        select a.* from bas_main a where a.bs_id=#{bsId} limit 1
+    </select>
+
+    <select id="getBaseDetail" parameterType="Integer" resultMap="BaseDetailRM">
+        select * from bas_detail where bs_id=#{bsId}
+    </select>
+
+    <!--执行一个sql语句返回结果集-->
+    <select id="executeSelect" parameterType="String" resultType="java.util.HashMap">
+        ${value}
+    </select>
+
+    <!--执行一个sql语句返回结果集的数量-->
+    <select id="executeCount" parameterType="String" resultType="Integer">
+        ${value}
+    </select>
+
+    <!--执行一个sql语句返回一条记录一个字段的值-->
+    <select id="selectMaxId" parameterType="String" resultType="String">
+        ${value}
+    </select>
+
+    <!--执行一个sql语句进行insert操作-->
+    <insert id="executeInsert" parameterType="String">
+        ${value}
+    </insert>
+
+    <!--执行一个sql语句进行update操作-->
+    <update id="executeUpdate" parameterType="String">
+        ${value}
+    </update>
+
+    <!--执行一个sql语句进行delete操作-->
+    <delete id="executeDelete" parameterType="String">
+        ${value}
+    </delete>
+</mapper>
