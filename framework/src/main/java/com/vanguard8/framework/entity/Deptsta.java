@@ -92,4 +92,18 @@ public class Deptsta implements Serializable {
     public void setLockFlag(Byte lockFlag) {
         this.lockFlag = lockFlag;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" [");
+        sb.append("dsId=").append(dsId);
+        sb.append(", dsCode=").append(dsCode);
+        sb.append(", dsName=").append(dsName);
+        sb.append(", dsTotalName=").append(dsTotalName);
+        sb.append(", dsFlag=").append(dsFlag);
+        sb.append(", lockFlag=").append(lockFlag);
+        sb.append("]");
+        return sb.toString();
+    }
 }

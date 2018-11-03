@@ -394,3 +394,87 @@
 10:50:07.472 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
 10:50:07.496 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
 10:50:07.850 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.421 seconds (JVM running for 1068.058)
+16:49:25.338 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 138224 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+16:49:25.417 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+16:49:25.421 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+16:49:32.727 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+16:49:32.728 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+16:49:32.867 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+16:49:34.216 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 10.822 seconds (JVM running for 15.619)
+16:55:02.035 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+16:55:02.036 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+16:55:02.050 logback DEBUG c.v.f.interceptor.AuthInterceptor - 未找到对应的session值
+16:55:02.094 logback DEBUG c.v.f.controller.LoginController - login/index
+16:55:03.320 logback DEBUG c.v.f.controller.LoginController - /login/code
+17:00:37.194 logback DEBUG c.v.f.controller.LoginController - admin----111
+17:00:37.271 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+17:00:37.412 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+17:00:37.432 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+17:00:37.627 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+17:00:37.627 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+17:00:38.093 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+17:00:38.093 logback DEBUG c.v.f.interceptor.AuthInterceptor - /function/getMenu
+17:00:38.095 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+17:00:38.099 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+17:00:38.106 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 9
+17:00:38.108 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+17:00:38.109 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+17:00:40.653 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+17:00:40.654 logback DEBUG c.v.f.interceptor.AuthInterceptor - /user/changePwd
+17:00:41.982 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+17:00:41.982 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/deptsta
+17:00:42.144 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+17:00:42.144 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+17:00:42.147 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+17:00:42.167 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+17:00:42.183 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 10
+17:11:25.393 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+17:11:25.393 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/deptsta
+17:11:25.520 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+17:11:25.520 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+17:11:25.522 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+17:11:25.522 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+17:11:25.528 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 10
+17:22:45.444 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 138224 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+17:22:45.445 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+17:22:45.445 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+17:22:47.097 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+17:22:47.098 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+17:22:47.140 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+17:22:47.565 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.198 seconds (JVM running for 2008.917)
+17:22:51.406 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 138224 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+17:22:51.407 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+17:22:51.408 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+17:22:53.395 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+17:22:53.396 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+17:22:53.631 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+17:22:54.271 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.971 seconds (JVM running for 2015.623)
+17:22:57.551 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 138224 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+17:22:57.551 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+17:22:57.551 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+17:22:58.891 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+17:22:58.891 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+17:22:58.917 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+17:22:59.501 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.021 seconds (JVM running for 2020.853)
+17:23:05.454 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 138224 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+17:23:05.455 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+17:23:05.455 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+17:23:06.623 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+17:23:06.624 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+17:23:06.642 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+17:23:06.978 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 1.653 seconds (JVM running for 2028.329)
+17:24:11.387 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 138224 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+17:24:11.387 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+17:24:11.388 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+17:24:13.174 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+17:24:13.175 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+17:24:13.212 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+17:24:13.587 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.279 seconds (JVM running for 2094.936)
