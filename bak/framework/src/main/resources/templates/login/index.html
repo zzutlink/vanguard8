@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <style type="text/css">
+        body{background:#ececec;margin:0px;padding:0px}
+        input,a {font-family: PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;font-size: 14px;}
+        .content{width:100%;height:500px;margin:-250px 0;position:absolute;top:50%}
+        .content_top{width:100%;height:50px;text-align:center;margin:0}
+        .content_top_c{height:50px;width:1010px;background:url(/static/images/logo_login.png) no-repeat 0 center;margin:0 -505px;position:absolute;left:50%;}
+        .content_main{background:#ffffff;width:100%;height:420px;margin:0;position:absolute;top:50px}
+        .content_foot{width:100%;height:30px;position:absolute;top:470px}
+        .content_foot_c{width:1010px;height:30px;position:absolute;margin:0 -505px;position:absolute;left:50%;font-size:12px;color:#8b8b8b;line-height:30px;vertical-align:baseline;text-align:right}
+        .content_left{background:url(/static/images/loginbg.png) right center no-repeat;height:100%;width:50%;float:left}
+        .content_right{float:left;display:inline-block;width:40%;padding:40px 0 20px 80px}
+        .login{border:1px solid #cccccc;width:360px;box-shadow:2px 2px 3px #ddd, -2px 0 3px #ddd;padding:0 0 20px 0}
+        .loginh{width:100%;border:0;border-left:4px solid #1da02b;height:45px;font-size:22px;text-indent:30px;line-height:40px}
+        .loginForm{border:0}
+        .loginFormUser{height:36px;width:280px;border:1px solid #ccc;background:url(/static/images/f1.png) no-repeat 5px center;margin-top:20px;margin-left:36px;margin-bottom:20px;}
+        .loginFormPwd{height:36px;width:280px;border:1px solid #ccc;background:url(/static/images/f2.png) no-repeat 5px center;margin-top:20px;margin-left:36px;margin-bottom:20px;}
+        .loginFormC{height:36px;width:340px;margin-top:20px;margin-bottom:20px;}
+        .loginFormCheckcode{float:left;height:36px;width:140px;border:1px solid #ccc;background:url(/static/images/f3.png) no-repeat 5px center;margin-left:36px}
+        .loginFormCheckcode2{float:left;height:36px;width:100px;vertical-align:middle;margin-left:10px}
+        .divButton{margin-left:36px;width:280px;height:36px;text-align:center;}
+        .divButton a{text-decoration:none;color:#fff;font-weight:bold;font-size:16px;line-height:34px}
+        .submitButton{float:left;}
+        .submitButton a {display:inline-block;width:120px;height:34px;background:#1da02b;}
+        .cancelButton{float:right;}
+        .cancelButton a {display:inline-block;width:120px;height:34px;background:#ececec;}
+    </style>
+    <script type="text/javascript">
+        function ChangeCheckCode() {
+            $('#ImgCheckCode').attr('src', '/login/code?' + new Date().getTime());
+            $('#TextCheckCode').attr('value', '');
+        }
+
+        $(function () {
+            if (window != top) {
+                top.location.href = location.href;
+            }
+            ChangeCheckCode();
+
+            $('#FormLogin').form({
+                url: '/login/check',
+                onSubmit:function(){
+                    if ($('#TextLoginName').val() == '' || $('#TextPassword').val() == '' || $('#TextCheckCode').val() == '') {
+                        $.messager.alert("操作失败", "请输入登录账号、登录密码、验证码之后进行登录验证！");
+                        return false;
+                    }
+                },
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result!=null && result.success) {
+                        $('#FormRedirect').submit();
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.message);
+                        ChangeCheckCode();
+                    }
+                }
+            });
+
+            InitFocus();
+        })
+
+        function InitFocus() {
+            $('#TextLoginName').focus();
+        }
+
+        function CancelForm() {
+            $('#FormLogin').form('reset');
+            InitFocus();
+        }
+    </script>
+</head>
+<body>
+<div class="content">
+    <div class="content_top">
+        <div class="content_top_c">
+        </div>
+    </div>
+    <div class="content_main">
+        <div class="content_left"></div>
+        <div class="content_right">
+            <div class="login">
+                <div class="loginh"><h4>用户登录</h4></div>
+                <form id="FormLogin" method="post" onkeypress="if(event.keyCode==13||event.which==13){$('#FormLogin').form('submit');}">
+                    <div class="loginForm">
+                        <div class="loginFormUser">
+                            <input id="TextLoginName" name="loginName" tabindex="1" type="text" placeholder="请输入登录账号" style="float:left;background:none;height:35px;margin-left:26px;width:254px;border:0" />
+                        </div>
+                        <div class="loginFormPwd">
+                            <input id="TextPassword" name="password" tabindex="2" type="password" placeholder="请输入登录密码" style="float:left;background:none;height:35px;margin-left:26px;width:254px;border:0" />
+                        </div>
+                        <div class="loginFormC">
+                            <div class="loginFormCheckcode">
+                                <input id="TextCheckCode" name="checkCode" tabindex="3" type="text" placeholder="验证码" style="float:left;background:none;height:35px;margin-left:26px;width:115px;border:0" />
+                            </div>
+                            <div class="loginFormCheckcode2">
+                                <a href="javascript:void(0);" title="点击更换验证码" onclick="ChangeCheckCode();"><img id="ImgCheckCode" style="vertical-align:baseline;border:0" /></a>
+                            </div>
+                        </div>
+                        <div class="divButton">
+                            <div class="submitButton">
+                                <a href="#" onclick="$('#FormLogin').form('submit');">登录</a>
+                            </div>
+                            <div class="cancelButton">
+                                <a href="#" style="color:#999" onclick="CancelForm();">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form id="FormRedirect" method="post" action="/main/main"></form>
+            </div>
+        </div>
+    </div>
+    <div class="content_foot">
+        <div class="content_foot_c"></div>
+    </div>
+</div>
+</body>
+</html>

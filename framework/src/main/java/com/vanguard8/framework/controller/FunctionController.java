@@ -1,15 +1,19 @@
 package com.vanguard8.framework.controller;
 
+import com.vanguard8.common.Result;
 import com.vanguard8.common.SessionName;
+import com.vanguard8.common.TreeNode;
 import com.vanguard8.framework.entity.Function;
 import com.vanguard8.framework.entity.User;
 import com.vanguard8.framework.service.FunctionService;
 import com.vanguard8.framework.vo.MenuGroup;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +29,11 @@ public class FunctionController {
     @Autowired
     private FunctionService functionService;
 
+    @RequestMapping("/mana")
+    public String mana() {
+        return "/core/function";
+    }
+
     @RequestMapping("/getMenu")
     @ResponseBody
     public List<MenuGroup> getMenu(HttpServletRequest request) {
@@ -36,7 +45,7 @@ public class FunctionController {
         MenuGroup g = null;
         List<Function> items = null;
         for (Function f : functions) {
-            logger.debug(f.getFuncCode()+"---"+f.getFuncName());
+            logger.debug(f.getFuncCode() + "---" + f.getFuncName());
             //当funccode.length==3，表示为分组标题，例如系统管理
             //length==6表示为下一级
             if (f.getFuncCode().length() == 3) {
@@ -55,5 +64,48 @@ public class FunctionController {
         }
         menu.add(g);
         return menu;
+    }
+
+    @RequestMapping("/getLevelFunctions")
+    @ResponseBody
+    public List<TreeNode> getLevelFunctions(@RequestParam(defaultValue = "0") String id) {
+        List<Function> functions = functionService.getLevelFunctions(Integer.valueOf(id));
+        List<TreeNode> tree = new ArrayList<TreeNode>();
+        for (int i = 0; i < functions.size(); i++) {
+            TreeNode node = new TreeNode();
+            Function function = functions.get(i);
+            node.setId(function.getFuncId().toString());
+            node.setText(function.getFuncName());
+            node.setDsCode(function.getFuncCode());
+            node.setAttributes(function);
+            if (function.getIsLast() == 0) {
+                node.setState("closed");
+            } else {
+                node.setState("open");
+            }
+            tree.add(node);
+        }
+        return tree;
+    }
+
+    @RequestMapping("/saveFunction")
+    @ResponseBody
+//    public Result<String> saveFunction(String playFlag, Function function){
+    public Result<String> saveFunction(String playFlag, String funcId, Byte isLast, String funcName, String funcCode,
+                                       @RequestParam(defaultValue = "") String funcPath, Integer orderValue) {
+        Function function = new Function();
+        if (playFlag.equals("1")) {
+            function.setFuncId(0);
+        } else {
+            function.setFuncId(Integer.valueOf(funcId));
+        }
+        function.setIsLast(isLast);
+        function.setFuncName(funcName);
+        function.setFuncCode(funcCode);
+        function.setFuncPath(funcPath);
+        function.setOrderValue(orderValue);
+
+        Result<String> r = functionService.saveFunction(playFlag, function);
+        return r;
     }
 }

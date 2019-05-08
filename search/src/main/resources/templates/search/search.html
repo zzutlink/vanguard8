@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>search</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/js/vanguard8.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        window.onload=function(){
+        }
+
+        $(function () {
+                $('#tableList').datagrid({
+                    url: '/search/getList?modelId=',
+                    // pagination: true,
+                    pageSize: 20,
+                    pageList: [20, 30, 40, 50],
+                    singleSelect: true,
+                    fit: true,
+                    fitColumns: true,
+                    toolbar: '#divToolBar'
+                });
+
+            function LoadGridData(flag) {
+                if(flag=='1'){
+                    $('#tableList').datagrid('load', {
+                        //@Html.Raw(ViewBag.SubmitParamStr)
+                    } );
+                }
+                else if(flag=='2'){
+                    $('#formCondition').form({
+                        url: '/Search/OutputExcel?ModelID=@ViewBag.ModelID',
+                        success: function (result) {
+                            result = $.parseJSON(result);
+                            if (result.Success) {
+                                //将生成的EXCEL文件路径返回作为下载
+                                window.location = result.ReObj;
+                            }
+                            else {
+                                alert(result.Message);
+                            }
+                        }
+                    });
+                    $('#formCondition').form('submit');
+                }
+            }
+            });
+    </script>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'center'" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
+    <div id="divToolBar">
+        <form id="formCondition" method="post">
+            <table>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="6">
+                    <a href="#" class="easyui-linkbutton" data-options="height:25,width:80" onclick="LoadGridData('1');">查询</a>
+                    </td></tr>
+            </table>
+        </form>
+    </div>
+    <table id="tableList">
+        <thead>
+        <tr>
+            <th th:each="field:${showFields}"
+                th:attr="data-options=|field:'${field.fieldCode}',width:${field.showWidth},sortable:true, align:'${field.align}'|"
+                th:text="${field.fieldName}">列标题
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

@@ -2,99 +2,88 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.vanguard8.framework.dao.FunctionDao">
   <resultMap id="BaseResultMap" type="com.vanguard8.framework.entity.Function">
-    <id column="func_id" jdbcType="CHAR" property="funcId" />
+    <id column="func_id" jdbcType="INTEGER" property="funcId" />
     <result column="func_code" jdbcType="VARCHAR" property="funcCode" />
     <result column="func_name" jdbcType="VARCHAR" property="funcName" />
     <result column="func_path" jdbcType="VARCHAR" property="funcPath" />
     <result column="is_last" jdbcType="TINYINT" property="isLast" />
+    <result column="order_value" jdbcType="INTEGER" property="orderValue" />
+    <result column="extField" property="extField" />
   </resultMap>
+
+  <!--<resultMap id="StatFunctionMap" type="com.vanguard8.framework.entity.StaFunction">-->
+    <!--<id column="ds_id" jdbcType="INTEGER" property="dsId" />-->
+    <!--<id column="func_id" jdbcType="CHAR" property="funcId" />-->
+  <!--</resultMap>-->
+  <sql id="Base_Column_List">
+    func_id, func_code, func_name, func_path, is_last, (case is_last when 0 then a.order_value else (select order_value from sys_function where substring(a.func_code,1,3)=func_code) end) as order_value
+  </sql>
+
+  <delete id="deleteStatFunc" parameterType="Integer">
+    delete from sys_sta_function where ds_id = #{dsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertStatFunc" parameterType="com.vanguard8.framework.entity.StaFunction">
+    insert into sys_sta_function (ds_id, func_id)
+    values (#{dsId,jdbcType=INTEGER}, #{funcId,jdbcType=INTEGER})
+  </insert>
+
+  <!--查询某岗位对应的功能权限-->
+  <select id="selectFuncsWithRight" parameterType="Integer" resultMap="BaseResultMap">
+          select a.func_id, a.func_code, a.func_name, a.func_path, a.is_last,
+            ifnull(b.ds_id,0) as extField from sys_function a left join sys_sta_function b on a.func_id=b.func_id and b.ds_id=#{dsId}
+          order by (case a.is_last when 0 then a.order_value else (select order_value from sys_function where substring(a.func_code,1,3)=func_code) end),a.func_code
+  </select>
 
   <!--查询某岗位对应的功能权限-->
   <select id="selectFunctions" parameterType="Integer" resultMap="BaseResultMap">
-          select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id
-          where b.ds_id=#{dsId} order by a.func_code
-    </select>
-
-  <sql id="Base_Column_List">
-    func_id, func_code, func_name, func_path, is_last
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sys_function
-    where func_id = #{funcId,jdbcType=CHAR}
+          select a.func_id, a.func_code, a.func_name, a.func_path, a.is_last
+          from sys_function a inner join sys_sta_function b on a.func_id=b.func_id
+          where b.ds_id=#{dsId}
+          order by (case a.is_last when 0 then a.order_value else (select order_value from sys_function where substring(a.func_code,1,3)=func_code) end),a.func_code
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+
+  <select id="selectLevelFunctions" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      select a.func_id, a.func_code, a.func_name, a.func_path, a.is_last, (case a.is_last when 0 then a.order_value else (select order_value from sys_function where substring(a.func_code,1,3)=func_code) end) as order_value
+      from sys_function a
+      where a.func_code like concat(ifnull((select func_code from sys_function where func_id=#{funcId}),''),'___')
+      order by (case a.is_last when 0 then a.order_value else (select order_value from sys_function where substring(a.func_code,1,3)=func_code) end),a.func_code
+  </select>
+
+  <select id="selectFunction" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      select * from sys_function where func_id=#{funcId,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sys_function
-    where func_id = #{funcId,jdbcType=CHAR}
+    where func_id = #{funcId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.vanguard8.framework.entity.Function">
-    <selectKey keyProperty="funcId" order="AFTER" resultType="java.lang.String">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into sys_function (func_code, func_name, func_path, 
-      is_last)
-    values (#{funcCode,jdbcType=VARCHAR}, #{funcName,jdbcType=VARCHAR}, #{funcPath,jdbcType=VARCHAR}, 
-      #{isLast,jdbcType=TINYINT})
+
+  <delete id="deleteStatFuncByFuncId" parameterType="java.lang.Integer">
+    delete from sys_sta_function where func_id=#{funcId, jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertFunction" parameterType="com.vanguard8.framework.entity.Function">
+      <selectKey keyProperty="funcId" order="BEFORE" resultType="java.lang.Integer">
+      select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1
+  </selectKey>
+      insert into sys_function (func_id, func_code, func_name, func_path, is_last, order_value)
+      values (#{funcId,jdbcType=INTEGER}, #{funcCode,jdbcType=VARCHAR}, #{funcName,jdbcType=VARCHAR}, #{funcPath,jdbcType=VARCHAR},
+        #{isLast,jdbcType=TINYINT}, #{orderValue,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.vanguard8.framework.entity.Function">
-    <selectKey keyProperty="funcId" order="AFTER" resultType="java.lang.String">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into sys_function
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="funcCode != null">
-        func_code,
-      </if>
-      <if test="funcName != null">
-        func_name,
-      </if>
-      <if test="funcPath != null">
-        func_path,
-      </if>
-      <if test="isLast != null">
-        is_last,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="funcCode != null">
-        #{funcCode,jdbcType=VARCHAR},
-      </if>
-      <if test="funcName != null">
-        #{funcName,jdbcType=VARCHAR},
-      </if>
-      <if test="funcPath != null">
-        #{funcPath,jdbcType=VARCHAR},
-      </if>
-      <if test="isLast != null">
-        #{isLast,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.framework.entity.Function">
-    update sys_function
-    <set>
-      <if test="funcCode != null">
-        func_code = #{funcCode,jdbcType=VARCHAR},
-      </if>
-      <if test="funcName != null">
-        func_name = #{funcName,jdbcType=VARCHAR},
-      </if>
-      <if test="funcPath != null">
-        func_path = #{funcPath,jdbcType=VARCHAR},
-      </if>
-      <if test="isLast != null">
-        is_last = #{isLast,jdbcType=TINYINT},
-      </if>
-    </set>
-    where func_id = #{funcId,jdbcType=CHAR}
-  </update>
+
+  <select id="selectMaxCode" parameterType="java.lang.String" resultType="java.lang.String">
+      select func_code from sys_function where func_code like concat(#{funcCode,jdbcType=VARCHAR},'___') order by func_code desc limit 1
+  </select>
+
   <update id="updateByPrimaryKey" parameterType="com.vanguard8.framework.entity.Function">
     update sys_function
-    set func_code = #{funcCode,jdbcType=VARCHAR},
+    set
+      <if test="isLast == 1">
+          func_code = #{funcCode,jdbcType=VARCHAR},
+      </if>
       func_name = #{funcName,jdbcType=VARCHAR},
       func_path = #{funcPath,jdbcType=VARCHAR},
-      is_last = #{isLast,jdbcType=TINYINT}
-    where func_id = #{funcId,jdbcType=CHAR}
+      order_value = #{orderValue,jdbcType=INTEGER}
+    where func_id = #{funcId,jdbcType=INTEGER}
   </update>
 </mapper>

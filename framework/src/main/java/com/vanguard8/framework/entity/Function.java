@@ -9,7 +9,7 @@ public class Function implements Serializable {
     /**
      * 编码
      */
-    private String funcId;
+    private Integer funcId;
 
     /**
      * 级别码
@@ -31,13 +31,26 @@ public class Function implements Serializable {
      */
     private Byte isLast;
 
+    private Integer orderValue;
+
+    //扩展字段：当前岗位是否具备该权限，0则不具备，其他则表示具备
+    private Integer extField;
+
     private static final long serialVersionUID = 1L;
 
-    public String getFuncId() {
+    public Integer getOrderValue() {
+        return orderValue;
+    }
+
+    public void setOrderValue(Integer orderValue) {
+        this.orderValue = orderValue;
+    }
+
+    public Integer getFuncId() {
         return funcId;
     }
 
-    public void setFuncId(String funcId) {
+    public void setFuncId(Integer funcId) {
         this.funcId = funcId;
     }
 
@@ -71,5 +84,13 @@ public class Function implements Serializable {
 
     public void setIsLast(Byte isLast) {
         this.isLast = isLast;
+    }
+
+    public Integer getExtField() {
+        return extField;
+    }
+
+    public void setExtField(Integer extField) {
+        this.extField = extField;
     }
 }

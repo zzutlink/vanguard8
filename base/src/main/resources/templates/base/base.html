@@ -9,7 +9,10 @@
     <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
     <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/static/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/js/vanguard8.js"></script>
     <script type="text/javascript" th:inline="javascript">
+        window.onload=function(){
+        }
         $(function () {
             $('#tableList').datagrid({
                 url: '/base/getList?bsId=' + [[${bsId}]],
@@ -19,12 +22,7 @@
                 singleSelect: true,
                 fit: true,
                 fitColumns: true,
-                toolbar: '#divToolBar',
-                onLoadSuccess: function (data) {
-                    if (data.total == -1) {
-                        $.messager.alert("操作失败", '登录超时，请重新登录！');
-                    }
-                }
+                toolbar: '#divToolBar'
             });
 
             var data = $('#comboSrh').combobox('getData');
@@ -42,9 +40,10 @@
                         //编辑与删除成功后均关闭窗口
                         if (flag == "1") {
                             $.messager.alert("新增成功", result.message);
-                            MyReset();
-                        }
-                        else {
+                            SetValue(1,null);
+                        } else if (flag =='2'){
+                            $.messager.alert("编辑成功", result.message);
+                        } else {
                             ClosePlayWindow();
                         }
                         $('#tableList').datagrid('reload');
@@ -65,10 +64,22 @@
 
         function ShowPlayWindow(stitle) {
             var height=$(document).height();
-console.info(height);
-            $('#divPlay').window({
-                width: 600,
-                height: height,//[[${showHeight}]],
+            var showHeight = [[${showHeight}]];
+            if(showHeight>height){
+                showHeight=height;
+            }
+
+            var width=$(document).width();
+            var showWidth = [[${showWidth}]];
+            if(showWidth>width){
+                showWidth=width;
+            }
+            if(showWidth<400){
+                showWidth=400;
+            }
+            $('#divPlay').show().window({
+                width: showWidth,
+                height: showHeight,
                 collapsible: false,
                 minimizable: false,
                 maximizable: false,
@@ -81,7 +92,54 @@ console.info(height);
         function Add() {
             ShowPlayWindow('新增');
             $('#PlayFlag').val("1");
-            MyReset();
+            SetValue(1,null);
+        }
+
+        function SetValue(flag, row){
+            var details = [[${details}]];
+            for (var i = 0; i < details.length; i++) {
+                if(flag==1){ //新增
+                    if((details[i].fieldType==0 || details[i].fieldType==1) && (details[i].refFlag==0)) {
+                        if(details[i].defaultValue!=null){
+                            $('#'+details[i].fieldCode).textbox('setValue',details[i].defaultValue);
+                        } else {
+                            $('#'+details[i].fieldCode).textbox('setValue','');
+                        }
+                    }
+                    else if((details[i].fieldType==0 || details[i].fieldType==1) && (details[i].refFlag==1)) {
+                        if(details[i].defaultValue!=null){
+                            $('#'+details[i].fieldCode).combobox('select',details[i].defaultValue);
+                        } else {
+                            $('#'+details[i].fieldCode).combobox('select','');
+                        }
+                    }
+                    else if(details[i].fieldType==2){
+                        $('#'+details[i].fieldCode).datebox('setValue',GetCurrDate());
+                    }
+                    else if(details[i].fieldType==3){
+                        $('#'+details[i].fieldCode).datetimebox('setValue',GetCurrDate()+' 00:00:00');
+                    }
+                    else if(details[i].fieldType==4){
+                        $('#'+details[i].fieldCode).textbox('setValue','');
+                    }
+                } else {  //修改与删除
+                    if((details[i].fieldType==0 || details[i].fieldType==1) && (details[i].refFlag==0)) {
+                        $('#'+details[i].fieldCode).textbox('setValue',row[details[i].fieldCode]);
+                    }
+                    else if((details[i].fieldType==0 || details[i].fieldType==1) && (details[i].refFlag==1)) {
+                        $('#'+details[i].fieldCode).combobox('select',row[details[i].fieldCode]);
+                    }
+                    else if(details[i].fieldType==2){
+                        $('#'+details[i].fieldCode).datebox('setValue',row[details[i].fieldCode]);
+                    }
+                    else if(details[i].fieldType==3){
+                        $('#'+details[i].fieldCode).datetimebox('setValue',row[details[i].fieldCode]);
+                    }
+                    else if(details[i].fieldType==4){
+                        $('#'+details[i].fieldCode).textbox('setValue',row[details[i].fieldCode]);
+                    }
+                }
+            }
         }
 
         function Edit() {
@@ -89,12 +147,7 @@ console.info(height);
             if (row) {
                 ShowPlayWindow('编辑');
                 $('#PlayFlag').val("2");
-                var details = [[${details}]];
-                for (var i = 0; i < details.length; i++) {
-                    if(details[i].showFlag==1){
-                        $('#'+details[i].fieldCode).val(row[details[i].fieldCode]);
-                    }
-                }
+                SetValue(2,row);
             }
             else {
                 $.messager.alert("操作失败", "未选择要编辑的数据行！");
@@ -106,21 +159,10 @@ console.info(height);
             if (row) {
                 $('#PlayFlag').val("3");
                 ShowPlayWindow('删除');
-                //@Html.Raw(ViewBag.EditScriptStr)
+                SetValue(3,row);
             }
             else {
                 $.messager.alert("操作失败", "未选择要删除的数据行！");
-            }
-        }
-
-        function MyReset() {
-            var flag = $('#PlayFlag').val();
-            if (flag == "1") {
-                document.getElementById("formPlay").reset();
-                //@Html.Raw(ViewBag.AddScriptStr)
-            }
-            else if (flag == "2") {
-                Edit();
             }
         }
 
@@ -145,7 +187,7 @@ console.info(height);
                 <td>查询字段
                     <select id="comboSrh" class="easyui-combobox" style="width:200px"
                             data-options="panelHeight:'auto',editable:false">
-                        <option th:each="detail:${details}" th:value="${detail.fieldCode}"
+                        <option th:each="detail:${details}" th:if="${detail.searchFlag eq 1}" th:value="${detail.fieldCode}"
                                 th:text="${detail.fieldName}">
                             fieldName
                         </option>
@@ -159,35 +201,68 @@ console.info(height);
     <table id="tableList">
         <thead>
         <tr>
-            <th th:each="detail:${details}"
+            <th th:each="detail:${details}" th:if="${detail.showFlag eq 1}"
                 th:attr="data-options=|field:'${detail.fieldCode}',width:${detail.showWidth},sortable:true|"
                 th:text="${detail.fieldName}">列标题
             </th>
         </tr>
         </thead>
     </table>
-    <div id="divPlay">
+    <div id="divPlay" style="display: none;">
         <div id="divPlayLayout" class="easyui-layout" data-options="fit:true">
             <form id="formPlay" method="post">
                 <input id="PlayFlag" name="PlayFlag" type="hidden"/>
                 <input id="bsId" name="bsId" th:value="${bsId}" type="hidden"/>
                 <div data-options="region:'center',split:false,border:false">
-                    <div style="text-align: center">
-                        <table style="border:0px;width:560px">
+                        <table style="border:0px">
                             <tr height="10px">
                                 <td colspan="2"></td>
                             </tr>
-                            <tr th:each="detail:${details}" th:height="${detail.showHeight}">
-                                <td th:text="${detail.fieldName}" width="100px" style="text-align: right">字段名称</td>
-                                <td th:switch="${detail.fieldType}" style="text-align: left">
-                                    <input th:case="'1'" th:id="${detail.fieldCode}" th:name="${detail.fieldCode}" type="text" th:attr="style=|width:${detail.showWidth}px|"/>
+                            <tr th:each="detail:${details}" th:height="${detail.showHeight}" th:if="${detail.editFlag eq 1}">
+                                <td th:text="${detail.fieldName}" width="100px" style="text-align: right" th:style="${detail.nullFlag eq 0}?'text-align:right;color:#FF0000':'text-align:right'">字段名称</td>
+                                <td style="text-align: left">
+                                    <input th:if="${(detail.fieldType eq 0 || detail.fieldType eq 1) && (detail.refFlag eq 0)}"
+                                           th:id="${detail.fieldCode}"
+                                           th:name="${detail.fieldType}+'#'+${detail.repeatFlag}+'#'+${detail.fieldCode}"
+                                           th:class="${detail.refFlag eq 1 }?'easyui-combobox':'easyui-textbox'"
+                                           th:attr="style=|width:${detail.showWidth}px|,data-options=|required:${detail.nullFlag eq 0}|"
+                                           th:readonly="${detail.readonlyFlag eq 1}?'readonly':'false'"
+                                    />
+                                    <input th:if="${(detail.fieldType eq 0 || detail.fieldType eq 1) && (detail.refFlag eq 1)}"
+                                           th:id="${detail.fieldCode}"
+                                           th:name="${detail.fieldType}+'#'+${detail.repeatFlag}+'#'+${detail.fieldCode}"
+                                           th:class="${detail.refFlag eq 1 }?'easyui-combobox':'easyui-textbox'"
+                                           th:attr="style=|width:${detail.showWidth}px|,
+                                                data-options=|editable: false,required:${detail.nullFlag eq 0},url:'${detail.refString}',valueField:'${detail.refIdStr}',textField:'${detail.refTextStr}',
+                                                loadFilter:function(data){ var item = { 'id': '', 'text': '--请选择--' };data.unshift(item);return data;}|"
+                                            th:readonly="${detail.readonlyFlag eq 1}?'readonly':'false'"
+                                    />
+                                    <input th:if="${detail.fieldType eq 2}"
+                                           th:id="${detail.fieldCode}"
+                                           th:name="${detail.fieldType}+'#'+${detail.repeatFlag}+'#'+${detail.fieldCode}"
+                                           class="easyui-datebox"
+                                           th:attr="style=|width:${detail.showWidth}px|,data-options=|required:${detail.nullFlag eq 0}|"
+                                           th:readonly="${detail.readonlyFlag eq 1}?'readonly':'false'"
+                                    />
+                                    <input th:if="${detail.fieldType eq 3}"
+                                           th:id="${detail.fieldCode}"
+                                           th:name="${detail.fieldType}+'#'+${detail.repeatFlag}+'#'+${detail.fieldCode}"
+                                           class="easyui-datetimebox"
+                                           th:attr="style=|width:${detail.showWidth}px|,data-options=|required:${detail.nullFlag eq 0}|"
+                                           th:readonly="${detail.readonlyFlag eq 1}?'readonly':'false'"
+                                    />
+                                    <input th:if="${detail.fieldType eq 4}"
+                                           th:id="${detail.fieldCode}"
+                                           th:name="${detail.fieldType}+'#'+${detail.repeatFlag}+'#'+${detail.fieldCode}"
+                                           class="easyui-textbox"
+                                           th:attr="style=|width:${detail.showWidth}px;height:${detail.showHeight-10}px|,data-options=|multiline:true,required:${detail.nullFlag eq 0}|"
+                                           th:readonly="${detail.readonlyFlag eq 1}?'readonly':'false'"
+                                    />
+                                    <span th:if="${detail.repeatFlag ne 1}" style="color:#FF0000">(*)</span>
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                </div>
-                <div data-options="region:'south',split:false,border:false" style="height: 70px">
-                    <table style="border:0px;width:560px">
+                    <table style="border:0px">
                         <tr>
                             <td width="100px"></td>
                             <td>红色代表必填项；(*)代表不可重复项</td>
@@ -196,9 +271,9 @@ console.info(height);
                             <td></td>
                             <td style="text-align: left">
                                 <input type="submit" value="提交" style="width: 80px"/>
-                                <input type="button" value="重置" style="width: 80px" onclick="MyReset();"/>
                                 <input type="button" value="关闭" style="width: 80px" onclick="ClosePlayWindow();"/></td>
                         </tr>
+                        <tr style="height:30px"><td></td></tr>
                     </table>
                 </div>
             </form>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.framework.dao.LogDao">
+    <insert id="saveLog">
+        insert into log_sys values(#{logType,jdbcType=VARCHAR},now(),#{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR})
+    </insert>
+</mapper>

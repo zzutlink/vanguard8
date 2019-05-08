@@ -1,0 +1,2006 @@
+07:59:26.791 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+07:59:26.796 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+07:59:26.797 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+07:59:26.797 logback DEBUG c.v.interceptor.AuthInterceptor - ajax重定向写入……
+07:59:26.815 logback DEBUG c.v.f.controller.LoginController - login/index
+07:59:27.076 logback DEBUG c.v.f.controller.LoginController - /login/code
+07:59:31.497 logback DEBUG c.v.f.controller.LoginController - admin----111
+07:59:31.554 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+07:59:31.555 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+07:59:31.572 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+07:59:31.609 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+07:59:31.609 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+07:59:32.404 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+07:59:32.404 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+07:59:32.404 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+07:59:32.405 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+07:59:32.413 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 11
+07:59:32.413 logback DEBUG c.v.f.controller.FunctionController - 001---001
+07:59:32.413 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+07:59:32.413 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+07:59:32.414 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+07:59:35.019 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+07:59:35.019 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+07:59:35.020 logback DEBUG c.v.base.controller.BaseController - 1
+07:59:35.020 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+07:59:35.021 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+07:59:35.022 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+07:59:35.538 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+07:59:35.538 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+07:59:35.539 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+07:59:35.539 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+07:59:35.541 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+07:59:35.541 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+07:59:35.542 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+07:59:35.542 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+07:59:35.544 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+07:59:35.545 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+07:59:35.545 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+07:59:35.547 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+07:59:35.547 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+07:59:35.547 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+07:59:35.548 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+07:59:35.549 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:14:41.645 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:14:41.645 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:14:41.646 logback DEBUG c.v.base.controller.BaseController - 1
+08:14:41.647 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:14:41.649 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:14:41.650 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:14:42.126 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:14:42.126 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+08:14:42.127 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:14:42.128 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:14:42.129 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:14:42.129 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+08:14:42.130 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+08:14:42.130 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+08:14:42.132 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+08:14:42.132 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:14:42.133 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:14:42.134 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:14:42.134 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+08:14:42.135 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+08:14:42.135 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+08:14:42.136 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:15:36.630 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:15:36.630 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:15:36.630 logback DEBUG c.v.base.controller.BaseController - 1
+08:15:36.631 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:15:36.631 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:15:36.633 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:15:37.515 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:15:37.515 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+08:15:37.516 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:15:37.517 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:15:37.518 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:15:37.518 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+08:15:37.519 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+08:15:37.519 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+08:15:37.520 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+08:15:37.521 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:15:37.522 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:15:37.523 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:15:37.523 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+08:15:37.524 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+08:15:37.524 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+08:15:37.525 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:21:35.543 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:21:35.544 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:21:35.546 logback DEBUG c.v.base.controller.BaseController - 1
+08:21:35.547 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:21:35.548 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:21:35.570 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:21:36.277 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:21:36.277 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+08:21:36.278 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:21:36.279 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:21:36.280 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:21:36.281 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+08:21:36.281 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+08:21:36.281 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+08:21:36.283 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+08:21:36.283 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:21:36.284 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:21:36.285 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:21:36.286 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+08:21:36.286 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+08:21:36.286 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+08:21:36.287 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:22:57.424 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:22:57.424 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:22:57.426 logback DEBUG c.v.base.controller.BaseController - 1
+08:22:57.427 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:22:57.428 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:22:57.429 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:22:57.832 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:22:57.832 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+08:22:57.833 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:22:57.833 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:22:57.834 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:22:57.834 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+08:22:57.835 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+08:22:57.835 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+08:22:57.836 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+08:22:57.837 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:22:57.837 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:22:57.838 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:22:57.839 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+08:22:57.839 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+08:22:57.839 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+08:22:57.840 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:23:41.032 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:23:41.032 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:23:41.033 logback DEBUG c.v.base.controller.BaseController - 1
+08:23:41.033 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:23:41.033 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:23:41.035 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:23:41.519 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:23:41.519 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+08:23:41.520 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:23:41.521 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:23:41.523 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:23:41.523 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+08:23:41.524 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+08:23:41.524 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+08:23:41.527 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+08:23:41.527 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:23:41.528 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:23:41.529 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:23:41.529 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+08:23:41.530 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+08:23:41.530 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+08:23:41.531 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:23:52.577 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:23:52.577 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:23:52.578 logback DEBUG c.v.base.controller.BaseController - 1
+08:23:52.579 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:23:52.579 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:23:52.581 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:23:53.255 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:23:53.255 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+08:23:53.256 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:23:53.257 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:23:53.258 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:23:53.258 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+08:23:53.259 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+08:23:53.259 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+08:23:53.261 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+08:23:53.262 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:23:53.262 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:23:53.263 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:23:53.264 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+08:23:53.264 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+08:23:53.264 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+08:23:53.266 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:29:32.663 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:29:32.664 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:29:32.664 logback DEBUG c.v.base.controller.BaseController - 1
+08:29:32.665 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:29:32.665 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:29:32.667 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:29:33.078 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:29:33.078 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+08:29:33.078 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:29:33.079 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:29:33.080 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:29:33.080 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+08:29:33.080 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+08:29:33.081 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+08:29:33.082 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+08:29:33.082 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+08:29:33.082 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+08:29:33.083 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+08:29:33.083 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+08:29:33.083 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+08:29:33.084 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+08:29:33.084 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+08:30:16.530 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:30:16.530 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:30:16.530 logback DEBUG c.v.base.controller.BaseController - 1
+08:30:16.531 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:30:16.531 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:30:16.533 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+08:31:19.333 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:31:19.333 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+08:31:19.333 logback DEBUG c.v.base.controller.BaseController - 1
+08:31:19.334 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+08:31:19.335 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+08:31:19.336 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+09:23:22.076 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:23:22.077 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+09:23:22.083 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+09:23:22.083 logback DEBUG c.v.interceptor.AuthInterceptor - 普通登录页面跳转……
+09:23:22.091 logback DEBUG c.v.f.controller.LoginController - login/index
+09:23:22.296 logback DEBUG c.v.f.controller.LoginController - /login/code
+09:23:22.315 logback DEBUG c.v.f.controller.LoginController - login/index
+09:23:22.528 logback DEBUG c.v.f.controller.LoginController - /login/code
+09:23:27.752 logback DEBUG c.v.f.controller.LoginController - admin----111
+09:23:27.754 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+09:23:27.754 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+09:23:27.757 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+09:23:27.779 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:23:27.779 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+09:23:28.309 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:23:28.309 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+09:23:28.310 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+09:23:28.311 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+09:23:28.313 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 11
+09:23:28.313 logback DEBUG c.v.f.controller.FunctionController - 001---001
+09:23:28.313 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+09:23:28.313 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+09:23:28.313 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+09:23:28.313 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+09:23:28.313 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+09:23:28.314 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+09:23:28.314 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+09:23:28.314 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+09:23:28.314 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+09:23:28.314 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+09:23:30.806 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:23:30.806 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+09:23:30.806 logback DEBUG c.v.base.controller.BaseController - 1
+09:23:30.806 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+09:23:30.807 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+09:23:30.808 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+09:23:31.080 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:23:31.080 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+09:23:31.091 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+09:23:31.094 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+09:23:31.095 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+09:23:31.293 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:23:31.293 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:23:31.294 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:23:31.295 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:23:31.297 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:23:31.297 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+09:23:31.298 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+09:23:31.298 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:23:31.300 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+09:23:31.300 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:23:31.302 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:23:31.303 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:23:31.304 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:23:31.304 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:23:31.304 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:23:31.305 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:28:01.733 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:28:01.733 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+09:28:01.733 logback DEBUG c.v.base.controller.BaseController - 1
+09:28:01.735 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+09:28:01.735 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+09:28:01.736 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+09:28:02.404 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:28:02.405 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:28:02.406 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:28:02.406 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:28:02.407 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:28:02.408 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+09:28:02.408 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+09:28:02.408 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:28:02.410 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+09:28:02.411 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:28:02.411 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:28:02.412 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:28:02.413 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:28:02.413 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:28:02.413 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:28:02.414 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:28:27.649 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:28:27.649 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+09:28:27.650 logback DEBUG c.v.base.controller.BaseController - 1
+09:28:27.651 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+09:28:27.651 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+09:28:27.652 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+09:28:28.193 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:28:28.193 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:28:28.194 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:28:28.195 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:28:28.197 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:28:28.197 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+09:28:28.197 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+09:28:28.197 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:28:28.200 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+09:28:28.200 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:28:28.200 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:28:28.202 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:28:28.203 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:28:28.203 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:28:28.203 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:28:28.205 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:29:58.730 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:29:58.731 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+09:29:58.732 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+09:29:58.732 logback DEBUG c.v.base.controller.BaseController - 自动生成
+09:29:58.732 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+09:29:58.732 logback DEBUG c.v.base.controller.BaseController - jkhhjh
+09:29:58.732 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+09:29:58.732 logback DEBUG c.v.base.controller.BaseController - hjkk
+09:29:58.734 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:29:58.735 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:29:58.736 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:29:58.737 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==>  Preparing: select setup_id from sys_setup order by setup_id desc limit 1 
+09:29:58.737 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==> Parameters: 
+09:29:58.738 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - <==      Total: 1
+09:29:58.739 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==>  Preparing: insert into sys_setup(setup_id,setup_intr,setup_value) values (22,'jkhhjh','hjkk') 
+09:29:58.740 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==> Parameters: 
+09:29:58.790 logback DEBUG c.v.base.dao.BaseDao.executeInsert - <==    Updates: 1
+09:29:58.790 logback DEBUG c.v.b.service.impl.BaseServiceImpl - insert into sys_setup(setup_id,setup_intr,setup_value) values (22,'jkhhjh','hjkk')
+09:29:58.940 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:29:58.940 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:29:58.941 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:29:58.941 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:29:58.943 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:29:58.943 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+09:29:58.943 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+09:29:58.943 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:29:58.946 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+09:29:58.947 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:29:58.947 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:29:58.950 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:29:58.950 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:29:58.950 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:29:58.950 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:29:58.951 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:30:03.143 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:30:03.143 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:30:03.145 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:03.145 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:03.146 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:03.147 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+09:30:03.147 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+09:30:03.147 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:30:03.148 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 1
+09:30:03.149 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:03.149 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:03.151 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:03.151 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:30:03.151 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:30:03.151 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:30:03.152 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:30:12.177 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:30:12.177 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+09:30:12.177 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+09:30:12.177 logback DEBUG c.v.base.controller.BaseController - 22
+09:30:12.177 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+09:30:12.177 logback DEBUG c.v.base.controller.BaseController - jkhhjhhjhhh
+09:30:12.177 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+09:30:12.177 logback DEBUG c.v.base.controller.BaseController - hjkk
+09:30:12.178 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:12.178 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:12.179 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:12.180 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - ==>  Preparing: update sys_setup set setup_intr='jkhhjhhjhhh',setup_value='hjkk' where setup_id=22 
+09:30:12.182 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - ==> Parameters: 
+09:30:12.248 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - <==    Updates: 1
+09:30:12.248 logback DEBUG c.v.b.service.impl.BaseServiceImpl - update sys_setup set setup_intr='jkhhjhhjhhh',setup_value='hjkk' where setup_id=22
+09:30:12.305 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:30:12.305 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:30:12.309 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:12.309 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:12.311 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:12.311 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+09:30:12.311 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+09:30:12.312 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:30:12.313 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 1
+09:30:12.315 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:12.316 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:12.318 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:12.318 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:30:12.319 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:30:12.319 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:30:12.322 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:30:17.787 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:30:17.787 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+09:30:17.787 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+09:30:17.787 logback DEBUG c.v.base.controller.BaseController - 22
+09:30:17.787 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+09:30:17.787 logback DEBUG c.v.base.controller.BaseController - jkhhjhhjhhh
+09:30:17.787 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+09:30:17.787 logback DEBUG c.v.base.controller.BaseController - hjkk
+09:30:17.788 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:17.788 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:17.789 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:17.789 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from test_maxid where maxid=22 
+09:30:17.789 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:30:17.790 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:30:17.791 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==>  Preparing: delete from sys_setup where setup_id=22 
+09:30:17.791 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==> Parameters: 
+09:30:17.866 logback DEBUG c.v.base.dao.BaseDao.executeDelete - <==    Updates: 1
+09:30:17.866 logback DEBUG c.v.b.service.impl.BaseServiceImpl - delete from sys_setup where setup_id=22
+09:30:17.910 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:30:17.910 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:30:17.911 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:17.912 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:17.913 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:17.914 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+09:30:17.914 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+09:30:17.914 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:30:17.915 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 0
+09:30:17.916 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:17.916 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:17.918 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:17.919 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:30:17.919 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:30:17.920 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:30:17.921 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+09:30:17.943 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+09:30:17.943 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+09:30:17.944 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:17.944 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:17.945 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:17.945 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+09:30:17.946 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+09:30:17.946 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+09:30:17.948 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+09:30:17.949 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+09:30:17.949 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+09:30:17.950 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+09:30:17.951 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+09:30:17.951 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+09:30:17.951 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+09:30:17.952 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:15:53.640 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:15:53.641 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:15:53.641 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+10:15:53.641 logback DEBUG c.v.interceptor.AuthInterceptor - ajax重定向写入……
+10:15:53.657 logback DEBUG c.v.f.controller.LoginController - login/index
+10:15:53.966 logback DEBUG c.v.f.controller.LoginController - /login/code
+10:16:00.441 logback DEBUG c.v.f.controller.LoginController - admin----111
+10:16:00.443 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+10:16:00.443 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+10:16:00.445 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+10:16:00.480 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:00.480 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+10:16:00.990 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:00.991 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+10:16:00.991 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+10:16:00.991 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+10:16:00.994 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 11
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 001---001
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+10:16:00.995 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+10:16:03.736 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:03.737 logback DEBUG c.v.interceptor.AuthInterceptor - /deptsta/deptsta
+10:16:04.155 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:04.156 logback DEBUG c.v.interceptor.AuthInterceptor - /deptsta/getDeptsta
+10:16:04.164 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+10:16:04.186 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+10:16:04.202 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 12
+10:16:04.989 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:04.990 logback DEBUG c.v.interceptor.AuthInterceptor - /user/changePwd
+10:16:06.451 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:06.451 logback DEBUG c.v.interceptor.AuthInterceptor - /user/user
+10:16:06.690 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:06.691 logback DEBUG c.v.interceptor.AuthInterceptor - /user/getUsers
+10:16:06.756 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:06.756 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:16:06.757 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select flag_id as id,flag_name as text from sys_user_flag 
+10:16:06.758 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+10:16:06.759 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 3
+10:16:06.825 logback DEBUG c.v.f.dao.UserDao.selectUsers_COUNT - ==>  Preparing: SELECT count(0) FROM sys_user a INNER JOIN sys_user_flag b ON a.flag_id = b.flag_id INNER JOIN sys_deptsta c ON a.ds_id = c.ds_id LEFT JOIN sys_user_dept d ON a.user_id = d.user_id LEFT JOIN sys_dept e ON d.dept_id = e.dept_id WHERE a.user_name LIKE concat('%', ?, '%') AND a.login_name LIKE concat('%', ?, '%') 
+10:16:06.827 logback DEBUG c.v.f.dao.UserDao.selectUsers_COUNT - ==> Parameters: (String), (String)
+10:16:06.829 logback DEBUG c.v.f.dao.UserDao.selectUsers_COUNT - <==      Total: 1
+10:16:06.837 logback DEBUG c.v.f.dao.UserDao.selectUsers - ==>  Preparing: select a.user_id,a.user_name,a.login_name,a.ds_id,a.flag_id,a.work_no,a.create_time,b.flag_name,c.ds_code,c.ds_name,concat(c.lock_flag,c.ds_total_name) as ds_total_name,c.ds_flag,c.lock_flag, ifnull(d.dept_id,'') dept_id,ifnull(e.dept_name,'') dept_name from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id left join sys_user_dept d on a.user_id=d.user_id left join sys_dept e on d.dept_id=e.dept_id where a.user_name like concat('%',?,'%') and a.login_name like concat('%',?,'%') LIMIT ? 
+10:16:06.838 logback DEBUG c.v.f.dao.UserDao.selectUsers - ==> Parameters: (String), (String), 20(Integer)
+10:16:06.854 logback DEBUG c.v.f.dao.UserDao.selectUsers - <==      Total: 20
+10:16:08.419 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:08.423 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:16:08.423 logback DEBUG c.v.base.controller.BaseController - 1
+10:16:08.424 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:16:08.424 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:16:08.426 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:16:08.961 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:16:08.961 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:16:08.963 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:16:08.963 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:16:08.964 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:16:08.965 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:16:08.965 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:16:08.966 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:16:08.967 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:16:08.968 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:16:08.968 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:16:08.969 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:16:08.969 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:16:08.970 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:16:08.970 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:16:08.971 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:24:21.529 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:24:21.529 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:24:21.530 logback DEBUG c.v.base.controller.BaseController - 1
+10:24:21.531 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:24:21.531 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:24:21.533 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:24:21.581 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:24:21.581 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:24:21.864 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:24:21.865 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:24:21.866 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:24:21.866 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:24:21.868 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:24:21.869 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:24:21.869 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:24:21.869 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:24:21.871 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:24:21.872 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:24:21.872 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:24:21.873 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:24:21.873 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:24:21.874 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:24:21.874 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:24:21.875 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:25:02.761 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:25:02.762 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:25:02.763 logback DEBUG c.v.base.controller.BaseController - 1
+10:25:02.764 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:25:02.765 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:25:02.770 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:25:05.202 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:25:05.202 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:25:05.203 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:25:05.203 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:25:05.205 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:25:05.206 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:25:05.206 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:25:05.206 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:25:05.208 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:25:05.209 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:25:05.209 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:25:05.210 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:25:05.217 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:25:05.217 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:25:05.217 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:25:05.219 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:25:18.952 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:25:18.953 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:25:18.953 logback DEBUG c.v.base.controller.BaseController - 1
+10:25:18.953 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:25:18.954 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:25:18.956 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:26:51.761 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:51.761 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:26:51.761 logback DEBUG c.v.base.controller.BaseController - 1
+10:26:51.762 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:26:51.762 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:26:51.764 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:26:51.993 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:51.993 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:26:51.994 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:26:51.995 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:26:51.996 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:26:52.239 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:26:52.239 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:26:52.240 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:26:52.241 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:26:52.244 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:26:52.244 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:26:52.245 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:26:52.245 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:26:52.249 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:26:52.250 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:26:52.250 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:26:52.251 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:26:52.252 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:26:52.252 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:26:52.252 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:26:52.255 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:28:01.000 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:01.000 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:28:01.002 logback DEBUG c.v.base.controller.BaseController - 1
+10:28:01.009 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:28:01.010 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:28:01.029 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:28:40.255 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:40.255 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:28:40.255 logback DEBUG c.v.base.controller.BaseController - 1
+10:28:40.255 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:28:40.256 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:28:40.257 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:28:40.472 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:40.472 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:28:40.473 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:28:40.474 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:28:40.475 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:28:40.735 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:40.735 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:28:40.736 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:28:40.736 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:28:40.741 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:28:40.742 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:28:40.742 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:28:40.743 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:28:40.746 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:28:40.746 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:28:40.747 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:28:40.761 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:28:40.761 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:28:40.762 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:28:40.762 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:28:40.764 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:28:59.907 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:28:59.907 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:28:59.907 logback DEBUG c.v.base.controller.BaseController - 1
+10:28:59.907 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:28:59.908 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:28:59.909 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:29:00.085 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:29:00.085 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:29:00.085 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:29:00.086 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:29:00.087 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:29:00.237 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:29:00.237 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:29:00.238 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:29:00.238 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:29:00.240 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:29:00.240 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:29:00.240 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:29:00.240 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:29:00.242 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:29:00.245 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:29:00.245 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:29:00.247 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:29:00.248 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:29:00.248 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:29:00.249 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:29:00.250 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:29:25.666 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:29:25.666 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:29:25.666 logback DEBUG c.v.base.controller.BaseController - 1
+10:29:25.667 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:29:25.667 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:29:25.669 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:29:26.036 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:29:26.037 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:29:26.037 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:29:26.038 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:29:26.039 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:29:26.599 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:29:26.599 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:29:26.600 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:29:26.600 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:29:26.602 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:29:26.602 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:29:26.603 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:29:26.604 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:29:26.606 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:29:26.606 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:29:26.606 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:29:26.608 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:29:26.608 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:29:26.608 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:29:26.608 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:29:26.609 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:30:26.261 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:30:26.261 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:30:26.262 logback DEBUG c.v.base.controller.BaseController - 1
+10:30:26.262 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:30:26.263 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:30:26.264 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:30:26.416 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:30:26.416 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:30:26.417 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:30:26.417 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:30:26.419 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:30:26.569 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:30:26.569 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:30:26.570 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:30:26.570 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:30:26.571 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:30:26.572 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:30:26.572 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:30:26.572 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:30:26.574 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:30:26.575 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:30:26.575 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:30:26.577 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:30:26.577 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:30:26.578 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:30:26.578 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:30:26.579 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:35:36.490 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:36.490 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:35:36.491 logback DEBUG c.v.base.controller.BaseController - 1
+10:35:36.492 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:35:36.492 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:35:36.496 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:35:36.792 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:36.792 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:35:36.793 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:35:36.794 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:35:36.795 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:35:36.935 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:35:36.935 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:35:36.936 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:35:36.936 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:35:36.937 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:35:36.937 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:35:36.938 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:35:36.938 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:35:36.940 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:35:36.940 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:35:36.941 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:35:36.942 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:35:36.942 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:35:36.943 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:35:36.943 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:35:36.944 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:37:02.622 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:37:02.623 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:37:02.624 logback DEBUG c.v.base.controller.BaseController - 1
+10:37:02.627 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:37:02.628 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:37:02.634 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:37:02.673 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:37:02.673 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:37:03.613 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:37:03.613 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:37:03.614 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:37:03.614 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:37:03.618 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:37:03.619 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:37:03.620 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:37:03.620 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:37:03.623 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:37:03.624 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:37:03.624 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:37:03.626 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:37:03.626 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:37:03.627 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:37:03.627 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:37:03.628 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:37:42.183 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:37:42.183 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:37:42.183 logback DEBUG c.v.base.controller.BaseController - 1
+10:37:42.184 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:37:42.184 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:37:42.192 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:37:42.716 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:37:42.716 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:37:42.717 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:37:42.717 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:37:42.719 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:37:42.727 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:37:42.727 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:37:42.728 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:37:42.728 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:37:42.729 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:37:42.771 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:37:42.771 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:37:42.771 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:37:42.778 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:37:42.778 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:37:42.778 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:37:42.780 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:37:42.780 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:37:42.780 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:37:42.780 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:37:42.781 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:39:46.964 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:39:46.964 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:39:46.964 logback DEBUG c.v.base.controller.BaseController - 1
+10:39:46.965 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:39:46.966 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:39:46.967 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:39:47.212 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:39:47.212 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:39:47.213 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:39:47.214 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:39:47.215 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:39:47.354 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:39:47.354 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:39:47.355 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:39:47.355 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:39:47.356 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:39:47.357 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:39:47.357 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:39:47.357 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:39:47.364 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:39:47.365 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:39:47.365 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:39:47.367 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:39:47.368 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:39:47.368 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:39:47.368 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:39:47.369 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:40:23.777 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:40:23.777 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:40:23.777 logback DEBUG c.v.base.controller.BaseController - 1
+10:40:23.778 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:40:23.778 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:40:23.780 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:40:24.400 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:40:24.400 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:40:24.401 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:40:24.401 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:40:24.402 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:40:24.643 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:40:24.643 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:40:24.644 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:40:24.644 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:40:24.645 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:40:24.646 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:40:24.646 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:40:24.646 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:40:24.648 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:40:24.649 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:40:24.649 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:40:24.650 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:40:24.651 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:40:24.651 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:40:24.651 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:40:24.652 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:45:41.126 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:45:41.127 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:45:41.128 logback DEBUG c.v.base.controller.BaseController - 1
+10:45:41.130 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:45:41.130 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:45:41.132 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:45:41.376 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:45:41.376 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:45:41.377 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:45:41.377 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:45:41.378 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:45:41.540 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:45:41.540 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:45:41.541 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:45:41.541 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:45:41.542 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:45:41.543 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:45:41.543 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:45:41.543 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:45:41.545 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:45:41.548 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:45:41.548 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:45:41.550 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:45:41.550 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:45:41.551 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:45:41.551 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:45:41.553 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:46:11.009 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:46:11.009 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:46:11.009 logback DEBUG c.v.base.controller.BaseController - 1
+10:46:11.010 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:46:11.010 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:46:11.011 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:46:11.427 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:46:11.428 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:46:11.428 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:46:11.429 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:46:11.430 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:46:11.685 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:46:11.685 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:46:11.687 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:46:11.687 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:46:11.688 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:46:11.688 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:46:11.689 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:46:11.689 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:46:11.690 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:46:11.691 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:46:11.691 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:46:11.693 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:46:11.693 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:46:11.693 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:46:11.694 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:46:11.695 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:48:26.142 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:48:26.142 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:48:26.142 logback DEBUG c.v.base.controller.BaseController - 1
+10:48:26.144 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:48:26.144 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:48:26.146 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:48:26.372 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:48:26.372 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+10:48:26.373 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+10:48:26.373 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+10:48:26.375 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+10:48:26.515 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:48:26.515 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:48:26.516 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:48:26.516 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:48:26.517 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:48:26.518 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:48:26.518 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:48:26.518 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:48:26.520 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:48:26.520 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:48:26.521 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:48:26.522 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:48:26.522 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:48:26.523 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:48:26.523 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:48:26.524 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+10:57:35.367 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:57:35.367 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:57:35.367 logback DEBUG c.v.base.controller.BaseController - 1
+10:57:35.368 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+10:57:35.369 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+10:57:35.372 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+10:57:35.477 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:57:35.477 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+10:57:35.906 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+10:57:35.906 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+10:57:35.907 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:57:35.908 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:57:35.909 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:57:35.910 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+10:57:35.910 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+10:57:35.910 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+10:57:35.912 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+10:57:35.913 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+10:57:35.913 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+10:57:35.914 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+10:57:35.914 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+10:57:35.915 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+10:57:35.915 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+10:57:35.916 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+13:03:43.284 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:03:43.284 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+13:03:43.284 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+13:03:43.284 logback DEBUG c.v.interceptor.AuthInterceptor - ajax重定向写入……
+13:03:43.312 logback DEBUG c.v.f.controller.LoginController - login/index
+13:03:44.000 logback DEBUG c.v.f.controller.LoginController - /login/code
+13:03:48.099 logback DEBUG c.v.f.controller.LoginController - admin----111
+13:03:48.100 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+13:03:48.100 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+13:03:48.102 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+13:03:48.160 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:03:48.160 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+13:03:48.631 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:03:48.631 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+13:03:48.632 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+13:03:48.632 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+13:03:48.634 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 11
+13:03:48.634 logback DEBUG c.v.f.controller.FunctionController - 001---001
+13:03:48.634 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+13:03:48.635 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+13:03:50.952 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:03:50.952 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+13:03:50.953 logback DEBUG c.v.base.controller.BaseController - 1
+13:03:50.953 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+13:03:50.953 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+13:03:50.955 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+13:03:51.249 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:03:51.249 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+13:03:51.250 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+13:03:51.250 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+13:03:51.251 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+13:03:51.379 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:03:51.380 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+13:03:51.381 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:03:51.381 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:03:51.382 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:03:51.382 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+13:03:51.383 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+13:03:51.383 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+13:03:51.385 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+13:03:51.386 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:03:51.386 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:03:51.389 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:03:51.390 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+13:03:51.390 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+13:03:51.390 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+13:03:51.391 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+13:06:54.556 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:06:54.556 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+13:06:54.558 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+13:06:54.559 logback DEBUG c.v.base.controller.BaseController - 自动生成
+13:06:54.559 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+13:06:54.559 logback DEBUG c.v.base.controller.BaseController - 000001
+13:06:54.559 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+13:06:54.559 logback DEBUG c.v.base.controller.BaseController - jh
+13:06:54.560 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:06:54.561 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:06:54.562 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:06:54.564 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==>  Preparing: select setup_id from sys_setup order by setup_id desc limit 1 
+13:06:54.564 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==> Parameters: 
+13:06:54.565 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - <==      Total: 1
+13:06:54.566 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==>  Preparing: insert into sys_setup(setup_id,setup_intr,setup_value) values (22,'000001','jh') 
+13:06:54.567 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==> Parameters: 
+13:06:54.626 logback DEBUG c.v.base.dao.BaseDao.executeInsert - <==    Updates: 1
+13:06:54.627 logback DEBUG c.v.b.service.impl.BaseServiceImpl - insert into sys_setup(setup_id,setup_intr,setup_value) values (22,'000001','jh')
+13:06:54.715 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:06:54.715 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+13:06:54.716 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:06:54.717 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:06:54.718 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:06:54.718 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+13:06:54.719 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+13:06:54.719 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+13:06:54.720 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+13:06:54.721 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:06:54.721 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:06:54.723 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:06:54.723 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+13:06:54.724 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+13:06:54.724 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+13:06:54.725 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+13:06:58.638 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:06:58.639 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+13:06:58.641 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:06:58.641 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:06:58.647 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:06:58.648 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+13:06:58.649 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+13:06:58.650 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+13:06:58.652 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 1
+13:06:58.654 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:06:58.654 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:06:58.657 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:06:58.658 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+13:06:58.658 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+13:06:58.658 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+13:06:58.659 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+13:07:09.450 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:07:09.450 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+13:07:09.451 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+13:07:09.451 logback DEBUG c.v.base.controller.BaseController - 22
+13:07:09.451 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+13:07:09.451 logback DEBUG c.v.base.controller.BaseController - 000001
+13:07:09.451 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+13:07:09.451 logback DEBUG c.v.base.controller.BaseController - jh
+13:07:09.451 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:07:09.452 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:07:09.453 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:07:09.454 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from test_maxid where maxid=22 
+13:07:09.454 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+13:07:09.455 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+13:07:09.456 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==>  Preparing: delete from sys_setup where setup_id=22 
+13:07:09.456 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==> Parameters: 
+13:07:09.518 logback DEBUG c.v.base.dao.BaseDao.executeDelete - <==    Updates: 1
+13:07:09.518 logback DEBUG c.v.b.service.impl.BaseServiceImpl - delete from sys_setup where setup_id=22
+13:07:09.542 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:07:09.543 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+13:07:09.548 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:07:09.548 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:07:09.549 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:07:09.550 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+13:07:09.550 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+13:07:09.550 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+13:07:09.551 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 0
+13:07:09.552 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:07:09.552 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:07:09.553 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:07:09.554 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+13:07:09.554 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+13:07:09.554 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+13:07:09.555 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+13:07:09.582 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+13:07:09.582 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+13:07:09.582 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:07:09.583 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:07:09.584 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:07:09.584 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+13:07:09.584 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+13:07:09.584 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+13:07:09.586 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+13:07:09.586 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+13:07:09.586 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+13:07:09.587 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+13:07:09.588 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+13:07:09.588 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+13:07:09.588 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+13:07:09.589 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:37:30.069 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:37:30.069 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:37:30.069 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+14:37:30.070 logback DEBUG c.v.interceptor.AuthInterceptor - ajax重定向写入……
+14:37:30.089 logback DEBUG c.v.f.controller.LoginController - login/index
+14:37:30.437 logback DEBUG c.v.f.controller.LoginController - /login/code
+14:37:37.222 logback DEBUG c.v.f.controller.LoginController - admin----111
+14:37:37.223 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+14:37:37.223 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+14:37:37.226 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+14:37:37.261 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:37:37.261 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+14:37:37.929 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:37:37.929 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+14:37:37.930 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+14:37:37.930 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+14:37:37.932 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 11
+14:37:37.932 logback DEBUG c.v.f.controller.FunctionController - 001---001
+14:37:37.932 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+14:37:37.932 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+14:37:37.932 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+14:37:37.933 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+14:37:37.933 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+14:37:37.933 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+14:37:37.933 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+14:37:37.933 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+14:37:37.933 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+14:37:37.933 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+14:37:39.989 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:37:39.989 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:37:39.989 logback DEBUG c.v.base.controller.BaseController - 1
+14:37:39.989 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:37:39.990 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:37:39.991 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:37:40.305 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:37:40.305 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:37:40.306 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:37:40.307 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:37:40.307 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:37:40.463 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:37:40.463 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:37:40.464 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:37:40.464 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:37:40.465 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:37:40.465 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:37:40.465 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:37:40.465 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:37:40.467 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:37:40.467 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:37:40.467 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:37:40.468 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:37:40.468 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:37:40.469 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:37:40.469 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:37:40.470 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:39:42.260 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:39:42.260 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:39:42.260 logback DEBUG c.v.base.controller.BaseController - 1
+14:39:42.279 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:39:42.279 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:39:42.314 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:39:43.044 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:39:43.044 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:39:43.045 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:39:43.046 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:39:43.049 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:39:43.393 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:39:43.393 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:39:43.394 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:39:43.394 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:39:43.399 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:39:43.399 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:39:43.400 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:39:43.400 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:39:43.401 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:39:43.402 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:39:43.402 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:39:43.403 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:39:43.404 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:39:43.404 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:39:43.404 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:39:43.405 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:51:56.066 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:51:56.067 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:51:56.067 logback DEBUG c.v.base.controller.BaseController - 1
+14:51:56.069 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:51:56.069 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:51:56.071 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:51:56.474 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:51:56.474 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:51:56.475 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:51:56.475 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:51:56.476 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:51:56.682 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:51:56.682 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:51:56.683 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:51:56.683 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:51:56.685 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:51:56.685 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:51:56.686 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:51:56.686 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:51:56.687 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:51:56.688 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:51:56.688 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:51:56.690 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:51:56.690 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:51:56.690 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:51:56.691 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:51:56.692 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:54:09.006 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:54:09.006 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:54:09.006 logback DEBUG c.v.base.controller.BaseController - 1
+14:54:09.007 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:54:09.008 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:54:09.009 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:54:09.414 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:54:09.414 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:54:09.415 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:54:09.416 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:54:09.417 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:54:09.611 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:54:09.611 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:54:09.612 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:54:09.612 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:54:09.613 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:54:09.614 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:54:09.614 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:54:09.614 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:54:09.616 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:54:09.617 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:54:09.617 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:54:09.626 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:54:09.626 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:54:09.627 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:54:09.627 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:54:09.628 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:54:23.957 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:54:23.957 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:54:23.957 logback DEBUG c.v.base.controller.BaseController - 1
+14:54:23.958 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:54:23.958 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:54:23.961 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:54:24.267 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:54:24.267 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:54:24.268 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:54:24.268 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:54:24.270 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:54:24.515 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:54:24.515 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:54:24.516 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:54:24.516 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:54:24.517 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:54:24.518 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:54:24.518 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:54:24.518 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:54:24.520 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:54:24.521 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:54:24.521 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:54:24.522 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:54:24.522 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:54:24.523 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:54:24.523 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:54:24.524 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:57:27.112 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:57:27.112 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:57:27.112 logback DEBUG c.v.base.controller.BaseController - 1
+14:57:27.114 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:57:27.114 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:57:27.116 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:57:27.734 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:57:27.734 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:57:27.735 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:57:27.735 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:57:27.737 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:57:28.072 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:57:28.072 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:57:28.072 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:57:28.073 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:57:28.074 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:57:28.074 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:57:28.075 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:57:28.075 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:57:28.076 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:57:28.077 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:57:28.077 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:57:28.079 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:57:28.079 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:57:28.080 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:57:28.080 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:57:28.081 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:58:22.853 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:58:22.854 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:58:22.855 logback DEBUG c.v.base.controller.BaseController - 1
+14:58:22.856 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:58:22.857 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:58:22.862 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:58:25.162 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:58:25.162 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:58:25.163 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:58:25.163 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:58:25.164 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:58:25.550 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:58:25.550 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:58:25.551 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:58:25.551 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:58:25.552 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:58:25.553 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:58:25.553 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:58:25.553 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:58:25.555 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:58:25.555 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:58:25.556 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:58:25.557 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:58:25.557 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:58:25.558 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:58:25.558 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:58:25.559 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+14:59:02.072 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:59:02.072 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+14:59:02.073 logback DEBUG c.v.base.controller.BaseController - 1
+14:59:02.073 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+14:59:02.073 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+14:59:02.075 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+14:59:02.360 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:59:02.360 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+14:59:02.361 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+14:59:02.361 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+14:59:02.362 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+14:59:02.642 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+14:59:02.642 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+14:59:02.643 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:59:02.643 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:59:02.655 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:59:02.655 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+14:59:02.655 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+14:59:02.656 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+14:59:02.657 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+14:59:02.658 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+14:59:02.658 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+14:59:02.660 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+14:59:02.660 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+14:59:02.660 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+14:59:02.661 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+14:59:02.661 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:00:00.442 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:00:00.442 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+15:00:00.442 logback DEBUG c.v.base.controller.BaseController - 1
+15:00:00.442 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+15:00:00.443 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+15:00:00.445 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+15:00:00.708 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:00:00.708 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+15:00:00.709 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+15:00:00.709 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+15:00:00.710 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+15:00:00.939 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:00:00.939 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:00:00.940 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:00:00.940 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:00:00.942 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:00:00.942 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+15:00:00.942 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+15:00:00.943 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:00:00.944 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+15:00:00.945 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:00:00.945 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:00:00.946 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:00:00.947 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:00:00.947 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:00:00.947 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:00:00.948 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:15:09.926 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:09.926 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+15:15:09.926 logback DEBUG c.v.base.controller.BaseController - 1
+15:15:09.928 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+15:15:09.928 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+15:15:09.929 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+15:15:10.154 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:10.154 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+15:15:10.154 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+15:15:10.155 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+15:15:10.156 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+15:15:10.285 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:10.285 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:15:10.285 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:10.286 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:10.287 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:10.287 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+15:15:10.287 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+15:15:10.287 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:15:10.288 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+15:15:10.289 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:10.289 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:10.290 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:10.291 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:15:10.291 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:15:10.291 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:15:10.292 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:15:29.731 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:29.731 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+15:15:29.732 logback DEBUG c.v.base.controller.BaseController - 1
+15:15:29.732 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+15:15:29.732 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+15:15:29.734 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+15:15:29.951 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:29.951 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+15:15:29.952 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+15:15:29.952 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+15:15:29.953 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+15:15:30.093 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:30.093 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:15:30.094 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:30.094 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:30.095 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:30.095 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+15:15:30.096 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+15:15:30.096 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:15:30.097 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+15:15:30.098 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:30.098 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:30.099 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:30.100 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:15:30.100 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:15:30.100 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:15:30.101 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:15:35.915 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:35.915 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+15:15:35.916 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+15:15:35.916 logback DEBUG c.v.base.controller.BaseController - 自动生成
+15:15:35.916 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+15:15:35.916 logback DEBUG c.v.base.controller.BaseController - 000001
+15:15:35.916 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+15:15:35.916 logback DEBUG c.v.base.controller.BaseController - hh
+15:15:35.917 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:35.917 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:35.918 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:35.919 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==>  Preparing: select setup_id from sys_setup order by setup_id desc limit 1 
+15:15:35.919 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==> Parameters: 
+15:15:35.920 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - <==      Total: 1
+15:15:35.921 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==>  Preparing: insert into sys_setup(setup_id,setup_intr,setup_value) values (22,'000001','hh') 
+15:15:35.921 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==> Parameters: 
+15:15:35.961 logback DEBUG c.v.base.dao.BaseDao.executeInsert - <==    Updates: 1
+15:15:35.961 logback DEBUG c.v.b.service.impl.BaseServiceImpl - insert into sys_setup(setup_id,setup_intr,setup_value) values (22,'000001','hh')
+15:15:36.030 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:36.030 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:15:36.031 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:36.031 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:36.032 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:36.032 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+15:15:36.033 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+15:15:36.033 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:15:36.034 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+15:15:36.035 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:36.035 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:36.037 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:36.037 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:15:36.038 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:15:36.038 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:15:36.039 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:15:41.272 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:15:41.272 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:15:41.273 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:41.273 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:41.274 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:41.275 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+15:15:41.275 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+15:15:41.275 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:15:41.276 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 1
+15:15:41.277 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:15:41.277 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:15:41.278 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:15:41.279 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:15:41.279 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:15:41.279 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:15:41.280 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:17:37.012 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:17:37.013 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:17:37.015 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:17:37.016 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:17:37.018 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:17:37.018 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+15:17:37.019 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+15:17:37.019 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:17:37.021 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+15:17:37.022 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:17:37.023 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:17:37.025 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:17:37.025 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:17:37.026 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:17:37.026 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:17:37.027 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:17:43.679 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:17:43.679 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:17:43.680 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:17:43.681 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:17:43.682 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:17:43.683 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+15:17:43.684 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+15:17:43.684 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:17:43.686 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 1
+15:17:43.687 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:17:43.687 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:17:43.688 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:17:43.689 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:17:43.689 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:17:43.689 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:17:43.690 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+15:20:52.648 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:20:52.648 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+15:20:52.648 logback DEBUG c.v.base.controller.BaseController - 1
+15:20:52.650 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+15:20:52.650 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+15:20:52.651 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+15:20:53.006 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:20:53.006 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+15:20:53.007 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+15:20:53.007 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+15:20:53.008 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+15:20:53.247 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+15:20:53.247 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+15:20:53.248 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:20:53.248 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:20:53.250 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:20:53.250 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+15:20:53.250 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+15:20:53.251 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+15:20:53.252 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+15:20:53.253 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+15:20:53.253 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+15:20:53.255 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+15:20:53.255 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+15:20:53.255 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+15:20:53.256 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+15:20:53.257 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+22:57:34.148 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:57:34.148 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+22:57:34.148 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+22:57:34.148 logback DEBUG c.v.interceptor.AuthInterceptor - ajax重定向写入……
+22:57:34.199 logback DEBUG c.v.f.controller.LoginController - login/index
+22:57:34.653 logback DEBUG c.v.f.controller.LoginController - /login/code
+22:58:30.348 logback DEBUG c.v.f.controller.LoginController - admin----111
+22:58:30.374 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+22:58:30.375 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+22:58:30.378 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+22:58:30.421 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:58:30.421 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+22:58:30.937 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:58:30.937 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+22:58:30.937 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+22:58:30.940 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+22:58:30.942 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 11
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 001---001
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999014---系统参数设定(缓)
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定NOW
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+22:58:30.943 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+22:58:40.569 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:58:40.569 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+22:58:40.570 logback DEBUG c.v.base.controller.BaseController - 1
+22:58:40.570 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+22:58:40.571 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+22:58:40.572 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+22:58:40.931 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:58:40.931 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+22:58:40.931 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+22:58:40.932 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+22:58:40.933 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+22:58:41.275 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:58:41.275 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+22:58:41.276 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+22:58:41.277 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+22:58:41.278 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+22:58:41.279 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+22:58:41.279 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+22:58:41.280 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+22:58:41.281 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+22:58:41.282 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+22:58:41.282 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+22:58:41.283 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+22:58:41.284 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+22:58:41.284 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+22:58:41.285 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+22:58:41.286 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:01:57.089 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:01:57.090 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+23:01:57.090 logback DEBUG c.v.base.controller.BaseController - 1
+23:01:57.150 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+23:01:57.150 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+23:01:57.176 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+23:01:57.733 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:01:57.733 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+23:01:57.734 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+23:01:57.734 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+23:01:57.737 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+23:01:58.005 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:01:58.005 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:01:58.006 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:01:58.006 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:01:58.007 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:01:58.008 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:01:58.008 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:01:58.008 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:01:58.011 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:01:58.012 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:01:58.012 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:01:58.032 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:01:58.033 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:01:58.033 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:01:58.033 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:01:58.035 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:02:57.526 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:02:57.526 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+23:02:57.526 logback DEBUG c.v.base.controller.BaseController - 1
+23:02:57.527 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+23:02:57.527 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+23:02:57.529 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+23:02:58.095 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:02:58.095 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+23:02:58.096 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+23:02:58.096 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+23:02:58.097 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+23:02:58.471 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:02:58.471 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:02:58.472 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:02:58.472 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:02:58.473 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:02:58.474 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:02:58.475 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:02:58.475 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:02:58.477 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:02:58.477 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:02:58.478 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:02:58.479 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:02:58.480 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:02:58.480 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:02:58.480 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:02:58.481 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:04:21.903 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:04:21.903 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+23:04:21.903 logback DEBUG c.v.base.controller.BaseController - 1
+23:04:21.904 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+23:04:21.905 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+23:04:21.906 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+23:04:22.649 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:04:22.649 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+23:04:22.650 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+23:04:22.650 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+23:04:22.651 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+23:04:22.942 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:04:22.942 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:04:22.943 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:04:22.944 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:04:22.972 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:04:22.972 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:04:22.972 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:04:22.972 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:04:22.974 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:04:22.975 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:04:22.975 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:04:22.978 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:04:22.978 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:04:22.978 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:04:22.979 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:04:22.980 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:05:39.382 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:05:39.382 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:05:39.385 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:05:39.385 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:05:39.387 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:05:39.388 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+23:05:39.388 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+23:05:39.388 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:05:39.390 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 1
+23:05:39.391 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:05:39.391 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:05:39.395 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:05:39.395 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:05:39.396 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:05:39.396 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:05:39.397 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:05:45.484 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:05:45.486 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:05:45.487 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:05:45.487 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:05:45.488 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:05:45.489 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:05:45.489 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:05:45.489 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:05:45.491 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:05:45.491 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:05:45.492 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:05:45.493 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:05:45.493 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:05:45.494 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:05:45.494 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:05:45.495 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:16.059 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:16.059 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+23:07:16.059 logback DEBUG c.v.base.controller.BaseController - 1
+23:07:16.060 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+23:07:16.060 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+23:07:16.062 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 3
+23:07:16.361 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:16.361 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+23:07:16.362 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+23:07:16.362 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+23:07:16.364 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+23:07:16.678 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:16.678 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:16.679 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:16.679 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:16.681 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:16.681 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:07:16.682 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:07:16.682 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:16.683 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:07:16.684 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:16.684 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:16.686 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:16.686 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:16.686 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:16.686 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:16.687 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:21.921 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:21.921 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+23:07:21.921 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+23:07:21.921 logback DEBUG c.v.base.controller.BaseController - 自动生成
+23:07:21.922 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+23:07:21.922 logback DEBUG c.v.base.controller.BaseController - 000001
+23:07:21.922 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+23:07:21.922 logback DEBUG c.v.base.controller.BaseController - f
+23:07:21.922 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:21.923 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:21.924 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:21.925 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==>  Preparing: select setup_id from sys_setup order by setup_id desc limit 1 
+23:07:21.925 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==> Parameters: 
+23:07:21.926 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - <==      Total: 1
+23:07:21.927 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==>  Preparing: insert into sys_setup(setup_id,setup_intr,setup_value) values (23,'000001','f') 
+23:07:21.928 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==> Parameters: 
+23:07:21.990 logback DEBUG c.v.base.dao.BaseDao.executeInsert - <==    Updates: 1
+23:07:21.990 logback DEBUG c.v.b.service.impl.BaseServiceImpl - insert into sys_setup(setup_id,setup_intr,setup_value) values (23,'000001','f')
+23:07:22.048 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:22.048 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:22.049 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:22.049 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:22.050 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:22.050 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:07:22.051 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:07:22.051 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:22.052 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:07:22.053 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:22.053 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:22.054 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:22.055 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:22.055 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:22.055 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:22.057 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:27.112 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:27.112 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+23:07:27.112 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+23:07:27.112 logback DEBUG c.v.base.controller.BaseController - 自动生成
+23:07:27.112 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+23:07:27.113 logback DEBUG c.v.base.controller.BaseController - 000001
+23:07:27.113 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+23:07:27.113 logback DEBUG c.v.base.controller.BaseController - fsda
+23:07:27.113 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:27.113 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:27.114 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:27.115 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==>  Preparing: select setup_id from sys_setup order by setup_id desc limit 1 
+23:07:27.115 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - ==> Parameters: 
+23:07:27.116 logback DEBUG c.v.base.dao.BaseDao.selectMaxId - <==      Total: 1
+23:07:27.116 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==>  Preparing: insert into sys_setup(setup_id,setup_intr,setup_value) values (24,'000001','fsda') 
+23:07:27.117 logback DEBUG c.v.base.dao.BaseDao.executeInsert - ==> Parameters: 
+23:07:27.178 logback DEBUG c.v.base.dao.BaseDao.executeInsert - <==    Updates: 1
+23:07:27.178 logback DEBUG c.v.b.service.impl.BaseServiceImpl - insert into sys_setup(setup_id,setup_intr,setup_value) values (24,'000001','fsda')
+23:07:27.243 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:27.243 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:27.245 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:27.245 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:27.246 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:27.247 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:07:27.254 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:07:27.254 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:27.264 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:07:27.266 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:27.267 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:27.268 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:27.269 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:27.269 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:27.269 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:27.270 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:30.923 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:30.924 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:30.924 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:30.925 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:30.926 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:30.927 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+23:07:30.927 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+23:07:30.927 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:30.928 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 3
+23:07:30.929 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:30.929 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:30.932 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:30.932 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:30.933 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:30.933 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:30.934 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:39.081 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:39.081 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+23:07:39.081 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+23:07:39.082 logback DEBUG c.v.base.controller.BaseController - 23
+23:07:39.082 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+23:07:39.082 logback DEBUG c.v.base.controller.BaseController - 
+23:07:39.082 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+23:07:39.082 logback DEBUG c.v.base.controller.BaseController - f
+23:07:39.082 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:39.082 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:39.086 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:39.086 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - ==>  Preparing: update sys_setup set setup_intr='',setup_value='f' where setup_id=23 
+23:07:39.087 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - ==> Parameters: 
+23:07:39.144 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - <==    Updates: 1
+23:07:39.144 logback DEBUG c.v.b.service.impl.BaseServiceImpl - update sys_setup set setup_intr='',setup_value='f' where setup_id=23
+23:07:39.232 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:39.232 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:39.233 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:39.233 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:39.234 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:39.234 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+23:07:39.235 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+23:07:39.235 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:39.236 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 3
+23:07:39.237 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:39.237 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:39.238 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:39.239 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:39.239 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:39.239 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:39.240 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:48.407 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:48.408 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+23:07:48.408 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+23:07:48.408 logback DEBUG c.v.base.controller.BaseController - 23
+23:07:48.408 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+23:07:48.408 logback DEBUG c.v.base.controller.BaseController - 000001
+23:07:48.408 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+23:07:48.408 logback DEBUG c.v.base.controller.BaseController - f
+23:07:48.408 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:48.409 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:48.411 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:48.412 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - ==>  Preparing: update sys_setup set setup_intr='000001',setup_value='f' where setup_id=23 
+23:07:48.412 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - ==> Parameters: 
+23:07:48.466 logback DEBUG c.v.base.dao.BaseDao.executeUpdate - <==    Updates: 1
+23:07:48.466 logback DEBUG c.v.b.service.impl.BaseServiceImpl - update sys_setup set setup_intr='000001',setup_value='f' where setup_id=23
+23:07:48.517 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:48.517 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:48.519 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:48.519 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:48.521 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:48.521 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+23:07:48.522 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+23:07:48.522 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:48.523 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 3
+23:07:48.524 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:48.524 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:48.525 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:48.526 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:48.526 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:48.526 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:48.527 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:54.229 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:54.229 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+23:07:54.230 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+23:07:54.230 logback DEBUG c.v.base.controller.BaseController - 23
+23:07:54.230 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+23:07:54.230 logback DEBUG c.v.base.controller.BaseController - 000001
+23:07:54.230 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+23:07:54.230 logback DEBUG c.v.base.controller.BaseController - f
+23:07:54.230 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:54.231 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:54.232 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:54.232 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from test_maxid where maxid=23 
+23:07:54.232 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:54.233 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:54.234 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==>  Preparing: delete from sys_setup where setup_id=23 
+23:07:54.235 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==> Parameters: 
+23:07:54.266 logback DEBUG c.v.base.dao.BaseDao.executeDelete - <==    Updates: 1
+23:07:54.267 logback DEBUG c.v.b.service.impl.BaseServiceImpl - delete from sys_setup where setup_id=23
+23:07:54.289 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:54.289 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:54.290 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:54.290 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:54.291 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:54.292 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+23:07:54.292 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+23:07:54.292 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:54.293 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 2
+23:07:54.294 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:54.294 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:54.295 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:54.295 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:54.296 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:54.296 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:54.297 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:57.390 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:57.390 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+23:07:57.390 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+23:07:57.390 logback DEBUG c.v.base.controller.BaseController - 24
+23:07:57.391 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+23:07:57.391 logback DEBUG c.v.base.controller.BaseController - 000001
+23:07:57.391 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+23:07:57.391 logback DEBUG c.v.base.controller.BaseController - fsda
+23:07:57.391 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:57.391 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:57.393 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:57.393 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from test_maxid where maxid=24 
+23:07:57.394 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:57.395 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:07:57.396 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==>  Preparing: delete from sys_setup where setup_id=24 
+23:07:57.396 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==> Parameters: 
+23:07:57.441 logback DEBUG c.v.base.dao.BaseDao.executeDelete - <==    Updates: 1
+23:07:57.442 logback DEBUG c.v.b.service.impl.BaseServiceImpl - delete from sys_setup where setup_id=24
+23:07:57.462 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:07:57.462 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:07:57.462 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:57.463 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:57.464 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:57.464 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+23:07:57.464 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+23:07:57.464 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:07:57.465 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 1
+23:07:57.465 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:07:57.465 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:07:57.466 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:07:57.467 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:07:57.467 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:07:57.467 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:07:57.467 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:08:00.870 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:08:00.870 logback DEBUG c.v.interceptor.AuthInterceptor - /base/save
+23:08:00.870 logback DEBUG c.v.base.controller.BaseController - 0#setup_id
+23:08:00.870 logback DEBUG c.v.base.controller.BaseController - 22
+23:08:00.870 logback DEBUG c.v.base.controller.BaseController - 1#setup_intr
+23:08:00.870 logback DEBUG c.v.base.controller.BaseController - 000001
+23:08:00.870 logback DEBUG c.v.base.controller.BaseController - 1#setup_value
+23:08:00.870 logback DEBUG c.v.base.controller.BaseController - hh
+23:08:00.871 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:08:00.871 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:08:00.872 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:08:00.873 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from test_maxid where maxid=22 
+23:08:00.874 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:08:00.875 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:08:00.875 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==>  Preparing: delete from sys_setup where setup_id=22 
+23:08:00.876 logback DEBUG c.v.base.dao.BaseDao.executeDelete - ==> Parameters: 
+23:08:00.942 logback DEBUG c.v.base.dao.BaseDao.executeDelete - <==    Updates: 1
+23:08:00.943 logback DEBUG c.v.b.service.impl.BaseServiceImpl - delete from sys_setup where setup_id=22
+23:08:00.995 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:08:00.995 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:08:00.996 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:08:00.996 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:08:00.997 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:08:00.998 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 20,20
+23:08:00.998 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 20,20 
+23:08:00.998 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:08:01.001 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 0
+23:08:01.002 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:08:01.002 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:08:01.003 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:08:01.004 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:08:01.004 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:08:01.004 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:08:01.005 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:08:01.060 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:08:01.060 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+23:08:01.061 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:08:01.061 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:08:01.062 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:08:01.062 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select * from sys_setup where 1=1  limit 0,20
+23:08:01.062 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select * from sys_setup where 1=1 limit 0,20 
+23:08:01.062 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:08:01.063 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:08:01.064 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:08:01.064 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:08:01.065 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:08:01.065 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup where 1=1 
+23:08:01.065 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup where 1=1 
+23:08:01.065 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:08:01.066 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1

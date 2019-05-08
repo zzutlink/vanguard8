@@ -13,6 +13,7 @@ public class BaseMain {
     private String checkUseTable;
     private String checkUseField;
     private String keyField;
+    private Integer keyFieldAutoCreate;
     private Integer keyFieldLength;
     private List<BaseDetail> baseDetails;
 
@@ -110,5 +111,13 @@ public class BaseMain {
 
     public void setBaseDetails(List<BaseDetail> baseDetails) {
         this.baseDetails = baseDetails;
+    }
+
+    public Integer getKeyFieldAutoCreate() {
+        return keyFieldAutoCreate;
+    }
+
+    public void setKeyFieldAutoCreate(Integer keyFieldAutoCreate) {
+        this.keyFieldAutoCreate = keyFieldAutoCreate;
     }
 }

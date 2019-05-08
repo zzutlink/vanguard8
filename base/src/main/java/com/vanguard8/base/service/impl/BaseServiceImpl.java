@@ -1,9 +1,12 @@
 package com.vanguard8.base.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.vanguard8.base.dao.BaseDao;
 import com.vanguard8.base.entity.BaseDetail;
 import com.vanguard8.base.entity.BaseMain;
 import com.vanguard8.base.service.BaseService;
+import com.vanguard8.common.EasyUIDataGrid;
 import com.vanguard8.common.Result;
 import com.vanguard8.common.ResultGenerator;
 import com.vanguard8.util.PageUtil;
@@ -11,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +30,40 @@ public class BaseServiceImpl implements BaseService {
 
     public BaseMain getBaseMain(Integer bsId) {
         return baseDao.getBaseMain(bsId);
+    }
+
+    @Override
+    @Transactional
+    public Result<String> saveBaseMain(String playFlag, BaseMain main) {
+        Result<String> r = null;
+        Integer i = 0;
+        if (playFlag.equals("1")) {
+            i = baseDao.insertBaseMain(main);
+        } else if (playFlag.equals("2")) {
+            i = baseDao.updateBaseMain(main);
+        } else if (playFlag.equals("3")) {
+            Integer bsId = main.getBsId();
+            baseDao.deleteBaseDetail(bsId);
+            i = baseDao.deleteBaseMain(bsId);
+        }
+
+        if (i == 1) {
+            r = ResultGenerator.genSuccessResult();
+        } else {
+            r = ResultGenerator.genFailResult("操作基础模板数据错误！");
+        }
+        return r;
+    }
+
+    public EasyUIDataGrid getAllBaseMain(Integer page, Integer rows, String sort, String order, BaseMain main) {
+        String orderby = sort.concat(" ").concat(order).trim();
+        PageHelper.startPage(page, rows, orderby);
+        List<BaseMain> list = baseDao.getAllBaseMain(main);
+        EasyUIDataGrid grid = new EasyUIDataGrid();
+        PageInfo<BaseMain> pageInfo = new PageInfo<>(list);
+        grid.setTotal(pageInfo.getTotal());
+        grid.setRows(list);
+        return grid;
     }
 
     public List<BaseDetail> getBaseDetail(Integer bsId) {
@@ -70,17 +108,62 @@ public class BaseServiceImpl implements BaseService {
         Result<String> r = new Result<String>();
         //新增一条基础资料
         //先获取主键的值，然后写入
+        //表单的参数名是一个组合字符串 例如 0#1#userName，split("#")之后第一个为fieldType,第二个repeatFlag,第三个fieldCode
         String sql = "";
         String fieldStr = "";
+        String tmpStr = "";
         String valueStr = "";
+        String value = "";
+        String maxId = "";
         if (playFlag.equals("1")) {
+            //先看是否需要生成主键值,1需要产生主键值
+            if (base.getKeyFieldAutoCreate() == 1) {
+                sql = "select " + base.getKeyField() + " from " + base.getTableName() + " order by " + base.getKeyField() + " desc limit 1";
+                maxId = baseDao.selectMaxId(sql);
+                //如果fieldLength==0则是整形，加1生成流水码，否则是字符串形式产生流水码
+                if (base.getKeyFieldLength() == 0) {
+                    if (maxId == null) {
+                        maxId = "1";
+                    } else {
+                        maxId = String.valueOf(Integer.valueOf(maxId) + 1);
+                    }
+                } else {
+                    int iTmp = (int) Math.pow(10, base.getKeyFieldLength());
+                    maxId = String.valueOf(iTmp + 1 + Integer.valueOf(maxId)).substring(1);
+                }
+            }
             for (Map.Entry<String, String> map : maps.entrySet()) {
                 if (fieldStr.length() != 0) {
                     fieldStr = fieldStr + ",";
                     valueStr = valueStr + ",";
                 }
-                fieldStr += map.getKey();
-                valueStr += map.getValue();
+                tmpStr = map.getKey();
+                String[] s = tmpStr.split("#");
+                value = map.getValue();
+
+                //检查是否是不允许重复的字段，若是，则到表中查找是否重复
+                String tmpValue = "";
+                if (s[1].equals("0")) {
+                    if (!s[0].equals("0")) {
+                        tmpValue = "'".concat(value).concat("'");
+                    }
+                    sql = "select count(*) from " + base.getTableName() + " where " + s[2] + "=" + tmpValue;
+                    Integer i = baseDao.executeCount(sql);
+                    if (i > 0) {
+                        r = ResultGenerator.genFailResult(tmpValue + "出现重复！");
+                        return r;
+                    }
+                }
+
+                fieldStr += s[2];
+                if (base.getKeyFieldAutoCreate() == 1 && s[2].equals(base.getKeyField())) {
+                    value = maxId;
+                }
+                if (s[0].equals("0")) {
+                    valueStr += value;
+                } else {
+                    valueStr += "'".concat(value).concat("'");
+                }
             }
             sql = "insert into " + base.getTableName() + "(" + fieldStr + ") values (" + valueStr + ")";
             try {
@@ -93,8 +176,113 @@ public class BaseServiceImpl implements BaseService {
             } catch (Exception e) {
                 r = ResultGenerator.genFailResult("新增失败！");
             }
+        } else if (playFlag.equals("2")) {  //编辑 update tbname set xxxx where keyfield=xxxx
+            //多循环一次先把主键及主键的值找出来
+            String keyValue = "";
+            for (Map.Entry<String, String> map : maps.entrySet()) {
+                tmpStr = map.getKey();
+                String[] s = tmpStr.split("#");
+                if (s[2].equals(base.getKeyField())) { //如果字段是主键字段
+                    keyValue = map.getValue();
+                    if (!s[0].equals("0")) {
+                        keyValue = "'".concat(keyValue).concat("'");
+                    }
+                }
+            }
+
+            for (Map.Entry<String, String> map : maps.entrySet()) {
+                tmpStr = map.getKey();
+                String[] s = tmpStr.split("#");
+
+                if ((fieldStr.length() != 0) && (!s[2].equals(base.getKeyField()))) {
+                    fieldStr = fieldStr + ",";
+                }
+
+                value = map.getValue();
+                if (!s[0].equals("0")) {
+                    value = "'".concat(value).concat("'");
+                }
+
+                //检查是否是不允许重复的字段，若是，则到表中查找是否重复
+                if (s[1].equals("0")) {
+                    sql = "select count(*) from " + base.getTableName() + " where " + base.getKeyField() + "<>" + keyValue + " and " + s[2] + "=" + value;
+                    Integer i = baseDao.executeCount(sql);
+                    if (i > 0) {
+                        r = ResultGenerator.genFailResult(value + "出现重复！");
+                        return r;
+                    }
+                }
+
+                if (s[2].equals(base.getKeyField())) { //如果字段是主键字段
+                    valueStr = base.getKeyField().concat("=").concat(value);
+                } else {
+                    fieldStr += s[2].concat("=").concat(value);
+                }
+            }
+            sql = "update " + base.getTableName() + " set " + fieldStr + " where " + valueStr;
+            try {
+                Integer i = baseDao.executeUpdate(sql);
+                if (i == 1) {
+                    r = ResultGenerator.genSuccessResult();
+                } else {
+                    r = ResultGenerator.genFailResult("编辑失败！");
+                }
+            } catch (Exception e) {
+                r = ResultGenerator.genFailResult("编辑失败！");
+            }
+        } else if (playFlag.equals("3")) {
+            for (Map.Entry<String, String> map : maps.entrySet()) {
+                tmpStr = map.getKey();
+                String[] s = tmpStr.split("#");
+
+                if (s[2].equals(base.getKeyField())) { //如果字段是主键字段
+                    //检查是否已经使用，已经使用则不允许删除
+                    //select count(*) from use_tbname where fieldname=value
+                    value = map.getValue();
+                    if (!s[0].equals("0")) {
+                        value = "'".concat(value).concat("'");
+                    }
+                    sql = "select count(*) from " + base.getCheckUseTable() + " where " + base.getCheckUseField() + "=" + value;
+                    Integer existCount = baseDao.executeCount(sql);
+                    if (existCount > 0) {  //该数据已经使用，不允许删除
+                        r = ResultGenerator.genFailResult("该数据已经使用，无法删除！");
+                        return r;
+                    }
+                    valueStr = base.getKeyField().concat("=").concat(value);
+                }
+            }
+            sql = "delete from " + base.getTableName() + " where " + valueStr;
+            try {
+                Integer i = baseDao.executeDelete(sql);
+                if (i == 1) {
+                    r = ResultGenerator.genSuccessResult();
+                } else {
+                    r = ResultGenerator.genFailResult("删除失败！");
+                }
+            } catch (Exception e) {
+                r = ResultGenerator.genFailResult("删除失败！");
+            }
         }
         logger.debug(sql);
+        return r;
+    }
+
+    @Override
+    public Result<String> saveBaseDetail(Integer playFlag, BaseDetail detail) {
+        Result<String> r = null;
+        Integer i = 0;
+        if (playFlag == 1) {
+            i = baseDao.insertBaseDetail(detail);
+        } else if (playFlag == 2) {
+            i = baseDao.updateBaseDetail(detail);
+        } else if (playFlag == 3) {
+            i = baseDao.deleteBaseDetailById(detail.getDetailId());
+        }
+        if (i == 1) {
+            r = ResultGenerator.genSuccessResult();
+        } else {
+            r = ResultGenerator.genFailResult("保存数据失败！");
+        }
         return r;
     }
 }

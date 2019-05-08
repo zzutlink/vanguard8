@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChangePwd</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/js/vanguard8.js"></script>
+    <script type="text/javascript">
+        $.extend($.fn.validatebox.defaults.rules, {
+            equals: {
+                validator: function (value, param) {
+                    return value == $(param[0]).val();
+                },
+                message: '新密码与重复密码不相同.'
+            }
+        });
+
+        $(function () {
+            $('#FormChangePwd').form({
+                url: '/user/submitChange',
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    $.messager.alert("操作结果",result.message);
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<div id="divPanel" class="easyui-panel" data-options="border:false" style="border:1px solid #cccccc;background:#ececec;padding:20px">
+    <form id="FormChangePwd" method="post">
+        <table>
+            <tr style="height:30px">
+                <td>
+                    <label for="TextOldPassword">原密码</label></td>
+                <td>
+                    <input id="TextOldPassword" name="oldPassword" type="password" class="easyui-textbox" data-options="required:true,width:180,missingMessage:'此项必须输入。'" /></td>
+            </tr>
+            <tr style="height:30px">
+                <td>
+                    <label for="TextNewPassword">新密码</label></td>
+                <td>
+                    <input id="TextNewPassword" name="newPassword" type="password" class="easyui-textbox" data-options="required:true,width:180,missingMessage:'此项必须输入。'" /></td>
+            </tr>
+            <tr style="height:30px">
+                <td>
+                    <label for="TextConfirmPassword">重复密码</label></td>
+                <td>
+                    <input id="TextConfirmPassword" name="confirmPassword" type="password" class="easyui-textbox" data-options="required:true,width:180,missingMessage:'此项必须输入。',validType:'equals[\'#TextNewPassword\']'" /></td>
+            </tr>
+            <tr style="height:30px">
+                <td></td>
+                <td>
+                    <a href="#" class="easyui-linkbutton" style="width:80px;height:30px" onclick="$('#FormChangePwd').form('submit');">修改密码</a>
+                    <a href="#" class="easyui-linkbutton" style="width:80px;height:30px" onclick="$('#FormChangePwd').form('reset');">重置</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

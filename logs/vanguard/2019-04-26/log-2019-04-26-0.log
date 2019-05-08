@@ -1,0 +1,7 @@
+11:02:07.102 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 53000 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+11:02:07.103 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+11:02:07.103 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+11:02:09.938 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+11:02:09.939 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+11:02:09.984 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+11:02:10.525 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 3.572 seconds (JVM running for 72644.092)

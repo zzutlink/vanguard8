@@ -1,21 +1,32 @@
 package com.vanguard8.framework.dao;
 
+
 import com.vanguard8.framework.entity.Function;
+import com.vanguard8.framework.entity.StaFunction;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface FunctionDao {
-    int deleteByPrimaryKey(String funcId);
+    int deleteByPrimaryKey(Integer funcId);
 
-    int insert(Function record);
+    int deleteStatFuncByFuncId(Integer funcId);
 
-    int insertSelective(Function record);
+    int insertFunction(Function function);
 
-    Function selectByPrimaryKey(String funcId);
+    int updateByPrimaryKey(Function function);
 
-    int updateByPrimaryKeySelective(Function record);
-
-    int updateByPrimaryKey(Function record);
+    Function selectFunction(Integer funcId);
 
     List<Function> selectFunctions(Integer dsId);
+
+    int insertStatFunc(StaFunction record);
+
+    int deleteStatFunc(Integer dsId);
+
+    List<Function> selectFuncsWithRight(Integer dsId);
+
+    List<Function> selectLevelFunctions(Integer funcId);
+
+    String selectMaxCode(String funcCode);
 }

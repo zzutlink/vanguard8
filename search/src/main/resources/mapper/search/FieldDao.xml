@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.search.dao.FieldDao">
+  <resultMap id="BaseResultMap" type="com.vanguard8.search.entity.Field">
+    <id column="field_id" jdbcType="INTEGER" property="fieldId" />
+    <result column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+    <result column="field_code" jdbcType="VARCHAR" property="fieldCode" />
+    <result column="field_type_id" jdbcType="TINYINT" property="fieldTypeId" />
+    <result column="order_value" jdbcType="INTEGER" property="orderValue" />
+    <result column="show_width" jdbcType="INTEGER" property="showWidth" />
+    <result column="show_footer" jdbcType="BIT" property="showFooter" />
+    <result column="footer_type_id" jdbcType="TINYINT" property="footerTypeId" />
+    <result column="footer_str" jdbcType="VARCHAR" property="footerStr" />
+    <result column="align" jdbcType="VARCHAR" property="align" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    field_id, model_id, field_name, field_code, field_type_id, order_value, show_width, 
+    show_footer, footer_type_id, footer_str, align
+  </sql>
+  <select id="selectByModelId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from srh_field
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from srh_field
+    where field_id = #{fieldId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from srh_field
+    where field_id = #{fieldId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.vanguard8.search.entity.Field">
+    <selectKey keyProperty="fieldId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into srh_field (model_id, field_name, field_code,
+      field_type_id, order_value, show_width, 
+      show_footer, footer_type_id, footer_str, 
+      align)
+    values (#{modelId,jdbcType=INTEGER}, #{fieldName,jdbcType=VARCHAR}, #{fieldCode,jdbcType=VARCHAR}, 
+      #{fieldTypeId,jdbcType=TINYINT}, #{orderValue,jdbcType=INTEGER}, #{showWidth,jdbcType=INTEGER}, 
+      #{showFooter,jdbcType=BIT}, #{footerTypeId,jdbcType=TINYINT}, #{footerStr,jdbcType=VARCHAR}, 
+      #{align,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vanguard8.search.entity.Field">
+    <selectKey keyProperty="fieldId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into srh_field
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="fieldName != null">
+        field_name,
+      </if>
+      <if test="fieldCode != null">
+        field_code,
+      </if>
+      <if test="fieldTypeId != null">
+        field_type_id,
+      </if>
+      <if test="orderValue != null">
+        order_value,
+      </if>
+      <if test="showWidth != null">
+        show_width,
+      </if>
+      <if test="showFooter != null">
+        show_footer,
+      </if>
+      <if test="footerTypeId != null">
+        footer_type_id,
+      </if>
+      <if test="footerStr != null">
+        footer_str,
+      </if>
+      <if test="align != null">
+        align,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldName != null">
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldCode != null">
+        #{fieldCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldTypeId != null">
+        #{fieldTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="orderValue != null">
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="showWidth != null">
+        #{showWidth,jdbcType=INTEGER},
+      </if>
+      <if test="showFooter != null">
+        #{showFooter,jdbcType=BIT},
+      </if>
+      <if test="footerTypeId != null">
+        #{footerTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="footerStr != null">
+        #{footerStr,jdbcType=VARCHAR},
+      </if>
+      <if test="align != null">
+        #{align,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.search.entity.Field">
+    update srh_field
+    <set>
+      <if test="modelId != null">
+        model_id = #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldName != null">
+        field_name = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldCode != null">
+        field_code = #{fieldCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldTypeId != null">
+        field_type_id = #{fieldTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="orderValue != null">
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="showWidth != null">
+        show_width = #{showWidth,jdbcType=INTEGER},
+      </if>
+      <if test="showFooter != null">
+        show_footer = #{showFooter,jdbcType=BIT},
+      </if>
+      <if test="footerTypeId != null">
+        footer_type_id = #{footerTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="footerStr != null">
+        footer_str = #{footerStr,jdbcType=VARCHAR},
+      </if>
+      <if test="align != null">
+        align = #{align,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where field_id = #{fieldId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vanguard8.search.entity.Field">
+    update srh_field
+    set model_id = #{modelId,jdbcType=INTEGER},
+      field_name = #{fieldName,jdbcType=VARCHAR},
+      field_code = #{fieldCode,jdbcType=VARCHAR},
+      field_type_id = #{fieldTypeId,jdbcType=TINYINT},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      show_width = #{showWidth,jdbcType=INTEGER},
+      show_footer = #{showFooter,jdbcType=BIT},
+      footer_type_id = #{footerTypeId,jdbcType=TINYINT},
+      footer_str = #{footerStr,jdbcType=VARCHAR},
+      align = #{align,jdbcType=VARCHAR}
+    where field_id = #{fieldId,jdbcType=INTEGER}
+  </update>
+</mapper>

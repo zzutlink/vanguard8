@@ -2,10 +2,11 @@ package com.vanguard8.base.entity;
 
 public class BaseDetail {
     private Integer detailId;
-//    private Integer bsId;
+    private Integer bsId;
     private String fieldCode;
     private String fieldName;
     private Integer fieldType;
+    private String fieldTypeName;
     private Integer showFlag;
     private Integer showWidth;
     private Integer showHeight;
@@ -28,13 +29,21 @@ public class BaseDetail {
         this.detailId = detailId;
     }
 
-//    public Integer getBsId() {
-//        return bsId;
-//    }
-//
-//    public void setBsId(Integer bsId) {
-//        this.bsId = bsId;
-//    }
+    public Integer getBsId() {
+        return bsId;
+    }
+
+    public void setBsId(Integer bsId) {
+        this.bsId = bsId;
+    }
+
+    public String getFieldTypeName() {
+        return fieldTypeName;
+    }
+
+    public void setFieldTypeName(String fieldTypeName) {
+        this.fieldTypeName = fieldTypeName;
+    }
 
     public String getFieldCode() {
         return fieldCode;

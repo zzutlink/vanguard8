@@ -1,5 +1,8 @@
 package com.vanguard8.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TreeNode {
     //id：节点ID，对加载远程数据很重要。
     //text：显示节点文本。
@@ -8,13 +11,13 @@ public class TreeNode {
     //attributes: 被添加到节点的自定义属性。
     //children: 一个节点数组声明了若干节点。
 
-    private Integer id ;
+    private String id ;
     private String text ;
     private String dsCode ;
-    private Integer _parentId;
+    private String _parentId;
     private String state ;
     private Object attributes;
-    private TreeNode[] children;
+    private List<TreeNode> children;
     private String iconCls;
     private boolean checked;
 
@@ -26,11 +29,11 @@ public class TreeNode {
         this.checked = checked;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -50,11 +53,11 @@ public class TreeNode {
         this.dsCode = dsCode;
     }
 
-    public Integer get_parentId() {
+    public String get_parentId() {
         return _parentId;
     }
 
-    public void set_parentId(Integer _parentId) {
+    public void set_parentId(String _parentId) {
         this._parentId = _parentId;
     }
 
@@ -74,12 +77,17 @@ public class TreeNode {
         this.attributes = attributes;
     }
 
-    public TreeNode[] getChildren() {
+    public List<TreeNode> getChildren() {
         return children;
     }
 
-    public void setChildren(TreeNode[] children) {
-        this.children = children;
+    //值传递
+    public void setChildren(List<TreeNode> children) {
+        List<TreeNode> nodes = new ArrayList<TreeNode>();
+        for(int i=0;i<children.size();i++){
+            nodes.add(children.get(i));
+        }
+        this.children = nodes;
     }
 
     public String getIconCls() {
@@ -88,5 +96,16 @@ public class TreeNode {
 
     public void setIconCls(String iconCls) {
         this.iconCls = iconCls;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(" [");
+        sb.append("id=").append(id);
+        sb.append(", text=").append(text);
+        sb.append(", dsCode=").append(dsCode);
+        sb.append("]");
+        return sb.toString();
     }
 }

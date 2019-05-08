@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>functionView</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/js/vanguard8.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#GridFunction').treegrid({
+                url: '/function/getLevelFunctions',
+                idField: 'id',
+                treeField: 'text',
+                // border: false,
+                fit: true,
+                fitColumns: true,
+                toolbar: '#divToolbar',
+                columns: [ [
+                    {field: 'text', title: '功能模块名称', width: 160},
+                    {field: 'id', title: '编码', width: 100},
+                    {field: 'dsCode', title: '级别码', width: 100},
+                    {
+                        field: 'funcPath', title: '功能模块路径', width: 160,
+                        formatter:function(val,row){
+                            if(row) {
+                                return row.attributes.funcPath;
+                            } else {
+                                return "";
+                            }
+                        }
+                    },
+                    {field: 'orderValue', title: '排序', width: 60,
+                        formatter:function(val,row){
+                            if(row) {
+                                return row.attributes.orderValue;
+                            } else {
+                                return "";
+                            }
+                        }
+                    }
+                ] ]
+            });
+
+            $('#formPlay').form({
+                url: '/function/saveFunction',
+                onSubmit:function(){
+                    if(($('#isLast').combobox('getValue')=='1') && ($('#funcPath').textbox('getValue')=='')){
+                        $.messager.alert("提交失败", "当作为功能模块时，必须输入功能模块路径！");
+                        return false;
+                    }
+                    return $('#formPlay').form('validate');
+                },
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result && result.success) {
+                        $.messager.alert("操作成功", result.message);
+                        $('#GridFunction').treegrid('reload', '');
+                        if($('#playFlag').val()!='3') {
+                            CloseDialog();
+                        }
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.message);
+                    }
+                }
+            });
+
+            setTextBoxReadOnly('funcId',true);
+
+            $('#isLast').combobox({
+                valueField:'id',
+                textField:'text',
+                editable:false,
+                panelHeight:'auto',
+                data:[{'id':'0','text':'一级目录'},{'id':'1','text':'功能模块'}],
+                onChange:function(newValue,oldValue){
+                    if(newValue=='0'){
+                        setComboboxReadOnly('funcCode',true);
+                        setTextBoxReadOnly('funcPath',true);
+                        setNumberSpinnerReadOnly('orderValue',false);
+                        $('#funcCode').combobox('setValue','');
+                        $('#funcPath').textbox('setValue','');
+                        $('#orderValue').numberspinner('setValue','1');
+                    } else {
+                        setComboboxReadOnly('funcCode',false);
+                        setTextBoxReadOnly('funcPath',false);
+                        setNumberSpinnerReadOnly('orderValue',true);
+                    }
+                }
+            });
+        });
+
+        function setComboboxReadOnly(cbName, status){
+            var cbId = '#'+cbName;
+            var color = '#FFFFFF';
+            if(status){
+                color = '#ECECEC';
+            }
+            $(cbId).combobox('readonly',status);
+            $(cbId).combobox('textbox').css('background',color);
+        }
+
+        function setTextBoxReadOnly(tbName, status){
+            var tbId = '#'+tbName;
+            var color = '#FFFFFF';
+            if(status){
+                color = '#ECECEC';
+            }
+            $(tbId).textbox('readonly',status);
+            $(tbId).textbox('textbox').css('background',color);
+        }
+
+        function setNumberSpinnerReadOnly(nsName, status){
+            var nsId = '#'+nsName;
+            var color = '#FFFFFF';
+            if(status){
+                color = '#ECECEC';
+            }
+            $(nsId).numberspinner('readonly',status);
+            $(nsId).numberspinner('textbox').css('background',color);
+        }
+
+        function SetFuncCodeCombo(){
+            $('#funcCode').combobox({
+                url:'/dict/getDict?flag=5',
+                valueField:'id',
+                textField:'text',
+                editable:false
+            });
+        }
+
+        function Add(){
+            $('#formPlay').form('clear');
+            $('#playFlag').val('1');
+            SetFuncCodeCombo();
+            $('#funcId').textbox('setValue','自动生成');
+            $('#isLast').combobox('select','0');
+            $('#orderValue').numberspinner('setValue','1');
+            setComboboxReadOnly('isLast',false);
+            ShowDialogPlay('新增模块');
+        }
+
+        function Edit(){
+            var row = $('#GridFunction').treegrid('getSelected');
+            if (row == null) {
+                $.messager.alert("操作失败", "未选择要操作的数据行！");
+                return;
+            }
+            SetFuncCodeCombo();
+            $('#playFlag').val('2');
+            $('#funcId').textbox('setValue',row.attributes.funcId);
+            $('#isLast').combobox('setValue',row.attributes.isLast);
+            $('#orderValue').numberspinner('setValue',row.attributes.orderValue);
+            setComboboxReadOnly('isLast',true);
+            $('#funcName').textbox('setValue',row.attributes.funcName);
+            if(row.attributes.isLast==1){
+                $('#funcCode').combobox('setValue',row.attributes.funcCode.substring(0,3));
+                $('#funcPath').textbox('setValue',row.attributes.funcPath);
+                $('#orderValue').numberspinner('setValue',row.attributes.orderValue);
+                setComboboxReadOnly('funcCode',false);
+                setTextBoxReadOnly('funcPath',false);
+                setNumberSpinnerReadOnly('orderValue',true);
+            } else {
+                $('#funcCode').combobox('setValue','');
+                $('#funcPath').textbox('setValue','');
+                setComboboxReadOnly('funcCode',true);
+                setTextBoxReadOnly('funcPath',true);
+                setNumberSpinnerReadOnly('orderValue',false);
+            }
+            ShowDialogPlay('编辑模块');
+        }
+
+        function Delete(){
+            var row = $('#GridFunction').treegrid('getSelected');
+            if (row == null) {
+                $.messager.alert("操作失败", "未选择要操作的数据行！");
+                return;
+            }
+            $.messager.confirm('确认','您确认想要删除该条数据吗？',function(r){
+                if (r){
+                    $('#playFlag').val('3');
+                    $('#funcId').textbox('setValue',row.attributes.funcId);
+                    $('#funcName').textbox('setValue',row.attributes.funcName);
+                    $('#isLast').combobox('select','0');
+                    $('#formPlay').form('submit');
+                }
+            });
+        }
+
+        function ShowDialogPlay(stitle) {
+            $('#DialogPlay').show().dialog({
+                title: stitle,
+                width: 600,
+                modal: true
+            });
+        }
+
+        function CloseDialog() {
+            $('#DialogPlay').dialog('close');
+        }
+    </script>
+    <style type="text/css">
+        .trPlay{
+            height:35px
+        }
+        .tdPlay{
+            width:100px;
+            text-align:right;
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'center'" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
+    <table id="GridFunction">
+    </table>
+    <div id="divToolbar">
+        <input type="button" value="新增模块" onclick="Add();" />
+        <input type="button" value="编辑模块" onclick="Edit();" />
+        <input type="button" value="删除模块" onclick="Delete();" />
+    </div>
+    <div id="DialogPlay" style="display: none">
+        <form id="formPlay" method="post">
+            <input id="playFlag" name="playFlag" type="hidden" />
+            <table style="width: 100%">
+                <tr class="trPlay">
+                    <td class="tdPlay">
+                        <label for="funcId">目录(模块)编码</label>
+                    </td>
+                    <td>
+                        <input id="funcId" name="funcId" class="easyui-textbox" data-options="readonly:true" style="width:100px;" /></td>
+                </tr>
+                <tr class="trPlay">
+                    <td class="tdPlay">
+                        <label for="isLast">目录(模块)级别</label>
+                    </td>
+                    <td>
+                        <input id="isLast" name="isLast" class="easyui-combobox" data-options="required:true" style="width:100px" /></td>
+                </tr>
+                <tr class="trPlay">
+                    <td class="tdPlay">目录(模块)名称</td>
+                    <td>
+                        <input id="funcName" name="funcName" class="easyui-textbox" data-options="required:true" style="width:160px" /></td>
+                </tr>
+                <tr class="trPlay">
+                    <td class="tdPlay">
+                        <label for="orderValue">排序编码</label>
+                    </td>
+                    <td>
+                        <input id="orderValue" name="orderValue" class="easyui-numberspinner" data-options="min:1,max:100,value:1" style="width:70px"/>(从小到大排列)</td>
+                </tr>
+                <tr class="trPlay">
+                    <td class="tdPlay">
+                        <label for="funcCode">功能模块归属</label>
+                    </td>
+                    <td>
+                        <input id="funcCode" name="funcCode" class="easyui-combobox" style="width:160px"/>
+                    </td>
+                </tr>
+                <tr class="trPlay">
+                    <td class="tdPlay">
+                        <label for="funcPath">功能模块路径</label>
+                    </td>
+                    <td>
+                        <input id="funcPath" name="funcPath" class="easyui-textbox" style="width:300px"/></td>
+                </tr>
+                <tr style="height:60px">
+                    <td></td>
+                    <td>
+                        <input type="submit" value="确定"/>
+                        <input type="button" value="取消" onclick="CloseDialog();"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

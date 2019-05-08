@@ -9,8 +9,14 @@
         <module name="base" />
         <module name="common" />
         <module name="framework" />
+        <module name="search" />
+        <module name="user" />
         <module name="util" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="core" target="1.5" />
+      <module name="user" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

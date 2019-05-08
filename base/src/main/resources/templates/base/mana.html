@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Mana</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/qinghe/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5/themes/icon.css">
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/js/vanguard8.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        window.onload=function(){
+        }
+
+        $(function () {
+            var map = {
+                'bsId':'bs_id',
+                'bsName':'bs_name',
+                'tableName':'table_name',
+                'sortField':'sort_field',
+                'keyField':'key_field',
+                'keyFieldAutoCreate':'key_field_autocreate',
+                'keyFieldLength':'key_field_length',
+                'checkUseTable':'check_use_table',
+                'checkUseField':'check_use_field'
+            };
+            onSortColumn=function(param, map){
+                //取出map中字段的映射关系值
+                var fieldSort=map[param.sort];
+                if(fieldSort!='' && fieldSort!=undefined){
+                    //设置新的排序字段名，设置完之后，发送请求时一并会发送到服务端
+                    param.sort=fieldSort;
+                }
+            };
+
+            $('#baseMainList').datagrid({
+                onBeforeLoad:function(param){
+                    onSortColumn(param,map);
+                },
+                url: '/base/getBaseMain',
+                pagination: true,
+                pageSize: 20,
+                pageList: [20, 30, 40, 50],
+                singleSelect: true,
+                fit: true,
+                fitColumns: true,
+                toolbar: '#divToolBar',
+                columns:[ [
+                    { field: 'bsId', title: '编码', width: 40, sortable: true },
+                    { field: 'bsName', title: '基础模板名称', width: 100, sortable: true },
+                    { field: 'tableName', title: '表名称', width: 100, sortable: true },
+                    { field: 'sortField', title: '默认排序字段', width: 100, sortable: true },
+                    { field: 'keyField', title: '主键字段', width: 100, sortable: true },
+                    { field: 'keyFieldAutoCreate', title: '自动生成主键', width: 70, sortable: true,
+                        formatter:function(val,row) {
+                            if(val==1){
+                                return "是";
+                            } else {
+                                return "否";
+                            }
+                        }
+                    },
+                    { field: 'keyFieldLength', title: '主键长度', width: 60, sortable: true },
+                    { field: 'checkUseTable', title: '删除前验证表', width: 100, sortable: true },
+                    { field: 'checkUseField', title: '删除前验证字段', width: 100, sortable: true }
+                ] ]
+            });
+
+            $('#formBaseMain').form({
+                url: '/base/saveBaseMain',
+                onSubmit: function (param) {
+
+                },
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result && result.success) {
+                        if ($('#playFlag').val() == 1) {
+                            showBaseMainDialog(1);
+                        }
+
+                        LoadGridData();
+                        $.messager.alert("操作成功", result.message);
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.message);
+                    }
+                }
+            });
+        });
+
+        function formatCheckbox(val) {
+            if (val == 1) {
+                return "<input type='checkbox' checked='checked' disabled='disabled' />";
+            } else {
+                return "<input type='checkbox' disabled='disabled' />";
+            }
+        }
+
+        function LoadGridData() {
+            $('#baseMainList').datagrid('load', {
+                bsName: $('#pBsName').val(),
+                tableName: $('#pTableName').val()
+            });
+        }
+
+        function showBaseMainDialog(playFlag){
+            $('#formBaseMain').form('reset');
+            $('#playFlag').val(playFlag);
+            var sTitle = "";
+            if(playFlag==1){
+                sTitle="新增基础模板";
+                $('#bsId').textbox('setValue','自动生成');
+                $('#keyFieldLength').numberspinner('setValue',3);
+            }
+            else if(playFlag==2){
+                var row = $('#baseMainList').datagrid('getSelected');
+                if (row==null) {
+                    $.messager.alert("操作失败", "未选择要编辑的数据行！");
+                    return;
+                }
+                sTitle="编辑基础模板";
+                $('#bsId').textbox('setValue',row.bsId);
+                $('#bsName').textbox('setValue',row.bsName);
+                $('#tableName').textbox('setValue',row.tableName);
+                $('#keyField').textbox('setValue',row.keyField);
+                if(row.keyFieldAutoCreate==1){
+                    $('#keyFieldAutoCreate').attr('checked','checked');
+                } else {
+                    $('#keyFieldAutoCreate').removeAttr('checked');
+                }
+                $('#keyFieldLength').numberspinner('setValue',row.keyFieldLength);
+                $('#sortField').textbox('setValue',row.sortField);
+                $('#checkUseTable').textbox('setValue',row.checkUseTable);
+                $('#checkUseField').textbox('setValue',row.checkUseField);
+                $('#fieldStr').textbox('setValue',row.fieldStr);
+                $('#tableStr').textbox('setValue',row.tableStr);
+                $('#conditionStr').textbox('setValue',row.conditionStr);
+            }
+            $('#baseMainDialog').show().dialog({
+                title: sTitle,
+                width: 800,
+                modal: true
+            });
+        }
+
+        function CloseDialog() {
+            $('#baseMainDialog').dialog('close');
+        }
+
+        function deleteBaseMain(){
+            var row = $('#baseMainList').datagrid('getSelected');
+            if (row==null) {
+                $.messager.alert("操作失败", "未选择要编辑的数据行！");
+                return;
+            }
+            $.messager.confirm('确认','您确认想要删除记录吗？',function(r){
+                if (r){
+                    $('#playFlag').val(3);
+                    $('#bsId').textbox('setValue',row.bsId);
+                    $('#formBaseMain').form('submit');
+                }
+            });
+        }
+
+        var G_BsId;
+
+        function showBaseDetail(){
+            var row = $('#baseMainList').datagrid('getSelected');
+            if (row==null) {
+                $.messager.alert("操作失败", "未选择基础数据模板！");
+                return;
+            }
+
+            $('#detailList').datagrid({
+                url: '/base/getBaseDetails?bsId='+row.bsId,
+                pagination: false,
+                singleSelect: true,
+                fit: true,
+                fitColumns: true,
+                toolbar: '#detailToolBar',
+                columns:[ [
+                    { field: 'detailId', title: '编码', width: 40, hidden:true},
+                    { field: 'fieldCode', title: '字段字符串', width: 100 },
+                    { field: 'fieldName', title: '字段名称', width: 70 },
+                    { field: 'fieldTypeName', title: '字段类型', width: 120 },
+                    { field: 'showFlag', title: '是否显示', width: 60, sortable: true, align:'center',
+                        formatter:formatCheckbox,
+                        editor:{
+                            type:'checkbox',
+                            options:{on:'1',off:'0'}
+                        }
+                    },
+                    { field: 'showWidth', title: '宽度', width: 50, sortable: true, align:'right' },
+                    { field: 'showHeight', title: '高度', width: 50, sortable: true, align:'right'},
+                    { field: 'searchFlag', title: '是否可查询', width: 60, sortable: true, align:'center', formatter:formatCheckbox },
+                    { field: 'editFlag', title: '是否编辑', width: 60, sortable: true, align:'center', formatter:formatCheckbox },
+                    { field: 'readonlyFlag', title: '是否只读', width: 60, sortable: true, align:'center', formatter:formatCheckbox},
+                    { field: 'repeatFlag', title: '是否重复', width: 60, sortable: true, align:'center',
+                        formatter:function (val,row) {
+                            if(val=="0"){
+                                return "不可重复";
+                            } else if (val=="1"){
+                                return "允许重复";
+                            } else if(val=="2"){
+                                return "主键";
+                            }
+                        }
+                    },
+                    { field: 'nullFlag', title: '是否可空', width: 60, sortable: true, align:'center', formatter:formatCheckbox},
+                    { field: 'refFlag', title: '是否引用', width: 60, sortable: true, align:'center', formatter:formatCheckbox },
+                    { field: 'refString', title: '引用Url', width: 160, sortable: true },
+                    { field: 'refIdStr', title: '引用ID', width: 60, sortable: true},
+                    { field: 'refTextStr', title: '引用TEXT', width: 60, sortable: true},
+                    { field: 'defaultValue', title: '默认值', width: 80, sortable: true}
+                ] ],
+                onDblClickRow:function(){
+                    EditDetail();
+                }
+            });
+
+            $('#formDetail').form({
+                url: '/base/saveBaseDetail',
+                onSubmit: function (param) {
+                    $('#pBsId').val(G_BsId);
+                },
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result && result.success) {
+                        $.messager.alert("操作成功", result.message);
+                        if ($('#detailPlayFlag').val() == 1 ||$('#detailPlayFlag').val() == 3) {
+                            AddDetail();
+                        }
+                        $('#detailList').datagrid('reload');
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.message);
+                    }
+                }
+            });
+
+            G_BsId = row.bsId;
+            //$('#pBsId').val(G_BsId);
+
+            $('#baseDetailDialog').show().window({
+                title:'模板明细['+row.bsName+']',
+                collapsible:false,
+                minimizable:false,
+                maximizable:false,
+                draggable:false,
+                resizable:false,
+                modal:true,
+                fit:true
+            });
+
+            AddDetail();
+        }
+
+        function AddDetail(){
+            $('#formDetail').form('clear');
+            $('#detailPlayFlag').val('1');
+            $('#detailPanel').panel('setTitle','新增明细');
+            $('#showWidth').numberbox('setValue',100);
+            $('#showHeight').numberbox('setValue',35);
+            var data = $('#fieldType').combobox('getData');
+            if(data) {
+                $('#fieldType').combobox('select', data[0].id);
+            }
+            $('#repeatFlag').combobox('select','1');
+
+            $('#fieldCode').focus();
+        }
+
+        function EditDetail(){
+            var row = $('#detailList').datagrid('getSelected');
+            if (row==null) {
+                $.messager.alert("操作失败", "未选择要编辑的明细数据！");
+                return;
+            }
+
+            $('#formDetail').form('clear');
+            $('#detailPlayFlag').val('2');
+            $('#detailPanel').panel('setTitle','编辑明细');
+
+            $('#detailId').val(row.detailId);
+            $('#fieldCode').textbox('setValue',row.fieldCode);
+            $('#fieldName').textbox('setValue',row.fieldName);
+            $('#fieldType').combobox('select', row.fieldType);
+            if(row.showFlag==1){
+                $('#showFlag').prop('checked','checked');
+            }
+            $('#showWidth').numberbox('setValue',row.showWidth);
+            $('#showHeight').numberbox('setValue',row.showHeight);
+            if(row.searchFlag==1){
+                $('#searchFlag').prop('checked','checked');
+            }
+            if(row.editFlag==1){
+                $('#editFlag').prop('checked','checked');
+            }
+            if(row.readonlyFlag==1){
+                $('#readonlyFlag').prop('checked','checked');
+            }
+            $('#repeatFlag').combobox('select',row.repeatFlag);
+            if(row.nullFlag==1){
+                $('#nullFlag').prop('checked','checked');
+            }
+            if(row.refFlag==1){
+                $('#refFlag').prop('checked','checked');
+            }
+            $('#refString').textbox('setValue',row.refString);
+            $('#refIdStr').textbox('setValue',row.refIdStr);
+            $('#refTextStr').textbox('setValue',row.refTextStr);
+            $('#defaultValue').textbox('setValue',row.defaultValue);
+        }
+
+        function DeleteDetail(){
+            var row = $('#detailList').datagrid('getSelected');
+            if (row==null) {
+                $.messager.alert("操作失败", "未选择要删除的明细数据！");
+                return;
+            }
+
+            $.messager.confirm('确认','您确认想要删除该条记录吗？',function(r){
+                if (r){
+                    $('#formDetail').form('clear');
+                    $('#detailPlayFlag').val('3');
+                    $('#detailId').val(row.detailId);
+                    $('#formDetail').form('submit');
+                }
+            });
+        }
+
+    </script>
+    <style type="text/css">
+        .trPlay{
+            height:30px
+        }
+        .tdTitle{
+            width:100px;
+            text-align: right
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center'" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
+        <div id="divToolBar">
+            <table style="border: 0; height:60px">
+                <tr>
+                    <td>
+                        <input type="button" value="新增基础模板" onclick="showBaseMainDialog(1);"/>
+                        <input type="button" value="编辑基础模板" onclick="showBaseMainDialog(2);"/>
+                        <input type="button" value="删除基础模板" onclick="deleteBaseMain();"/> |
+                        <input type="button" value="管理模板明细" onclick="showBaseDetail();"/>
+                    </td>
+                </tr>
+                <tr><td>
+                    模板名称<input id="pBsName" name="pBsName" />
+                    表名称<input id="pTableName" name="pTableName"/>
+                    <input type="button" value="查询" onclick="LoadGridData();"/>
+                </td></tr>
+            </table>
+        </div>
+        <table id="baseMainList"></table>
+        <div id="baseMainDialog" style="display:none;">
+            <form id="formBaseMain" method="post"><input type="hidden" id="playFlag" name="playFlag" />
+            <table style="width:100%">
+                <tr class="trPlay">
+                    <td class="tdTitle">编码</td><td><input id="bsId" name="bsId" class="easyui-textbox" style="width:80px" readonly="readonly" /></td>
+                    <td class="tdTitle">基础模板名称</td><td><input id="bsName" name="bsName" class="easyui-textbox" style="width:140px" /></td>
+                    <td class="tdTitle">表名称</td><td><input id="tableName" name="tableName" class="easyui-textbox" style="width:140px" /></td>
+                    <td style="width:50px"></td>
+                </tr>
+                <tr class="trPlay">
+                    <td class="tdTitle">主键字段</td><td><input id="keyField" name="keyField" class="easyui-textbox" style="width:140px" /></td>
+                    <td class="tdTitle">自动生成主键</td><td><input id="keyFieldAutoCreate" name="keyFieldAutoCreate" type="checkbox" value="1" checked="checked" /></td>
+                    <td class="tdTitle">主键长度</td>
+                    <td><input id="keyFieldLength" name="keyFieldLength" class="easyui-numberspinner" data-options="min:0,max:9" style="width:50px" />(0代表整形)</td>
+                    <td></td>
+                </tr>
+                <tr class="trPlay">
+                    <td class="tdTitle">默认排序字段</td><td><input id="sortField" name="sortField" class="easyui-textbox" style="width:140px" /></td>
+                    <td class="tdTitle">删除验证表名</td><td><input id="checkUseTable" name="checkUseTable" class="easyui-textbox" style="width:140px" /></td>
+                    <td class="tdTitle">删除验证字段</td><td><input id="checkUseField" name="checkUseField" class="easyui-textbox" style="width:140px" /></td>
+                    <td></td>
+                </tr>
+                <tr class="trPlay"><td class="tdTitle">字段字符串</td><td colspan="6"><input id="fieldStr" name="fieldStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:60px" /></td></tr>
+                <tr class="trPlay"><td class="tdTitle">表格字符串</td><td colspan="6"><input id="tableStr" name="tableStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:60px" /></td></tr>
+                <tr class="trPlay"><td class="tdTitle">条件字符串</td><td colspan="6"><input id="conditionStr" name="conditionStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:60px" /></td></tr>
+                <tr style="height:50px">
+                    <td></td>
+                    <td colspan="6">
+                        <input type="submit" value="保存模板" />
+                        <input type="button" value="关闭窗口" onclick="CloseDialog();" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div id="baseDetailDialog" style="display: none">
+            <div id="baseDetailLayout" class="easyui-layout" data-options="fit:true">
+                <div data-options="region:'center',split:false,border:false" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
+                    <div id="detailToolBar" style="height:30px">
+                        <table >
+                            <tr><td>
+                                <input type="button" value="新增明细" onclick="AddDetail();" />
+                                <input type="button" value="编辑明细" onclick="EditDetail();" />
+                                <input type="button" value="删除明细" onclick="DeleteDetail();" />
+                            </td></tr>
+                        </table>
+                    </div>
+                    <table id="detailList"></table>
+                </div>
+                <div data-options="region:'south',split:false,border:false" style="overflow:hidden;border:none;padding:8px 8px 2px 8px;height:170px;">
+                    <div id="detailPanel" class="easyui-panel" data-options="fit:true, title:'新增明细'">
+                        <form id="formDetail" method="post">
+                            <input type="hidden" id="detailPlayFlag" name="detailPlayFlag" />
+                            <input type="hidden" id="detailId" name="detailId" />
+                            <input type="hidden" id="pBsId" name="pBsId" />
+                            <table>
+                                <tr class="trPlay">
+                                    <td class="tdTitle">字段字符串</td><td><input id="fieldCode" name="fieldCode" class="easyui-textbox" style="width:120px" data-options="required:true" /></td>
+                                    <td class="tdTitle">字段名称</td><td><input id="fieldName" name="fieldName" class="easyui-textbox" style="width:120px" data-options="required:true" /></td>
+                                    <td class="tdTitle">字段类型</td><td>
+                                    <input id="fieldType" name="fieldType" class="easyui-combobox"
+                                           data-options="url:'/dict/getDict?flag=4',valueField:'id',textField:'text',editable:false,panelHeight:'auto',
+                                           onLoadSuccess: function () { var data = $('#fieldType').combobox('getData'); if (data.length > 0) { $('#fieldType').combobox('select', data[0].id); }}"
+                                           style="width:140px" /></td>
+                                    <td class="tdTitle">是否显示</td><td><input id="showFlag" name="showFlag" type="checkbox" value="1" /></td>
+                                    <td class="tdTitle">宽度</td><td><input id="showWidth" name="showWidth" class="easyui-numberbox" style="width:60px" data-options="value:100" /></td>
+                                    <td class="tdTitle">高度</td><td><input id="showHeight" name="showHeight" class="easyui-numberbox" style="width:60px" data-options="value:35" /></td>
+                                </tr>
+                                <tr class="trPlay">
+                                    <td class="tdTitle">是否可查询</td><td><input id="searchFlag" name="searchFlag" type="checkbox" value="1" /></td>
+                                    <td class="tdTitle">是否编辑</td><td><input id="editFlag" name="editFlag" type="checkbox" value="1" /></td>
+                                    <td class="tdTitle">是否只读</td><td><input id="readonlyFlag" name="readonlyFlag" type="checkbox" value="1" /></td>
+                                    <td class="tdTitle">是否重复</td><td><input id="repeatFlag" name="repeatFlag" class="easyui-combobox" style="width:80px"
+                                        data-options="valueField:'id',textField:'text',editable:false,panelHeight:'auto',data:[{'id':1,'text':'允许重复'},{'id':0,'text':'不可重复'},{'id':2,'text':'主键'}]" /></td>
+                                    <td class="tdTitle">是否可空</td><td><input id="nullFlag" name="nullFlag" type="checkbox" value="1" /></td>
+                                    <td class="tdTitle">是否引用</td><td><input id="refFlag" name="refType" type="checkbox" value="1" /></td>
+                                </tr>
+                                <tr class="trPlay">
+                                    <td class="tdTitle">引用Url</td><td colspan="5"><input id="refString" name="refString" class="easyui-textbox" style="width:560px" /></td>
+                                    <td class="tdTitle">引用ID</td><td><input id="refIdStr" name="refIdStr" class="easyui-textbox" style="width:100px" /></td>
+                                    <td class="tdTitle">引用TEXT</td><td><input id="refTextStr" name="refTextStr" class="easyui-textbox" style="width:100px" /></td>
+                                    <td class="tdTitle">默认值</td><td><input id="defaultValue" name="defaultValue" class="easyui-textbox" style="width:100px" /></td>
+                                </tr>
+                                <tr class="trPlay"><td></td><td colspan="11"><input type="submit" value="保存明细" /></td></tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

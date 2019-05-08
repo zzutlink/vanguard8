@@ -1,0 +1,122 @@
+23:33:51.148 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 5696 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+23:33:51.159 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+23:33:51.176 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+23:35:04.222 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 13640 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+23:35:04.227 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+23:35:04.233 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+23:36:04.423 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 13544 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+23:36:04.429 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+23:36:04.431 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+23:41:32.777 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 10272 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+23:41:32.784 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+23:41:32.787 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+23:55:02.193 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 13428 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+23:55:02.199 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+23:55:02.234 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+23:55:10.724 logback INFO  c.v.f.interceptor.InterceptorConfig - 开始注册权限拦截器……
+23:55:10.725 logback INFO  c.v.f.interceptor.InterceptorConfig - 权限拦截器注册完成！
+23:55:10.864 logback INFO  c.v.f.interceptor.InterceptorConfig - 开放静态资源访问……
+23:55:12.404 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 11.06 seconds (JVM running for 12.91)
+23:55:23.085 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:23.086 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:23.092 logback DEBUG c.v.f.interceptor.AuthInterceptor - 未找到对应的session值
+23:55:23.137 logback DEBUG c.v.f.controller.LoginController - login/index
+23:55:23.989 logback DEBUG c.v.f.controller.LoginController - /login/code
+23:55:25.537 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:25.537 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:25.537 logback DEBUG c.v.f.interceptor.AuthInterceptor - 未找到对应的session值
+23:55:25.541 logback DEBUG c.v.f.controller.LoginController - login/index
+23:55:27.978 logback DEBUG c.v.f.controller.LoginController - admin----111
+23:55:28.048 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+23:55:28.224 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+23:55:28.302 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+23:55:28.459 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:28.459 logback DEBUG c.v.f.interceptor.AuthInterceptor - /main/main
+23:55:28.860 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:28.860 logback DEBUG c.v.f.interceptor.AuthInterceptor - /function/getMenu
+23:55:28.862 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+23:55:28.868 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+23:55:28.903 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 10
+23:55:28.904 logback DEBUG c.v.f.controller.FunctionController - 000---系统管理
+23:55:28.904 logback DEBUG c.v.f.controller.FunctionController - 000001---个人密码修改
+23:55:28.904 logback DEBUG c.v.f.controller.FunctionController - 000002---组织架构管理
+23:55:28.904 logback DEBUG c.v.f.controller.FunctionController - 000003---登录账号管理
+23:55:28.904 logback DEBUG c.v.f.controller.FunctionController - 000004---系统模块管理
+23:55:28.905 logback DEBUG c.v.f.controller.FunctionController - 000005---运行信息监控
+23:55:28.905 logback DEBUG c.v.f.controller.FunctionController - 000006---基础模板设定
+23:55:28.905 logback DEBUG c.v.f.controller.FunctionController - 000007---查询模板设定
+23:55:28.905 logback DEBUG c.v.f.controller.FunctionController - 000008---基础模板测试
+23:55:28.905 logback DEBUG c.v.f.controller.FunctionController - 000009---查询模板测试
+23:55:28.909 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:28.909 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:31.383 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:31.384 logback DEBUG c.v.f.interceptor.AuthInterceptor - /user/changePwd
+23:55:32.046 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:32.046 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/deptsta
+23:55:32.206 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:32.206 logback DEBUG c.v.f.interceptor.AuthInterceptor - /deptsta/getDeptsta
+23:55:32.221 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==>  Preparing: select ds_id, ds_code, ds_name, ds_total_name, ds_flag, lock_flag, (select count(*) from sys_deptsta a where ds_code like concat(sys_deptsta.ds_code,'___')) as childCount from sys_deptsta where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=?),''),'___') order by ds_flag desc,ds_code 
+23:55:32.266 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - ==> Parameters: 0(Integer)
+23:55:32.350 logback DEBUG c.v.f.dao.DeptstaDao.selectNextLevel - <==      Total: 12
+23:55:32.896 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:32.896 logback DEBUG c.v.f.interceptor.AuthInterceptor - /user/user
+23:55:33.092 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:33.092 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:33.139 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:33.139 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:33.750 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:33.751 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:41.925 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:41.925 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:49.243 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:49.243 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:53.692 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:53.692 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:54.398 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:54.398 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:54.820 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:54.820 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:55:55.268 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:55:55.268 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:56:07.775 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:07.775 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:56:08.919 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:08.919 logback DEBUG c.v.f.interceptor.AuthInterceptor - /search/mana
+23:56:08.955 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:08.955 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:56:08.993 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:08.993 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:56:11.424 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:11.424 logback DEBUG c.v.f.interceptor.AuthInterceptor - /base/base
+23:56:11.426 logback DEBUG c.v.base.controller.BaseController - 1
+23:56:11.426 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select * from bas_detail where bs_id=? 
+23:56:11.427 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+23:56:11.433 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 8
+23:56:11.728 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:11.729 logback DEBUG c.v.f.interceptor.AuthInterceptor - /base/getList
+23:56:11.731 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:56:11.734 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:56:11.736 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:56:11.739 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select setup_id,setup_intr,setup_value,date_format(setup_time,'%Y-%m-%d') as setup_time,setup_rich,date_format(setup_datetime,'%Y-%m-%d %H:%i:%s') as setup_datetime,sys_dept.dept_id,sys_dept.dept_name from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1  limit 0,20
+23:56:11.765 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select setup_id,setup_intr,setup_value,date_format(setup_time,'%Y-%m-%d') as setup_time,setup_rich,date_format(setup_datetime,'%Y-%m-%d %H:%i:%s') as setup_datetime,sys_dept.dept_id,sys_dept.dept_name from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1 limit 0,20 
+23:56:11.767 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+23:56:11.805 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+23:56:11.806 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+23:56:11.807 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+23:56:11.809 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+23:56:11.810 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1 
+23:56:11.810 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1 
+23:56:11.812 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+23:56:11.813 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+23:56:16.232 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:16.233 logback DEBUG c.v.f.interceptor.AuthInterceptor - /search/search
+23:56:16.234 logback DEBUG c.v.s.d.ConditionDao.selectByModelId - ==>  Preparing: select condition_id, model_id, order_value, conditionCode, conditionName, show_width, field_type_id, init_value, must_flag, ref_flag, ref_string, ref_id_str, ref_text_str, blank_flag from srh_condition where model_id = ? 
+23:56:16.235 logback DEBUG c.v.s.d.ConditionDao.selectByModelId - ==> Parameters: 1(Integer)
+23:56:16.237 logback DEBUG c.v.s.d.ConditionDao.selectByModelId - <==      Total: 0
+23:56:16.238 logback DEBUG c.v.s.dao.FieldDao.selectByModelId - ==>  Preparing: select field_id, model_id, field_name, field_code, field_type_id, order_value, show_width, show_footer, footer_type_id, footer_str, align from srh_field where model_id = ? 
+23:56:16.239 logback DEBUG c.v.s.dao.FieldDao.selectByModelId - ==> Parameters: 1(Integer)
+23:56:16.246 logback DEBUG c.v.s.dao.FieldDao.selectByModelId - <==      Total: 3
+23:56:16.309 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:16.309 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error
+23:56:16.392 logback DEBUG c.v.f.interceptor.AuthInterceptor - 执行preHandle方法-->01
+23:56:16.392 logback DEBUG c.v.f.interceptor.AuthInterceptor - /error

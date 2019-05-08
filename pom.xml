@@ -12,6 +12,7 @@
         <module>framework</module>
         <module>base</module>
         <module>common</module>
+        <module>search</module>
     </modules>
     <packaging>pom</packaging>
 

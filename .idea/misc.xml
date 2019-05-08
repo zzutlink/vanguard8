@@ -4,13 +4,15 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/../vanguard8/pom.xml" />
-        <option value="$PROJECT_DIR$/../vanguard8/framework/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/framework/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/../vanguard8/framework/base/pom.xml" />
+        <option value="$PROJECT_DIR$/core/pom.xml" />
+        <option value="$PROJECT_DIR$/framework/base/pom.xml" />
+        <option value="$PROJECT_DIR$/user/pom.xml" />
       </set>
     </option>
   </component>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.search.dao.ModelDao">
+  <resultMap id="BaseResultMap" type="com.vanguard8.search.entity.Model">
+    <id column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="sql_type_id" jdbcType="BIT" property="sqlTypeId" />
+    <result column="pagination" jdbcType="BIT" property="pagination" />
+    <result column="sql_str" jdbcType="VARCHAR" property="sqlStr" />
+    <result column="sort_field" jdbcType="VARCHAR" property="sortField" />
+    <result column="export_flag" jdbcType="BIT" property="exportFlag" />
+    <result column="print_flag" jdbcType="BIT" property="printFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    model_id, model_name, sql_type_id, pagination, sql_str, sort_field, export_flag, 
+    print_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from srh_model
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from srh_model
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.vanguard8.search.entity.Model">
+    <selectKey keyProperty="modelId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into srh_model (model_name, sql_type_id, pagination, 
+      sql_str, sort_field, export_flag, 
+      print_flag)
+    values (#{modelName,jdbcType=VARCHAR}, #{sqlTypeId,jdbcType=BIT}, #{pagination,jdbcType=BIT}, 
+      #{sqlStr,jdbcType=VARCHAR}, #{sortField,jdbcType=VARCHAR}, #{exportFlag,jdbcType=BIT}, 
+      #{printFlag,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vanguard8.search.entity.Model">
+    <selectKey keyProperty="modelId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into srh_model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="modelName != null">
+        model_name,
+      </if>
+      <if test="sqlTypeId != null">
+        sql_type_id,
+      </if>
+      <if test="pagination != null">
+        pagination,
+      </if>
+      <if test="sqlStr != null">
+        sql_str,
+      </if>
+      <if test="sortField != null">
+        sort_field,
+      </if>
+      <if test="exportFlag != null">
+        export_flag,
+      </if>
+      <if test="printFlag != null">
+        print_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="modelName != null">
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlTypeId != null">
+        #{sqlTypeId,jdbcType=BIT},
+      </if>
+      <if test="pagination != null">
+        #{pagination,jdbcType=BIT},
+      </if>
+      <if test="sqlStr != null">
+        #{sqlStr,jdbcType=VARCHAR},
+      </if>
+      <if test="sortField != null">
+        #{sortField,jdbcType=VARCHAR},
+      </if>
+      <if test="exportFlag != null">
+        #{exportFlag,jdbcType=BIT},
+      </if>
+      <if test="printFlag != null">
+        #{printFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.search.entity.Model">
+    update srh_model
+    <set>
+      <if test="modelName != null">
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlTypeId != null">
+        sql_type_id = #{sqlTypeId,jdbcType=BIT},
+      </if>
+      <if test="pagination != null">
+        pagination = #{pagination,jdbcType=BIT},
+      </if>
+      <if test="sqlStr != null">
+        sql_str = #{sqlStr,jdbcType=VARCHAR},
+      </if>
+      <if test="sortField != null">
+        sort_field = #{sortField,jdbcType=VARCHAR},
+      </if>
+      <if test="exportFlag != null">
+        export_flag = #{exportFlag,jdbcType=BIT},
+      </if>
+      <if test="printFlag != null">
+        print_flag = #{printFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vanguard8.search.entity.Model">
+    update srh_model
+    set model_name = #{modelName,jdbcType=VARCHAR},
+      sql_type_id = #{sqlTypeId,jdbcType=BIT},
+      pagination = #{pagination,jdbcType=BIT},
+      sql_str = #{sqlStr,jdbcType=VARCHAR},
+      sort_field = #{sortField,jdbcType=VARCHAR},
+      export_flag = #{exportFlag,jdbcType=BIT},
+      print_flag = #{printFlag,jdbcType=BIT}
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </update>
+</mapper>

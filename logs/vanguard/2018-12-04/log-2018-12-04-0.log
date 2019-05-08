@@ -1,0 +1,1177 @@
+00:10:45.653 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:10:45.664 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:10:45.963 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:10:45.963 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:10:45.965 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:10:45.965 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:10:45.968 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+00:10:47.013 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:10:47.013 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:10:47.015 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:10:47.015 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:10:47.016 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:11:02.581 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:11:02.581 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:11:02.945 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:11:02.945 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:11:02.946 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:11:02.947 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:11:02.949 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+00:11:06.664 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:11:06.665 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:11:06.666 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:11:06.666 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:11:06.668 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:11:27.049 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:11:27.050 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:11:27.051 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:11:27.052 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 2000(Integer)
+00:11:27.055 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+00:11:28.428 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:11:28.429 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:11:28.430 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:11:28.431 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:11:28.433 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:15:58.442 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:15:58.442 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:15:58.770 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:15:58.770 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:15:58.772 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:15:58.773 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:15:58.775 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+00:16:00.830 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:16:00.830 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:16:00.831 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:16:00.831 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:16:00.833 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:19:05.156 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:19:05.156 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+00:19:05.156 logback DEBUG c.v.base.controller.BaseController - 1
+00:19:05.157 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==>  Preparing: select bas_detail.*,bas_field_type.field_type_name from bas_detail inner join bas_field_type on bas_detail.field_type=bas_field_type.field_type where bas_detail.bs_id=? order by bas_detail.detail_id 
+00:19:05.161 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - ==> Parameters: 1(Integer)
+00:19:05.182 logback DEBUG c.v.base.dao.BaseDao.getBaseDetail - <==      Total: 8
+00:19:05.443 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:19:05.443 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:19:05.444 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select dept_id as id,dept_name as text from sys_dept where dept_name like concat('%',?,'%') 
+00:19:05.445 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: (String)
+00:19:05.446 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 1
+00:19:05.631 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:19:05.631 logback DEBUG c.v.interceptor.AuthInterceptor - /base/getList
+00:19:05.632 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+00:19:05.632 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+00:19:05.633 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+00:19:05.634 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select setup_id,setup_intr,setup_value,date_format(setup_time,'%Y-%m-%d') as setup_time,setup_rich,date_format(setup_datetime,'%Y-%m-%d %H:%i:%s') as setup_datetime,sys_dept.dept_id,sys_dept.dept_name from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1  limit 0,20
+00:19:05.635 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==>  Preparing: select setup_id,setup_intr,setup_value,date_format(setup_time,'%Y-%m-%d') as setup_time,setup_rich,date_format(setup_datetime,'%Y-%m-%d %H:%i:%s') as setup_datetime,sys_dept.dept_id,sys_dept.dept_name from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1 limit 0,20 
+00:19:05.635 logback DEBUG c.v.base.dao.BaseDao.executeSelect - ==> Parameters: 
+00:19:05.639 logback DEBUG c.v.base.dao.BaseDao.executeSelect - <==      Total: 20
+00:19:05.639 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==>  Preparing: select a.* from bas_main a where a.bs_id=? limit 1 
+00:19:05.639 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - ==> Parameters: 1(Integer)
+00:19:05.641 logback DEBUG c.v.base.dao.BaseDao.getBaseMain - <==      Total: 1
+00:19:05.641 logback DEBUG c.v.b.service.impl.BaseServiceImpl - select count(*) from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1 
+00:19:05.641 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==>  Preparing: select count(*) from sys_setup left join sys_dept on sys_setup.dept_id=sys_dept.dept_id where 1=1 
+00:19:05.642 logback DEBUG c.v.base.dao.BaseDao.executeCount - ==> Parameters: 
+00:19:05.643 logback DEBUG c.v.base.dao.BaseDao.executeCount - <==      Total: 1
+00:24:34.551 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:24:34.551 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:24:34.851 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:24:34.851 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:24:34.853 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:24:34.853 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:24:34.855 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+00:24:36.917 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:24:36.917 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:24:36.925 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:24:36.925 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:24:36.927 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:25:10.679 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:25:10.679 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:25:10.681 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:25:10.681 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:25:10.684 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:25:32.103 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:25:32.103 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:25:51.501 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==>  Preparing: delete from sys_sta_function where func_id=? 
+00:25:51.502 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==> Parameters: 999102(Integer)
+00:25:51.505 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - <==    Updates: 0
+00:26:10.018 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==>  Preparing: delete from sys_function where func_id = ? 
+00:26:10.019 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==> Parameters: 999102(Integer)
+00:26:10.089 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - <==    Updates: 1
+00:26:10.200 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:26:10.200 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:26:10.201 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:26:10.201 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:26:10.204 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+00:26:18.444 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:26:18.445 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:26:18.762 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:26:18.763 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:26:18.764 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:26:18.764 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:26:18.766 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+00:26:24.827 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:26:24.827 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:26:24.829 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:26:24.830 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 999000(Integer)
+00:26:24.833 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+00:28:05.389 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:05.389 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:28:05.400 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:28:05.400 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:28:05.402 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:28:21.435 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:21.435 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:28:21.462 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:21.462 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:28:33.848 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:33.848 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:28:33.854 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:33.854 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:28:46.726 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:46.727 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:28:46.730 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:46.730 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:28:46.992 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:46.992 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:28:46.995 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:46.995 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:28:47.172 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:47.172 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:28:47.174 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:47.174 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:28:47.364 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:47.364 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:28:47.367 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:47.367 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:28:47.582 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:47.582 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:28:47.585 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:28:47.585 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:34:55.525 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:34:55.526 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:34:55.825 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:34:55.825 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:34:55.827 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:34:55.827 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:34:55.830 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+00:34:58.911 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:34:58.913 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:34:58.915 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:34:58.915 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:34:58.920 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:35:15.848 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:35:15.849 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:35:15.853 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:35:15.853 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+00:35:38.378 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:35:38.378 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:35:38.379 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:35:38.379 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 4000(Integer)
+00:35:38.380 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+00:35:40.106 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:35:40.106 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:35:40.107 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:35:40.107 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:35:40.109 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:35:51.270 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:35:51.271 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+00:36:11.909 logback DEBUG c.v.f.d.F.updateByPrimaryKey - ==>  Preparing: update sys_function set func_code = ?, func_name = ?, func_path = ?, is_last = ? where func_id = ? 
+00:36:11.950 logback DEBUG c.v.f.d.F.updateByPrimaryKey - ==> Parameters: 005(String), 0040011(String), dasasda(String), 1(Byte), 4001(Integer)
+00:36:11.951 logback DEBUG c.v.f.d.F.updateByPrimaryKey - <==    Updates: 1
+00:36:12.042 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:36:12.042 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:36:12.044 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:36:12.045 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:36:12.047 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+00:37:48.964 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:37:48.964 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:37:49.244 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:37:49.244 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:37:49.254 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:37:49.254 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:37:49.256 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+00:37:50.603 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:37:50.604 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:37:50.605 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:37:50.606 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 4000(Integer)
+00:37:50.608 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+00:38:13.464 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+00:38:13.465 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+00:38:13.465 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+00:38:15.101 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+00:38:15.102 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+00:38:15.135 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+00:38:15.613 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.366 seconds (JVM running for 6392.314)
+00:38:48.957 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+00:38:48.958 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+00:38:48.958 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+00:38:59.762 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+00:38:59.762 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+00:38:59.763 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+00:39:02.295 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+00:39:02.296 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+00:39:02.329 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+00:39:02.761 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 3.118 seconds (JVM running for 6439.46)
+00:39:10.400 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+00:39:10.400 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+00:39:10.400 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+00:39:19.480 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+00:39:19.480 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+00:39:19.481 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+00:39:22.462 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+00:39:22.463 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+00:39:22.501 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+00:39:23.018 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 3.641 seconds (JVM running for 6459.718)
+00:39:26.526 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+00:39:26.526 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+00:39:26.527 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+00:48:40.678 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+00:48:40.678 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+00:48:40.678 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+00:48:44.109 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+00:48:44.110 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+00:48:44.142 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+00:48:44.646 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 4.06 seconds (JVM running for 7021.331)
+00:48:46.359 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:48:46.360 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:48:46.786 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:48:46.786 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:48:46.797 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:48:46.798 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:48:46.802 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+00:48:54.793 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:48:54.794 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:48:54.800 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:48:54.800 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:48:54.802 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:49:01.080 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:49:01.081 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:49:01.082 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:49:01.082 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 4000(Integer)
+00:49:01.084 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+00:49:02.429 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:49:02.430 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:49:02.431 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:49:02.431 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:49:02.433 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:52:20.169 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:52:20.169 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:52:20.638 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:52:20.638 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:52:20.640 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:52:20.641 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:52:20.644 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+00:52:23.636 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:52:23.637 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:52:23.652 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:52:23.652 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:52:23.656 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+00:54:06.017 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:54:06.017 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+00:54:06.399 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:54:06.400 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+00:54:06.413 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+00:54:06.414 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+00:54:06.418 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+00:54:12.344 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+00:54:12.344 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+00:54:12.345 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+00:54:12.345 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+00:54:12.347 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+01:00:49.541 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:00:49.541 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:00:49.541 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:00:51.335 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:00:51.336 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:00:51.365 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:00:51.926 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.498 seconds (JVM running for 7748.592)
+01:00:59.509 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:00:59.509 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:00:59.510 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:01:01.383 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:01:01.384 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:01:01.412 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:01:01.886 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.499 seconds (JVM running for 7758.552)
+01:02:01.186 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:02:01.187 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:02:01.187 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:02:02.809 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:02:02.810 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:02:02.837 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:02:03.364 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.25 seconds (JVM running for 7820.029)
+01:02:13.781 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:02:13.781 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:02:13.781 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:02:15.676 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:02:15.677 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:02:15.712 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:02:16.588 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.917 seconds (JVM running for 7833.252)
+01:02:19.937 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:02:19.938 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:02:19.938 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:02:21.501 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:02:21.503 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:02:21.536 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:02:22.000 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.152 seconds (JVM running for 7838.663)
+01:02:38.288 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:02:38.288 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:02:38.288 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:02:40.122 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:02:40.122 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:02:40.150 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:02:40.598 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.4 seconds (JVM running for 7857.26)
+01:02:45.434 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:02:45.434 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:02:45.434 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:02:47.047 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:02:47.047 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:02:47.072 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:02:47.545 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.211 seconds (JVM running for 7864.208)
+01:04:13.281 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:04:13.283 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+01:04:13.849 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:04:13.849 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:04:13.875 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:04:13.877 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:04:13.880 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+01:04:16.623 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:04:16.624 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+01:04:16.628 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+01:04:16.628 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+01:04:16.630 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+01:04:27.179 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:04:27.179 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:04:56.049 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+01:04:56.054 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: (String)
+01:04:56.093 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 1
+01:05:47.941 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+01:05:47.944 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+01:05:47.948 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+01:05:47.949 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+01:05:47.967 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), 000(String), 005002(String), 121212(String), 1(Byte)
+01:05:47.970 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - <==    Updates: 1
+01:05:48.120 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:05:48.120 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:05:48.122 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:05:48.122 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:05:48.131 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+01:06:00.259 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:06:00.260 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+01:06:00.261 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+01:06:00.261 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+01:06:00.267 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+01:06:04.008 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:06:04.008 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:06:04.011 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+01:06:04.011 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: (String)
+01:06:04.013 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 1
+01:06:04.014 logback DEBUG c.v.f.d.F.updateByPrimaryKey - ==>  Preparing: update sys_function set func_code = ?, func_name = ?, func_path = ? where func_id = ? 
+01:06:04.028 logback DEBUG c.v.f.d.F.updateByPrimaryKey - ==> Parameters: 000(String), 005002(String), 121212(String), 999102(Integer)
+01:06:04.029 logback DEBUG c.v.f.d.F.updateByPrimaryKey - <==    Updates: 1
+01:06:04.080 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:06:04.081 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:06:04.082 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:06:04.082 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:06:04.089 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+01:06:21.131 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:06:21.132 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:06:21.152 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==>  Preparing: delete from sys_sta_function where func_id=? 
+01:06:21.153 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==> Parameters: 999102(Integer)
+01:06:21.154 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - <==    Updates: 0
+01:06:21.155 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==>  Preparing: delete from sys_function where func_id = ? 
+01:06:21.155 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==> Parameters: 999102(Integer)
+01:06:21.188 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - <==    Updates: 1
+01:06:21.265 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:06:21.265 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:06:21.267 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:06:21.267 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:06:21.268 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+01:06:25.348 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:06:25.348 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+01:06:25.350 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+01:06:25.350 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+01:06:25.353 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+01:06:34.415 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:06:34.416 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:06:34.421 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+01:06:34.421 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: (String)
+01:06:34.422 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 1
+01:09:00.464 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+01:09:00.465 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+01:09:00.466 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+01:09:00.466 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+01:09:00.466 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), 000(String), 005002(String), fsdafdsa(String), 1(Byte)
+01:09:00.467 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - <==    Updates: 1
+01:09:00.568 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:09:00.568 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:09:00.569 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:09:00.569 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:09:00.570 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+01:09:06.190 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:09:06.190 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:09:06.195 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==>  Preparing: delete from sys_sta_function where func_id=? 
+01:09:06.196 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==> Parameters: 999102(Integer)
+01:09:06.196 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - <==    Updates: 0
+01:09:06.197 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==>  Preparing: delete from sys_function where func_id = ? 
+01:09:06.198 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==> Parameters: 999102(Integer)
+01:09:06.228 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - <==    Updates: 1
+01:09:06.327 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:09:06.327 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:09:06.328 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:09:06.328 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:09:06.330 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+01:09:08.870 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:09:08.870 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+01:09:08.871 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+01:09:08.871 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+01:09:08.873 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+01:09:17.583 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:09:17.583 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:09:43.155 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+01:09:43.156 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: (String)
+01:09:43.157 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 1
+01:10:22.783 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+01:10:22.784 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+01:10:22.786 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+01:10:22.786 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+01:10:22.787 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), 000(String), 005002(String), 121212(String), 1(Byte)
+01:10:22.820 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - <==    Updates: 1
+01:10:22.932 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:10:22.932 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:10:22.933 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:10:22.934 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:10:22.936 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+01:10:26.317 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68720 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+01:10:26.318 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+01:10:26.318 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+01:10:28.189 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+01:10:28.190 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+01:10:28.214 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+01:10:28.647 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.463 seconds (JVM running for 8325.298)
+01:10:28.791 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:10:28.792 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:10:28.812 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==>  Preparing: delete from sys_sta_function where func_id=? 
+01:10:28.813 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==> Parameters: 999102(Integer)
+01:10:28.814 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - <==    Updates: 0
+01:10:28.814 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==>  Preparing: delete from sys_function where func_id = ? 
+01:10:28.815 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==> Parameters: 999102(Integer)
+01:10:28.845 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - <==    Updates: 1
+01:10:28.940 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:10:28.940 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:10:28.942 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:10:28.943 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:10:28.945 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+01:10:54.207 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:10:54.208 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+01:10:55.018 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:10:55.019 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:10:55.019 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:10:55.020 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:10:55.022 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+01:10:57.298 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:10:57.299 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+01:10:57.311 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+01:10:57.311 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+01:10:57.313 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+01:11:06.147 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:11:06.147 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:11:11.034 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+01:11:11.035 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: 005(String)
+01:11:11.037 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 1
+01:11:22.817 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+01:11:22.818 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+01:11:22.821 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+01:11:22.822 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+01:11:22.822 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), 005002(String), 005002(String), fdsafdsa(String), 1(Byte)
+01:11:22.855 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - <==    Updates: 1
+01:11:22.987 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:11:22.987 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:11:22.988 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:11:22.988 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:11:23.001 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+01:11:30.745 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:11:30.745 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:11:30.747 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:11:30.747 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 5000(Integer)
+01:11:30.749 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 2
+01:12:03.076 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:12:03.076 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:12:03.077 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:12:03.077 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 999000(Integer)
+01:12:03.079 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+01:12:12.682 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:12:12.682 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+01:12:12.684 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+01:12:12.684 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+01:12:12.686 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+01:12:23.766 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:12:23.767 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+01:12:23.769 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+01:12:23.769 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: (String)
+01:12:23.770 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 1
+01:12:23.771 logback DEBUG c.v.f.d.F.updateByPrimaryKey - ==>  Preparing: update sys_function set func_code = ?, func_name = ?, func_path = ? where func_id = ? 
+01:12:23.772 logback DEBUG c.v.f.d.F.updateByPrimaryKey - ==> Parameters: 000(String), 0050022(String), fdsafdsa(String), 999102(Integer)
+01:12:23.824 logback DEBUG c.v.f.d.F.updateByPrimaryKey - <==    Updates: 1
+01:12:23.934 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:12:23.935 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:12:23.935 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:12:23.936 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+01:12:23.937 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+01:12:26.359 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+01:12:26.360 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+01:12:26.360 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+01:12:26.360 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 5000(Integer)
+01:12:26.362 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+08:25:42.956 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:25:42.956 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+08:25:42.957 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+08:25:42.957 logback DEBUG c.v.interceptor.AuthInterceptor - ajax重定向写入……
+08:25:42.998 logback DEBUG c.v.f.controller.LoginController - login/index
+08:25:43.349 logback DEBUG c.v.f.controller.LoginController - /login/code
+08:26:15.541 logback DEBUG c.v.f.controller.LoginController - admin----111
+08:26:15.562 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+08:26:15.562 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+08:26:15.564 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+08:26:15.610 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:26:15.610 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+08:26:16.165 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:26:16.166 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+08:26:16.166 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+08:26:16.167 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+08:26:16.204 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 18
+08:26:16.205 logback DEBUG c.v.f.controller.FunctionController - 001---001
+08:26:16.205 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+08:26:16.205 logback DEBUG c.v.f.controller.FunctionController - 002---002
+08:26:16.205 logback DEBUG c.v.f.controller.FunctionController - 002001---002001
+08:26:16.205 logback DEBUG c.v.f.controller.FunctionController - 003---003000
+08:26:16.205 logback DEBUG c.v.f.controller.FunctionController - 004---004
+08:26:16.205 logback DEBUG c.v.f.controller.FunctionController - 004001---0040011
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 005---005
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 005001---005001
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999014---系统模块管理
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+08:26:16.206 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+08:26:18.723 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:26:18.724 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+08:26:19.237 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:26:19.237 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+08:26:19.238 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+08:26:19.239 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+08:26:19.241 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+08:26:20.825 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:26:20.825 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+08:26:20.826 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+08:26:20.827 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+08:26:20.829 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+08:27:19.323 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:27:19.323 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+08:27:19.324 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+08:27:19.324 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+08:27:19.325 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+08:28:46.563 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:28:46.563 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+08:28:48.234 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:28:48.234 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+08:28:48.237 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+08:28:48.237 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+08:28:48.240 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+08:28:49.279 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+08:28:49.279 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+08:28:49.284 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+08:28:49.284 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+08:28:49.300 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:46:09.494 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 71364 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+20:46:09.499 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+20:46:09.501 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+20:46:13.915 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+20:46:13.917 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+20:46:14.060 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+20:46:15.361 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 6.926 seconds (JVM running for 8.709)
+20:46:24.558 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:46:24.559 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+20:46:24.565 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+20:46:24.565 logback DEBUG c.v.interceptor.AuthInterceptor - 普通登录页面跳转……
+20:46:24.588 logback DEBUG c.v.f.controller.LoginController - login/index
+20:46:24.979 logback DEBUG c.v.f.controller.LoginController - login/index
+20:46:24.982 logback DEBUG c.v.f.controller.LoginController - /login/code
+20:46:25.075 logback DEBUG c.v.f.controller.LoginController - /login/code
+20:46:29.750 logback DEBUG c.v.f.controller.LoginController - admin----111
+20:46:29.785 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+20:46:29.893 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+20:46:29.917 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+20:46:30.000 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:46:30.000 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+20:46:30.287 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:46:30.287 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+20:46:30.293 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+20:46:30.298 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+20:46:30.315 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 18
+20:46:30.316 logback DEBUG c.v.f.controller.FunctionController - 001---001
+20:46:30.317 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+20:46:30.317 logback DEBUG c.v.f.controller.FunctionController - 002---002
+20:46:30.317 logback DEBUG c.v.f.controller.FunctionController - 002001---002001
+20:46:30.317 logback DEBUG c.v.f.controller.FunctionController - 003---003000
+20:46:30.317 logback DEBUG c.v.f.controller.FunctionController - 004---004
+20:46:30.317 logback DEBUG c.v.f.controller.FunctionController - 004001---0040011
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 005---005
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 005001---005001
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 999014---系统模块管理
+20:46:30.318 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定
+20:46:30.319 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+20:46:30.319 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+20:46:30.319 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+20:46:32.460 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:46:32.460 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:46:32.660 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:46:32.661 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:46:32.664 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:46:32.684 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:46:32.690 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:46:33.767 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:46:33.768 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:46:33.805 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:46:33.805 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:46:33.808 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:54:51.723 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:54:51.723 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:54:51.915 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:54:51.915 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:54:51.920 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:54:51.920 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:54:51.924 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:54:55.512 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:54:55.515 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:54:55.518 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:54:55.519 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:54:55.522 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:55:31.495 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:55:31.496 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:55:31.841 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:55:31.842 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:55:31.843 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:55:31.844 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:55:31.847 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:55:34.228 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:55:34.228 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:55:34.229 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:55:34.229 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:55:34.232 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:55:46.547 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:55:46.547 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:55:46.840 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:55:46.840 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:55:46.852 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:55:46.852 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:55:46.855 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:55:48.454 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:55:48.454 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:55:48.455 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:55:48.455 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:55:48.456 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:56:19.173 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:56:19.173 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:56:19.419 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:56:19.419 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:56:19.420 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:56:19.420 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:56:19.423 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:56:20.702 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:56:20.707 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:56:20.708 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:56:20.709 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:56:20.711 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:56:36.931 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:56:36.932 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:56:37.265 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:56:37.265 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:56:37.266 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:56:37.266 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:56:37.269 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:56:39.286 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:56:39.286 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:56:39.287 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:56:39.288 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:56:39.290 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:57:55.923 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:57:55.924 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:57:56.203 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:57:56.203 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:57:56.206 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:57:56.206 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:57:56.209 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:57:57.654 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:57:57.655 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:57:57.670 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:57:57.671 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:57:57.674 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+20:58:42.782 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:58:42.782 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+20:58:43.110 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:58:43.110 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+20:58:43.112 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+20:58:43.113 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+20:58:43.116 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+20:58:44.038 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+20:58:44.038 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+20:58:44.039 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+20:58:44.039 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+20:58:44.041 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:00:43.616 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:00:43.617 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:00:43.903 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:00:43.903 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:00:43.906 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:00:43.906 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:00:43.909 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:00:45.932 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:00:45.932 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:00:45.934 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:00:45.934 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:00:45.937 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:03:54.874 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:03:54.874 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:03:55.233 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:03:55.233 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:03:55.235 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:03:55.236 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:03:55.239 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:03:56.504 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:03:56.504 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:03:56.505 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:03:56.506 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:03:56.508 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:04:49.545 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:04:49.545 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:04:49.547 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:04:49.548 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:04:49.551 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:05:43.664 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:05:43.665 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:05:43.960 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:05:43.960 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:05:43.962 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:05:43.962 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:05:43.965 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:05:46.514 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:05:46.515 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:05:46.518 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:05:46.518 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:05:46.521 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:09:25.690 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:09:25.690 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:09:25.976 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:09:25.976 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:09:25.978 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:09:25.978 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:09:25.980 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:09:27.535 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:09:27.536 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:09:27.537 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:09:27.537 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:09:27.539 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:11:25.021 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:11:25.021 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:11:25.024 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:11:25.024 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:11:25.026 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:11:32.816 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:11:32.816 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:11:32.817 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:11:32.818 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:11:32.820 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:11:40.099 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:11:40.099 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:11:40.101 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:11:40.101 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 999000(Integer)
+21:11:40.106 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:11:41.396 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:11:41.397 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:11:41.412 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:11:41.423 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:11:41.425 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:13:06.372 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:13:06.373 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:13:06.751 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:13:06.752 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:13:06.753 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:13:06.754 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:13:06.756 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:13:08.264 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:13:08.264 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:13:08.265 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:13:08.266 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:13:08.267 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:13:14.819 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:13:14.819 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:13:14.820 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:13:14.820 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 999000(Integer)
+21:13:14.825 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:13:16.069 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:13:16.070 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:13:16.071 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:13:16.072 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:13:16.074 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:13:23.238 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:13:23.238 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:13:23.239 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:13:23.239 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:13:23.241 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:13:31.391 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:13:31.392 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:13:31.394 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:13:31.395 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:13:31.397 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:14:17.191 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:14:17.191 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:14:17.518 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:14:17.518 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:14:17.525 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:14:17.526 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:14:17.528 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:14:18.622 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:14:18.622 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:14:18.623 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:14:18.624 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:14:18.626 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:14:22.164 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:14:22.164 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:14:22.166 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:14:22.166 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:14:22.167 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:15:10.154 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:15:10.154 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:15:10.490 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:15:10.490 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:15:10.492 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:15:10.492 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:15:10.495 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:15:11.502 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:15:11.502 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:15:11.504 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:15:11.505 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:15:11.507 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:15:20.387 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:15:20.388 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:15:20.389 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:15:20.389 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 999000(Integer)
+21:15:20.391 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:15:22.198 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:15:22.199 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:15:22.201 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:15:22.201 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:15:22.203 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:17:27.695 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:17:27.696 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:17:27.699 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:17:27.699 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:17:27.701 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:17:36.502 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:17:36.503 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:17:36.506 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:17:36.509 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:17:36.510 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:18:48.296 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:18:48.296 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:18:48.586 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:18:48.587 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:18:48.588 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:18:48.589 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:18:48.591 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:18:49.929 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:18:49.930 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:18:49.931 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:18:49.931 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:18:49.933 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:22:58.386 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:22:58.386 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:22:58.706 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:22:58.706 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:22:58.708 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:22:58.708 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:22:58.711 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:23:26.393 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:23:26.393 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:23:26.726 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:23:26.726 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:23:26.727 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:23:26.727 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:23:26.729 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:23:36.241 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:23:36.241 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:23:36.848 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:23:36.848 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:23:36.849 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:23:36.849 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:23:36.859 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:23:51.556 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:23:51.556 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:23:51.791 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:23:51.792 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:23:51.793 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:23:51.793 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:23:51.795 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:23:52.881 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:23:52.881 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:23:52.883 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:23:52.883 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:23:52.885 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:24:12.835 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:24:12.835 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:24:13.195 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:24:13.195 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:24:13.196 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:24:13.197 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:24:13.199 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:24:13.741 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:24:13.741 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:24:13.743 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:24:13.743 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:24:13.744 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:27:52.785 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:27:52.785 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:27:52.787 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:27:52.787 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:27:52.789 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:29:42.472 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 71364 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+21:29:42.472 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+21:29:42.473 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+21:29:45.361 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+21:29:45.362 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+21:29:45.426 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+21:29:46.275 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 4.108 seconds (JVM running for 2619.555)
+21:29:46.302 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:29:46.303 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:29:46.309 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:29:46.310 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:29:46.312 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:30:23.288 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 71364 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+21:30:23.288 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+21:30:23.289 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+21:30:24.782 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+21:30:24.783 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+21:30:24.812 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+21:30:25.269 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.056 seconds (JVM running for 2658.547)
+21:49:49.742 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68828 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+21:49:49.750 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+21:49:49.753 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+21:49:54.312 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+21:49:54.313 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+21:49:54.452 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+21:49:55.811 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 6.998 seconds (JVM running for 8.987)
+21:50:00.099 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:50:00.099 logback DEBUG c.v.interceptor.AuthInterceptor - /base/base
+21:50:00.105 logback DEBUG c.v.interceptor.AuthInterceptor - 未找到对应的session值
+21:50:00.105 logback DEBUG c.v.interceptor.AuthInterceptor - 普通登录页面跳转……
+21:50:00.129 logback DEBUG c.v.f.controller.LoginController - login/index
+21:50:00.647 logback DEBUG c.v.f.controller.LoginController - /login/code
+21:50:00.659 logback DEBUG c.v.f.controller.LoginController - login/index
+21:50:00.976 logback DEBUG c.v.f.controller.LoginController - /login/code
+21:50:06.105 logback DEBUG c.v.f.controller.LoginController - admin----111
+21:50:06.228 logback DEBUG c.v.f.controller.LoginController - /login/code
+21:50:12.927 logback DEBUG c.v.f.controller.LoginController - admin----111
+21:50:12.970 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==>  Preparing: select a.*,b.flag_name,c.ds_code,c.ds_name,c.ds_total_name,c.ds_flag,c.lock_flag from sys_user a inner join sys_user_flag b on a.flag_id=b.flag_id inner join sys_deptsta c on a.ds_id=c.ds_id where a.flag_id=1 and a.login_name = ? 
+21:50:13.077 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - ==> Parameters: admin(String)
+21:50:13.099 logback DEBUG c.v.f.dao.UserDao.selectByLoginname - <==      Total: 1
+21:50:13.124 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:50:13.124 logback DEBUG c.v.interceptor.AuthInterceptor - /main/main
+21:50:13.648 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:50:13.648 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getMenu
+21:50:13.656 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==>  Preparing: select a.* from sys_function a inner join sys_sta_function b on a.func_id=b.func_id where b.ds_id=? order by a.func_code 
+21:50:13.662 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - ==> Parameters: 1(Integer)
+21:50:13.686 logback DEBUG c.v.f.d.FunctionDao.selectFunctions - <==      Total: 18
+21:50:13.688 logback DEBUG c.v.f.controller.FunctionController - 001---001
+21:50:13.688 logback DEBUG c.v.f.controller.FunctionController - 001001---001001
+21:50:13.688 logback DEBUG c.v.f.controller.FunctionController - 002---002
+21:50:13.688 logback DEBUG c.v.f.controller.FunctionController - 002001---002001
+21:50:13.688 logback DEBUG c.v.f.controller.FunctionController - 003---003000
+21:50:13.689 logback DEBUG c.v.f.controller.FunctionController - 004---004
+21:50:13.689 logback DEBUG c.v.f.controller.FunctionController - 004001---0040011
+21:50:13.689 logback DEBUG c.v.f.controller.FunctionController - 005---005
+21:50:13.691 logback DEBUG c.v.f.controller.FunctionController - 005001---005001
+21:50:13.691 logback DEBUG c.v.f.controller.FunctionController - 999---系统管理
+21:50:13.691 logback DEBUG c.v.f.controller.FunctionController - 999001---个人密码修改
+21:50:13.691 logback DEBUG c.v.f.controller.FunctionController - 999003
+---组织架构管理
+21:50:13.693 logback DEBUG c.v.f.controller.FunctionController - 999004---登录账号管理
+21:50:13.693 logback DEBUG c.v.f.controller.FunctionController - 999014---系统模块管理
+21:50:13.693 logback DEBUG c.v.f.controller.FunctionController - 999015---基础模板设定
+21:50:13.694 logback DEBUG c.v.f.controller.FunctionController - 999016---查询模板设定3
+21:50:13.694 logback DEBUG c.v.f.controller.FunctionController - 999100---运行信息监控
+21:50:13.694 logback DEBUG c.v.f.controller.FunctionController - 999101---基础模板测试
+21:50:16.260 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:50:16.260 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:50:16.582 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:50:16.583 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:50:16.585 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:50:16.595 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:50:16.598 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:50:20.207 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:50:20.207 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+21:50:20.237 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==>  Preparing: delete from sys_sta_function where func_id=? 
+21:50:20.241 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==> Parameters: 999102(Integer)
+21:50:20.242 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - <==    Updates: 0
+21:50:20.243 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==>  Preparing: delete from sys_function where func_id = ? 
+21:50:20.244 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==> Parameters: 999102(Integer)
+21:50:20.245 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - <==    Updates: 1
+21:50:20.335 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:50:20.335 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:50:20.336 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:50:20.337 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:50:20.340 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+21:52:21.335 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:21.335 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:52:21.582 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:21.582 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:52:21.587 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:52:21.587 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:52:21.590 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+21:52:23.319 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:23.324 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:52:23.326 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:52:23.327 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 999000(Integer)
+21:52:23.330 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 7
+21:52:23.755 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:23.755 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:52:23.758 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:52:23.758 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 5000(Integer)
+21:52:23.764 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+21:52:24.886 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:24.886 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:52:24.888 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:52:24.889 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 4000(Integer)
+21:52:24.892 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+21:52:25.575 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:25.575 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:52:25.577 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:52:25.577 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 3000(Integer)
+21:52:25.579 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 0
+21:52:29.511 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:29.512 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+21:52:29.513 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==>  Preparing: delete from sys_sta_function where func_id=? 
+21:52:29.514 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==> Parameters: 4001(Integer)
+21:52:29.542 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - <==    Updates: 1
+21:52:29.542 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==>  Preparing: delete from sys_function where func_id = ? 
+21:52:29.543 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==> Parameters: 4001(Integer)
+21:52:29.544 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - <==    Updates: 1
+21:52:29.632 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:52:29.633 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:52:29.634 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:52:29.634 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:52:29.637 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+21:55:56.576 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:55:56.577 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+21:55:56.900 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:55:56.900 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:55:56.901 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:55:56.901 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:55:56.905 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+21:55:58.116 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:55:58.117 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:55:58.121 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:55:58.123 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 5000(Integer)
+21:55:58.127 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 1
+21:56:00.780 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:56:00.781 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+21:56:00.782 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==>  Preparing: delete from sys_sta_function where func_id=? 
+21:56:00.783 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - ==> Parameters: 5001(Integer)
+21:56:00.812 logback DEBUG c.v.f.d.F.deleteStatFuncByFuncId - <==    Updates: 1
+21:56:00.812 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==>  Preparing: delete from sys_function where func_id = ? 
+21:56:00.812 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - ==> Parameters: 5001(Integer)
+21:56:00.813 logback DEBUG c.v.f.d.F.deleteByPrimaryKey - <==    Updates: 1
+21:56:00.909 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:56:00.909 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:56:00.911 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:56:00.911 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+21:56:00.914 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+21:56:05.975 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:56:05.976 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+21:56:05.982 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+21:56:05.984 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 5000(Integer)
+21:56:05.988 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 0
+21:56:07.653 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:56:07.653 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+21:56:07.683 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+21:56:07.684 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+21:56:07.685 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+21:56:15.495 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:56:15.495 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+21:56:15.497 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+21:56:15.500 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: 005(String)
+21:56:15.502 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 0
+21:56:15.504 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+21:56:15.505 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+21:56:15.508 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+21:56:15.509 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+21:56:15.518 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), null, 005001(String), fdsafdsa(String), 1(Byte)
+21:56:15.720 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:56:15.720 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+21:56:31.756 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:56:31.757 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+21:57:58.025 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+21:57:58.028 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: 005(String)
+21:57:58.034 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 0
+21:57:58.037 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+21:57:58.037 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+21:57:58.040 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+21:57:58.041 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+21:57:58.053 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), null, 005001(String), fdsafdsa(String), 1(Byte)
+21:57:58.074 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+21:57:58.074 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+22:04:20.681 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:04:20.681 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+22:04:25.128 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+22:04:25.129 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: 005(String)
+22:04:25.147 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 0
+22:11:41.661 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+22:11:41.662 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+22:11:41.664 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+22:11:41.666 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+22:11:41.668 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), null, 005001(String), fdsafdsa(String), 1(Byte)
+22:11:41.688 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:11:41.688 logback DEBUG c.v.interceptor.AuthInterceptor - /error
+22:11:45.020 logback INFO  c.v.Vanguard8FrameworkApplication - Starting Vanguard8FrameworkApplication on WIN-20170817QZC with PID 68828 (E:\vanguard8\framework\target\classes started by Administrator in E:\vanguard8)
+22:11:45.020 logback DEBUG c.v.Vanguard8FrameworkApplication - Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+22:11:45.020 logback INFO  c.v.Vanguard8FrameworkApplication - No active profile set, falling back to default profiles: default
+22:11:46.638 logback INFO  c.v.interceptor.InterceptorConfig - 开始注册权限拦截器……
+22:11:46.639 logback INFO  c.v.interceptor.InterceptorConfig - 权限拦截器注册完成！
+22:11:46.669 logback INFO  c.v.interceptor.InterceptorConfig - 开放静态资源访问……
+22:11:47.128 logback INFO  c.v.Vanguard8FrameworkApplication - Started Vanguard8FrameworkApplication in 2.187 seconds (JVM running for 1320.269)
+22:11:51.674 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:11:51.675 logback DEBUG c.v.interceptor.AuthInterceptor - /function/mana
+22:11:52.036 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:11:52.036 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+22:11:52.046 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+22:11:52.048 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 0(Integer)
+22:11:52.051 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 6
+22:11:54.167 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:11:54.167 logback DEBUG c.v.interceptor.AuthInterceptor - /function/getLevelFunctions
+22:11:54.169 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==>  Preparing: select * from sys_function where func_code like concat(ifnull((select func_code from sys_function where func_id=?),''),'___') order by func_code 
+22:11:54.169 logback DEBUG c.v.f.d.F.selectLevelFunctions - ==> Parameters: 5000(Integer)
+22:11:54.172 logback DEBUG c.v.f.d.F.selectLevelFunctions - <==      Total: 0
+22:11:55.232 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:11:55.233 logback DEBUG c.v.interceptor.AuthInterceptor - /dict/getDict
+22:11:55.240 logback DEBUG c.v.framework.dao.DictDao.getDict - ==>  Preparing: select func_code as id,func_name as text from sys_function where is_last=0 order by func_code 
+22:11:55.241 logback DEBUG c.v.framework.dao.DictDao.getDict - ==> Parameters: 
+22:11:55.244 logback DEBUG c.v.framework.dao.DictDao.getDict - <==      Total: 6
+22:12:02.854 logback DEBUG c.v.interceptor.AuthInterceptor - 执行preHandle方法-->01
+22:12:02.854 logback DEBUG c.v.interceptor.AuthInterceptor - /function/saveFunction
+22:12:06.298 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==>  Preparing: select func_code from sys_function where func_code like concat(?,'___') order by func_code desc limit 1 
+22:12:06.300 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - ==> Parameters: 005(String)
+22:12:06.303 logback DEBUG c.v.f.dao.FunctionDao.selectMaxCode - <==      Total: 0
+22:12:29.978 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==>  Preparing: select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1 
+22:12:29.980 logback DEBUG c.v.f.d.F.insertFunction!selectKey - ==> Parameters: 
+22:12:29.986 logback DEBUG c.v.f.d.F.insertFunction!selectKey - <==      Total: 1
+22:12:29.987 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==>  Preparing: insert into sys_function (func_id, func_code, func_name, func_path, is_last) values (?, ?, ?, ?, ?) 
+22:12:29.989 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - ==> Parameters: 999102(Integer), 000001(String), 005001(String), fffffffff(String), 1(Byte)
+22:12:30.005 logback DEBUG c.v.f.dao.FunctionDao.insertFunction - <==    Updates: 1

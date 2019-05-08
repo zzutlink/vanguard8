@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vanguard8.search.dao.ConditionDao">
+  <resultMap id="BaseResultMap" type="com.vanguard8.search.entity.Condition">
+    <id column="condition_id" jdbcType="INTEGER" property="conditionId" />
+    <result column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="order_value" jdbcType="TINYINT" property="orderValue" />
+    <result column="conditionCode" jdbcType="VARCHAR" property="conditioncode" />
+    <result column="conditionName" jdbcType="VARCHAR" property="conditionname" />
+    <result column="show_width" jdbcType="INTEGER" property="showWidth" />
+    <result column="field_type_id" jdbcType="TINYINT" property="fieldTypeId" />
+    <result column="init_value" jdbcType="VARCHAR" property="initValue" />
+    <result column="must_flag" jdbcType="BIT" property="mustFlag" />
+    <result column="ref_flag" jdbcType="BIT" property="refFlag" />
+    <result column="ref_string" jdbcType="VARCHAR" property="refString" />
+    <result column="ref_id_str" jdbcType="VARCHAR" property="refIdStr" />
+    <result column="ref_text_str" jdbcType="VARCHAR" property="refTextStr" />
+    <result column="blank_flag" jdbcType="BIT" property="blankFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    condition_id, model_id, order_value, conditionCode, conditionName, show_width, field_type_id, 
+    init_value, must_flag, ref_flag, ref_string, ref_id_str, ref_text_str, blank_flag
+  </sql>
+
+  <select id="selectByModelId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from srh_condition
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from srh_condition
+    where condition_id = #{conditionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from srh_condition
+    where condition_id = #{conditionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.vanguard8.search.entity.Condition">
+    <selectKey keyProperty="conditionId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into srh_condition (model_id, order_value, conditionCode, 
+      conditionName, show_width, field_type_id, 
+      init_value, must_flag, ref_flag, 
+      ref_string, ref_id_str, ref_text_str, 
+      blank_flag)
+    values (#{modelId,jdbcType=INTEGER}, #{orderValue,jdbcType=TINYINT}, #{conditioncode,jdbcType=VARCHAR}, 
+      #{conditionname,jdbcType=VARCHAR}, #{showWidth,jdbcType=INTEGER}, #{fieldTypeId,jdbcType=TINYINT}, 
+      #{initValue,jdbcType=VARCHAR}, #{mustFlag,jdbcType=BIT}, #{refFlag,jdbcType=BIT}, 
+      #{refString,jdbcType=VARCHAR}, #{refIdStr,jdbcType=VARCHAR}, #{refTextStr,jdbcType=VARCHAR}, 
+      #{blankFlag,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vanguard8.search.entity.Condition">
+    <selectKey keyProperty="conditionId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into srh_condition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="orderValue != null">
+        order_value,
+      </if>
+      <if test="conditioncode != null">
+        conditionCode,
+      </if>
+      <if test="conditionname != null">
+        conditionName,
+      </if>
+      <if test="showWidth != null">
+        show_width,
+      </if>
+      <if test="fieldTypeId != null">
+        field_type_id,
+      </if>
+      <if test="initValue != null">
+        init_value,
+      </if>
+      <if test="mustFlag != null">
+        must_flag,
+      </if>
+      <if test="refFlag != null">
+        ref_flag,
+      </if>
+      <if test="refString != null">
+        ref_string,
+      </if>
+      <if test="refIdStr != null">
+        ref_id_str,
+      </if>
+      <if test="refTextStr != null">
+        ref_text_str,
+      </if>
+      <if test="blankFlag != null">
+        blank_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null">
+        #{orderValue,jdbcType=TINYINT},
+      </if>
+      <if test="conditioncode != null">
+        #{conditioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionname != null">
+        #{conditionname,jdbcType=VARCHAR},
+      </if>
+      <if test="showWidth != null">
+        #{showWidth,jdbcType=INTEGER},
+      </if>
+      <if test="fieldTypeId != null">
+        #{fieldTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="initValue != null">
+        #{initValue,jdbcType=VARCHAR},
+      </if>
+      <if test="mustFlag != null">
+        #{mustFlag,jdbcType=BIT},
+      </if>
+      <if test="refFlag != null">
+        #{refFlag,jdbcType=BIT},
+      </if>
+      <if test="refString != null">
+        #{refString,jdbcType=VARCHAR},
+      </if>
+      <if test="refIdStr != null">
+        #{refIdStr,jdbcType=VARCHAR},
+      </if>
+      <if test="refTextStr != null">
+        #{refTextStr,jdbcType=VARCHAR},
+      </if>
+      <if test="blankFlag != null">
+        #{blankFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.search.entity.Condition">
+    update srh_condition
+    <set>
+      <if test="modelId != null">
+        model_id = #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null">
+        order_value = #{orderValue,jdbcType=TINYINT},
+      </if>
+      <if test="conditioncode != null">
+        conditionCode = #{conditioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionname != null">
+        conditionName = #{conditionname,jdbcType=VARCHAR},
+      </if>
+      <if test="showWidth != null">
+        show_width = #{showWidth,jdbcType=INTEGER},
+      </if>
+      <if test="fieldTypeId != null">
+        field_type_id = #{fieldTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="initValue != null">
+        init_value = #{initValue,jdbcType=VARCHAR},
+      </if>
+      <if test="mustFlag != null">
+        must_flag = #{mustFlag,jdbcType=BIT},
+      </if>
+      <if test="refFlag != null">
+        ref_flag = #{refFlag,jdbcType=BIT},
+      </if>
+      <if test="refString != null">
+        ref_string = #{refString,jdbcType=VARCHAR},
+      </if>
+      <if test="refIdStr != null">
+        ref_id_str = #{refIdStr,jdbcType=VARCHAR},
+      </if>
+      <if test="refTextStr != null">
+        ref_text_str = #{refTextStr,jdbcType=VARCHAR},
+      </if>
+      <if test="blankFlag != null">
+        blank_flag = #{blankFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where condition_id = #{conditionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vanguard8.search.entity.Condition">
+    update srh_condition
+    set model_id = #{modelId,jdbcType=INTEGER},
+      order_value = #{orderValue,jdbcType=TINYINT},
+      conditionCode = #{conditioncode,jdbcType=VARCHAR},
+      conditionName = #{conditionname,jdbcType=VARCHAR},
+      show_width = #{showWidth,jdbcType=INTEGER},
+      field_type_id = #{fieldTypeId,jdbcType=TINYINT},
+      init_value = #{initValue,jdbcType=VARCHAR},
+      must_flag = #{mustFlag,jdbcType=BIT},
+      ref_flag = #{refFlag,jdbcType=BIT},
+      ref_string = #{refString,jdbcType=VARCHAR},
+      ref_id_str = #{refIdStr,jdbcType=VARCHAR},
+      ref_text_str = #{refTextStr,jdbcType=VARCHAR},
+      blank_flag = #{blankFlag,jdbcType=BIT}
+    where condition_id = #{conditionId,jdbcType=INTEGER}
+  </update>
+</mapper>

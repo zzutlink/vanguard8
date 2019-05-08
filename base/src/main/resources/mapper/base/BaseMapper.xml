@@ -16,30 +16,32 @@
         <result property="checkUseTable" column="check_use_table" jdbcType="VARCHAR"/>
         <result property="checkUseField" column="check_use_field" jdbcType="VARCHAR"/>
         <result property="keyField" column="key_field" jdbcType="VARCHAR"/>
-        <result property="keyFieldLength" column="key_field_length" jdbcType="VARCHAR"/>
-        <collection property="baseDetails" resultMap="BaseDetailRM"></collection>
+        <result property="keyFieldAutoCreate" column="key_field_autocreate" jdbcType="TINYINT"/>
+        <result property="keyFieldLength" column="key_field_length" jdbcType="INTEGER"/>
+        <!--<collection property="baseDetails" resultMap="BaseDetailRM"></collection>-->
     </resultMap>
 
     <!--基础数据设置模板的明细-->
     <resultMap id="BaseDetailRM" type="com.vanguard8.base.entity.BaseDetail">
-        <id column="detail_id" jdbcType="INTEGER" property="detailId" />
-        <!--<result column="bs_id" jdbcType="INTEGER" property="bsId" />-->
-        <result column="field_code" jdbcType="VARCHAR" property="fieldCode" />
-        <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
-        <result column="field_type" jdbcType="TINYINT" property="fieldType" />
-        <result column="show_flag" jdbcType="TINYINT" property="showFlag" />
-        <result column="show_width" jdbcType="INTEGER" property="showWidth" />
+        <id column="detail_id" jdbcType="INTEGER" property="detailId"/>
+        <result column="bs_id" jdbcType="INTEGER" property="bsId" />
+        <result column="field_code" jdbcType="VARCHAR" property="fieldCode"/>
+        <result column="field_name" jdbcType="VARCHAR" property="fieldName"/>
+        <result column="field_type" jdbcType="TINYINT" property="fieldType"/>
+        <result column="field_type_name" jdbcType="VARCHAR" property="fieldTypeName"/>
+        <result column="show_flag" jdbcType="TINYINT" property="showFlag"/>
+        <result column="show_width" jdbcType="INTEGER" property="showWidth"/>
         <result column="show_height" jdbcType="INTEGER" property="showHeight"/>
-        <result column="search_flag" jdbcType="TINYINT" property="searchFlag" />
-        <result column="edit_flag" jdbcType="TINYINT" property="editFlag" />
-        <result column="ref_flag" jdbcType="TINYINT" property="refFlag" />
-        <result column="ref_string" jdbcType="VARCHAR" property="refString" />
-        <result column="ref_id_str" jdbcType="VARCHAR" property="refIdStr" />
-        <result column="ref_text_str" jdbcType="VARCHAR" property="refTextStr" />
-        <result column="readonly_flag" jdbcType="TINYINT" property="readonlyFlag" />
-        <result column="repeat_flag" jdbcType="TINYINT" property="repeatFlag" />
-        <result column="null_flag" jdbcType="TINYINT" property="nullFlag" />
-        <result column="default_value" jdbcType="VARCHAR" property="defaultValue" />
+        <result column="search_flag" jdbcType="TINYINT" property="searchFlag"/>
+        <result column="edit_flag" jdbcType="TINYINT" property="editFlag"/>
+        <result column="ref_flag" jdbcType="TINYINT" property="refFlag"/>
+        <result column="ref_string" jdbcType="VARCHAR" property="refString"/>
+        <result column="ref_id_str" jdbcType="VARCHAR" property="refIdStr"/>
+        <result column="ref_text_str" jdbcType="VARCHAR" property="refTextStr"/>
+        <result column="readonly_flag" jdbcType="TINYINT" property="readonlyFlag"/>
+        <result column="repeat_flag" jdbcType="TINYINT" property="repeatFlag"/>
+        <result column="null_flag" jdbcType="TINYINT" property="nullFlag"/>
+        <result column="default_value" jdbcType="VARCHAR" property="defaultValue"/>
     </resultMap>
 
     <!--根据编号取某一条基础设置模板的数据-->
@@ -47,9 +49,71 @@
         select a.* from bas_main a where a.bs_id=#{bsId} limit 1
     </select>
 
-    <select id="getBaseDetail" parameterType="Integer" resultMap="BaseDetailRM">
-        select * from bas_detail where bs_id=#{bsId}
+    <!--读取所有基础模板-->
+    <select id="getAllBaseMain" parameterType="com.vanguard8.base.entity.BaseMain" resultMap="BaseMainRM">
+        select * from bas_main where bs_name like concat('%',#{bsName},'%') and table_name like concat('%',#{tableName},'%')
     </select>
+
+    <insert id="insertBaseMain" parameterType="com.vanguard8.base.entity.BaseMain">
+        <selectKey keyProperty="bsId" order="BEFORE" resultType="java.lang.Integer">
+            select if(bs_id is null,1,bs_id+1) from bas_main order by bs_id desc limit 1
+        </selectKey>
+        insert into bas_main values(
+        #{bsId,jdbcType=INTEGER},#{bsName,jdbcType=VARCHAR},#{fieldStr,jdbcType=VARCHAR},#{tableStr,jdbcType=VARCHAR},
+        #{conditionStr,jdbcType=VARCHAR},#{sortField,jdbcType=VARCHAR},#{tableName,jdbcType=VARCHAR},
+        #{keyField,jdbcType=VARCHAR},#{checkUseTable,jdbcType=VARCHAR},#{checkUseField,jdbcType=VARCHAR},
+        #{keyFieldAutoCreate,jdbcType=INTEGER},#{keyFieldLength,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <update id="updateBaseMain" parameterType="com.vanguard8.base.entity.BaseMain">
+        update bas_main set bs_name=#{bsName,jdbcType=VARCHAR},field_str=#{fieldStr,jdbcType=VARCHAR},
+          table_str=#{tableStr,jdbcType=VARCHAR},condition_str=#{conditionStr,jdbcType=VARCHAR},
+          sort_field=#{sortField,jdbcType=VARCHAR},table_name=#{tableName,jdbcType=VARCHAR},
+          key_field=#{keyField,jdbcType=VARCHAR},check_use_table=#{checkUseTable,jdbcType=VARCHAR},
+          check_use_field=#{checkUseField,jdbcType=VARCHAR},key_field_autocreate=#{keyFieldAutoCreate,jdbcType=INTEGER},
+          key_field_length=#{keyFieldLength,jdbcType=INTEGER}
+        where bs_id=#{bsId,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteBaseMain" parameterType="java.lang.Integer">
+        delete from bas_main where bs_id=#{bsId}
+    </delete>
+
+    <delete id="deleteBaseDetail" parameterType="java.lang.Integer">
+        delete from bas_detail where bs_id=#{bsId}
+    </delete>
+
+    <select id="getBaseDetail" parameterType="Integer" resultMap="BaseDetailRM">
+        select bas_detail.*,bas_field_type.field_type_name from bas_detail inner join bas_field_type on bas_detail.field_type=bas_field_type.field_type
+        where bas_detail.bs_id=#{bsId} order by bas_detail.detail_id
+    </select>
+
+    <insert id="insertBaseDetail" parameterType="com.vanguard8.base.entity.BaseDetail">
+        <selectKey keyProperty="detailId" order="BEFORE" resultType="java.lang.Integer">
+            select if(detail_id is null,1,detail_id+1) from bas_detail order by detail_id desc limit 1
+        </selectKey>
+        insert into bas_detail values(#{detailId,jdbcType=INTEGER},#{bsId,jdbcType=INTEGER},#{fieldCode,jdbcType=VARCHAR},
+            #{fieldName,jdbcType=VARCHAR},#{fieldType,jdbcType=INTEGER},
+            #{showFlag,jdbcType=INTEGER},#{showWidth,jdbcType=INTEGER},#{showHeight,jdbcType=INTEGER},#{searchFlag,jdbcType=INTEGER},
+            #{editFlag,jdbcType=INTEGER},#{refFlag,jdbcType=INTEGER},#{refString,jdbcType=VARCHAR},#{refIdStr,jdbcType=VARCHAR},
+            #{refTextStr,jdbcType=VARCHAR},#{readonlyFlag,jdbcType=INTEGER},#{repeatFlag,jdbcType=INTEGER},#{nullFlag,jdbcType=INTEGER},
+            #{defaultValue,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateBaseDetail" parameterType="com.vanguard8.base.entity.BaseDetail">
+        update bas_detail set field_code=#{fieldCode,jdbcType=VARCHAR},field_name=#{fieldName,jdbcType=VARCHAR},field_type=#{fieldType,jdbcType=INTEGER},
+            show_flag=#{showFlag,jdbcType=INTEGER},show_width=#{showWidth,jdbcType=INTEGER},show_height=#{showHeight,jdbcType=INTEGER},
+            search_flag=#{searchFlag,jdbcType=INTEGER},edit_flag=#{editFlag,jdbcType=INTEGER},ref_flag=#{refFlag,jdbcType=INTEGER},
+            ref_string=#{refString,jdbcType=VARCHAR},ref_id_str=#{refIdStr,jdbcType=VARCHAR},ref_text_str=#{refTextStr,jdbcType=VARCHAR},
+            readonly_flag=#{readonlyFlag,jdbcType=INTEGER},repeat_flag=#{repeatFlag,jdbcType=INTEGER},null_flag=#{nullFlag,jdbcType=INTEGER},
+            default_value=#{defaultValue,jdbcType=VARCHAR}
+        where detail_id=#{detailId}
+    </update>
+
+    <delete id="deleteBaseDetailById" parameterType="java.lang.Integer">
+        delete from bas_detail where detail_id=#{detailId}
+    </delete>
 
     <!--执行一个sql语句返回结果集-->
     <select id="executeSelect" parameterType="String" resultType="java.util.HashMap">

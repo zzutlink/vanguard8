@@ -39,6 +39,8 @@ spring:
     view:
       prefix: /templates/
       suffix: .html
+    favicon:
+      enabled: false
   jmx:
     enabled: false
   resources:
@@ -48,7 +50,7 @@ spring:
 #    suffix: .html
 
 mybatis:
-#  type-aliases-package: com.vanguard8.framework.core.entity
+#  type-aliases-package: com.vanguard8.*.core.entity
   mapper-locations: classpath*:mapper/**/*.xml
 
 # log4j2 配置文件位置
