@@ -64,8 +64,13 @@
 
   <insert id="insertFunction" parameterType="com.vanguard8.framework.entity.Function">
       <selectKey keyProperty="funcId" order="BEFORE" resultType="java.lang.Integer">
-      select if(func_id is null,1,func_id+1) from sys_function order by func_id desc limit 1
-  </selectKey>
+          select
+          if( exists (select 1 from sys_function order by func_id limit 1),
+          (select func_id+1 from sys_function order by func_id desc limit 1),
+          1
+          )
+          from dual
+      </selectKey>
       insert into sys_function (func_id, func_code, func_name, func_path, is_last, order_value)
       values (#{funcId,jdbcType=INTEGER}, #{funcCode,jdbcType=VARCHAR}, #{funcName,jdbcType=VARCHAR}, #{funcPath,jdbcType=VARCHAR},
         #{isLast,jdbcType=TINYINT}, #{orderValue,jdbcType=INTEGER})

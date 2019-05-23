@@ -56,7 +56,12 @@
 
     <insert id="insertBaseMain" parameterType="com.vanguard8.base.entity.BaseMain">
         <selectKey keyProperty="bsId" order="BEFORE" resultType="java.lang.Integer">
-            select if(bs_id is null,1,bs_id+1) from bas_main order by bs_id desc limit 1
+            select
+            if( exists (select 1 from bas_main order by bs_id limit 1),
+            (select bs_id+1 from bas_main order by bs_id desc limit 1),
+            1
+            )
+            from dual
         </selectKey>
         insert into bas_main values(
         #{bsId,jdbcType=INTEGER},#{bsName,jdbcType=VARCHAR},#{fieldStr,jdbcType=VARCHAR},#{tableStr,jdbcType=VARCHAR},
@@ -91,7 +96,12 @@
 
     <insert id="insertBaseDetail" parameterType="com.vanguard8.base.entity.BaseDetail">
         <selectKey keyProperty="detailId" order="BEFORE" resultType="java.lang.Integer">
-            select if(detail_id is null,1,detail_id+1) from bas_detail order by detail_id desc limit 1
+            select
+            if( exists (select 1 from bas_detail order by detail_id limit 1),
+            (select detail_id+1 from bas_detail order by detail_id desc limit 1),
+            1
+            )
+            from dual
         </selectKey>
         insert into bas_detail values(#{detailId,jdbcType=INTEGER},#{bsId,jdbcType=INTEGER},#{fieldCode,jdbcType=VARCHAR},
             #{fieldName,jdbcType=VARCHAR},#{fieldType,jdbcType=INTEGER},

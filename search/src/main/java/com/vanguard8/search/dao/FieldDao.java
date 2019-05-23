@@ -9,11 +9,7 @@ public interface FieldDao {
 
     int insert(Field record);
 
-    int insertSelective(Field record);
-
     Field selectByPrimaryKey(Integer fieldId);
-
-    int updateByPrimaryKeySelective(Field record);
 
     int updateByPrimaryKey(Field record);
 

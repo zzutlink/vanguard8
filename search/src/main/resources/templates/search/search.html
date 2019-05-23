@@ -16,8 +16,8 @@
 
         $(function () {
                 $('#tableList').datagrid({
-                    url: '/search/getList?modelId=',
-                    // pagination: true,
+                    url: '/search/getList',
+                    pagination: [[${model.pagination}]] ,
                     pageSize: 20,
                     pageList: [20, 30, 40, 50],
                     singleSelect: true,
@@ -25,31 +25,99 @@
                     fitColumns: true,
                     toolbar: '#divToolBar'
                 });
+        });
 
-            function LoadGridData(flag) {
-                if(flag=='1'){
-                    $('#tableList').datagrid('load', {
-                        //@Html.Raw(ViewBag.SubmitParamStr)
-                    } );
-                }
-                else if(flag=='2'){
-                    $('#formCondition').form({
-                        url: '/Search/OutputExcel?ModelID=@ViewBag.ModelID',
-                        success: function (result) {
-                            result = $.parseJSON(result);
-                            if (result.Success) {
-                                //将生成的EXCEL文件路径返回作为下载
-                                window.location = result.ReObj;
-                            }
-                            else {
-                                alert(result.Message);
-                            }
+        function LoadGridData(flag) {
+            var conditions = [[${conditions}]];
+            var checkResult=true;
+            for(var i=0;i<conditions.length;i++) {
+                var c = conditions[i];
+                var value = "";
+                if(c.mustFlag) {
+                    if(c.fieldTypeId==3){
+                        value = $('#'.concat(c.conditionId)).datebox('getValue');
+                    }
+                    else{
+                        if(c.refFlag){
+                            value = $('#'.concat(c.conditionId)).combobox('getValue');
                         }
-                    });
-                    $('#formCondition').form('submit');
+                        else{
+                            value = $('#'.concat(c.conditionId)).textbox('getValue');
+                        }
+                    }
+                    if(value==""){
+                        alert('有必填项未填写，请输入后再操作！');
+                        return;
+                    }
                 }
             }
-            });
+
+            if(flag=='1'){
+                var paramStr="";
+                var sepStr1 = [[${sepStr1}]];
+                var sepStr2 = [[${sepStr2}]];
+                for(var i=0;i<conditions.length;i++){
+                    var condition = conditions[i];
+                    var value = "";
+                    if(condition.fieldTypeId==3){
+                        value = $('#'.concat(condition.conditionId)).datebox('getValue');
+                    }
+                    else{
+                        if(condition.refFlag){
+                            value=$('#'.concat(condition.conditionId)).combobox('getValue');
+                        }
+                        else{
+                            value = $('#'.concat(condition.conditionId)).textbox('getValue');
+                        }
+                    }
+                    paramStr = paramStr.concat(condition.conditionId)
+                        .concat(sepStr1)
+                        .concat(value)
+                        .concat(sepStr2);
+                }
+
+                $('#tableList').datagrid('load', {
+                    modelId:[[${model.modelId}]],
+                    paramStr:paramStr
+                } );
+            }
+            else if(flag=='2'){
+                $('#formCondition').form({
+                    url: '/Search/OutputExcel?ModelID=@ViewBag.ModelID',
+                    success: function (result) {
+                        result = $.parseJSON(result);
+                        if (result.Success) {
+                            //将生成的EXCEL文件路径返回作为下载
+                            window.location = result.ReObj;
+                        }
+                        else {
+                            alert(result.Message);
+                        }
+                    }
+                });
+                $('#formCondition').form('submit');
+            }
+        }
+
+        $(document).ready(
+            function(){
+                var conditions = [[${conditions}]];
+                for(var i=0;i<conditions.length;i++) {
+                    var condition = conditions[i];
+                    if(condition.fieldTypeId==3){
+                        $('#'.concat(condition.conditionId)).datebox('setValue','2019-05-21');
+                    }
+                    else{
+                        if(condition.refFlag){
+                            $('#'.concat(condition.conditionId)).combobox('setValue',condition.initValue);
+                        }
+                        else{
+                            $('#'.concat(condition.conditionId)).textbox('setValue',condition.initValue);
+                        }
+                    }
+                }
+            }
+        );
     </script>
 </head>
 <body class="easyui-layout">
@@ -57,9 +125,38 @@
     <div id="divToolBar">
         <form id="formCondition" method="post">
             <table>
-                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td colspan="6">
+                <th:block th:each="i:${#numbers.sequence(0,#lists.size(conditions)/4)}">
+                    <tr style="height:30px;">
+                        <th:block th:each="k:${#numbers.sequence(0,3)}">
+                            <th:block th:if="${#lists.size(conditions) gt k+(i*4)}">
+                                <td th:text="${conditions[i*4+k].conditionName}">
+                                </td>
+                                <td>
+                                    <input th:if="${conditions[i*4+k].fieldTypeId} eq 3"
+                                           th:id="${conditions[i*4+k].conditionId}"
+                                           th:name="${conditions[i*4+k].conditionId}"
+                                           th:attr="style=|width:${conditions[i*4+k].showWidth}px;|,data-options=|required:true|"
+                                           class="easyui-datebox" />
+                                    <input th:if="${conditions[i*4+k].fieldTypeId ne 3 && conditions[i*4+k].refFlag}"
+                                           th:id="${conditions[i*4+k].conditionId}"
+                                           th:name="${conditions[i*4+k].conditionId}"
+                                           th:attr="style=|width:${conditions[i*4+k].showWidth}px;|,
+                                        data-options=|url:'${conditions[i*4+k].refString}',valueField:'${conditions[i*4+k].refIdStr}',textField:'${conditions[i*4+k].refTextStr}',editable:false,
+                                        loadFilter:function(data){ var item = { 'id': '', 'text': '--请选择--' };data.unshift(item);return data;}|"
+                                           class="easyui-combobox" />
+                                    <input th:if="${conditions[i*4+k].fieldTypeId ne 3 && !conditions[i*4+k].refFlag}"
+                                           th:id="${conditions[i*4+k].conditionId}"
+                                           th:name="${conditions[i*4+k].conditionId}"
+                                           th:attr="style=|width:${conditions[i*4+k].showWidth}px;|,data-options=|required:${conditions[i*4+k].mustFlag}|"
+                                           class="easyui-textbox" />
+                                </td>
+                            </th:block>
+                        </th:block>
+                    </tr>
+                </th:block>
+                <tr style="height:30px;"><td colspan="6">
                     <a href="#" class="easyui-linkbutton" data-options="height:25,width:80" onclick="LoadGridData('1');">查询</a>
+                    <a href="#" class="easyui-linkbutton" th:if="${model.exportFlag}" data-options="height:25,width:120" onclick="LoadGridData('2');">查询导出到EXCEL</a>
                     </td></tr>
             </table>
         </form>

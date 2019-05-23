@@ -152,7 +152,7 @@
         function deleteBaseMain(){
             var row = $('#baseMainList').datagrid('getSelected');
             if (row==null) {
-                $.messager.alert("操作失败", "未选择要编辑的数据行！");
+                $.messager.alert("操作失败", "未选择要删除的数据行！");
                 return;
             }
             $.messager.confirm('确认','您确认想要删除记录吗？',function(r){

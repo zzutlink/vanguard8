@@ -11,11 +11,17 @@ import java.util.List;
 
 @Service
 public class DictServiceImpl implements DictService {
+    private String CONDITION="#CONDITION#";
+    private String USERID="#USERID#";
+
     @Autowired
     private DictDao dictDao;
 
     @Override
     public List<Dict> getDict(DictCondition condition) {
-        return dictDao.getDict(condition);
+        String sql = dictDao.getDictSql(condition.getFlag());
+        sql = sql.replaceAll(CONDITION,condition.getCondition());
+
+        return dictDao.executeSelect(sql);
     }
 }

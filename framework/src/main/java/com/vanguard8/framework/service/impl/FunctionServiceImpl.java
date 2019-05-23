@@ -56,7 +56,10 @@ public class FunctionServiceImpl implements FunctionService {
                 Function f = functionDao.selectFunction(function.getFuncId());
                 funcCode = f.getFuncCode().substring(0,3);
                 prefix = function.getFuncCode();
-                if(!prefix.equals(funcCode)){
+                if(prefix.equals(funcCode)) {
+                    funcCode = f.getFuncCode();
+                }
+                else{
                     funcCode = functionDao.selectMaxCode(prefix);
                     if(funcCode == null){
                         funcCode = "001";
@@ -64,8 +67,8 @@ public class FunctionServiceImpl implements FunctionService {
                         funcCode = String.valueOf(1001 + Integer.valueOf(funcCode.substring(4))).substring(1);
                     }
                     funcCode = prefix + funcCode;
-                    function.setFuncCode(funcCode);
                 }
+                function.setFuncCode(funcCode);
             }
             i = functionDao.updateByPrimaryKey(function);
         } else if (playFlag.equals("3")) {

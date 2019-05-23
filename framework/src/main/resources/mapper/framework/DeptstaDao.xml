@@ -39,7 +39,12 @@
 
   <insert id="insert" parameterType="com.vanguard8.framework.entity.Deptsta">
     <selectKey keyProperty="dsId" order="BEFORE" resultType="java.lang.Integer">
-      select if(ds_id is null,1,ds_id+1) from sys_deptsta order by ds_id desc limit 1
+      select
+      if( exists (select 1 from sys_deptsta order by ds_id limit 1),
+      (select ds_id+1 from sys_deptsta order by ds_id desc limit 1),
+      1
+      )
+      from dual
     </selectKey>
     insert into sys_deptsta (ds_id, ds_code, ds_name, ds_total_name,
       ds_flag, lock_flag)

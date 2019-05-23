@@ -162,6 +162,8 @@ public class BaseServiceImpl implements BaseService {
                 if (s[0].equals("0")) {
                     valueStr += value;
                 } else {
+                    //先把单引号替换成两个单引号，否则将导致sql语句格式不正确
+                    value = value.replaceAll("'","''");
                     valueStr += "'".concat(value).concat("'");
                 }
             }
@@ -200,6 +202,8 @@ public class BaseServiceImpl implements BaseService {
 
                 value = map.getValue();
                 if (!s[0].equals("0")) {
+                    //先把单引号替换成两个单引号，否则将导致sql语句格式不正确
+                    value = value.replaceAll("'","''");
                     value = "'".concat(value).concat("'");
                 }
 
@@ -240,6 +244,8 @@ public class BaseServiceImpl implements BaseService {
                     //select count(*) from use_tbname where fieldname=value
                     value = map.getValue();
                     if (!s[0].equals("0")) {
+                        //先把单引号替换成两个单引号，否则将导致sql语句格式不正确
+                        value = value.replaceAll("'","''");
                         value = "'".concat(value).concat("'");
                     }
                     sql = "select count(*) from " + base.getCheckUseTable() + " where " + base.getCheckUseField() + "=" + value;

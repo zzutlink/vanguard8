@@ -58,7 +58,12 @@
   </delete>
     <insert id="insert" parameterType="com.vanguard8.framework.entity.User">
         <selectKey keyProperty="userId" order="BEFORE" resultType="java.lang.Integer">
-            select if(user_id is null,1,user_id+1) from sys_user order by user_id desc limit 1
+            select
+            if( exists (select 1 from sys_user order by user_id limit 1),
+            (select user_id+1 from sys_user order by user_id desc limit 1),
+            1
+            )
+            from dual
         </selectKey>
         insert into sys_user (user_id, user_name, login_name, salt,
         password, ds_id, flag_id,

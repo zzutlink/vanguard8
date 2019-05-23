@@ -9,8 +9,6 @@ public interface ConditionDao {
 
     int insert(Condition record);
 
-    int insertSelective(Condition record);
-
     Condition selectByPrimaryKey(Integer conditionId);
 
     int updateByPrimaryKeySelective(Condition record);

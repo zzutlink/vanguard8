@@ -4,29 +4,34 @@
   <resultMap id="BaseResultMap" type="com.vanguard8.search.entity.Condition">
     <id column="condition_id" jdbcType="INTEGER" property="conditionId" />
     <result column="model_id" jdbcType="INTEGER" property="modelId" />
-    <result column="order_value" jdbcType="TINYINT" property="orderValue" />
-    <result column="conditionCode" jdbcType="VARCHAR" property="conditioncode" />
-    <result column="conditionName" jdbcType="VARCHAR" property="conditionname" />
+    <result column="order_value" jdbcType="INTEGER" property="orderValue" />
+    <result column="condition_code" jdbcType="VARCHAR" property="conditionCode" />
+    <result column="condition_name" jdbcType="VARCHAR" property="conditionName" />
     <result column="show_width" jdbcType="INTEGER" property="showWidth" />
     <result column="field_type_id" jdbcType="TINYINT" property="fieldTypeId" />
+    <result column="field_type" jdbcType="TINYINT" property="fieldType" />
     <result column="init_value" jdbcType="VARCHAR" property="initValue" />
     <result column="must_flag" jdbcType="BIT" property="mustFlag" />
     <result column="ref_flag" jdbcType="BIT" property="refFlag" />
     <result column="ref_string" jdbcType="VARCHAR" property="refString" />
     <result column="ref_id_str" jdbcType="VARCHAR" property="refIdStr" />
     <result column="ref_text_str" jdbcType="VARCHAR" property="refTextStr" />
-    <result column="blank_flag" jdbcType="BIT" property="blankFlag" />
   </resultMap>
   <sql id="Base_Column_List">
-    condition_id, model_id, order_value, conditionCode, conditionName, show_width, field_type_id, 
-    init_value, must_flag, ref_flag, ref_string, ref_id_str, ref_text_str, blank_flag
+    condition_id, model_id, order_value, condition_code, condition_name, show_width, field_type_id, field_type,
+    init_value, must_flag, ref_flag, ref_string, ref_id_str, ref_text_str
   </sql>
 
   <select id="selectByModelId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+    srh_condition.condition_id, srh_condition.model_id, srh_condition.order_value, srh_condition.condition_code,
+    srh_condition.condition_name, srh_condition.show_width, srh_condition.field_type_id, srh_field_type.field_type,
+    srh_condition.init_value, srh_condition.must_flag, srh_condition.ref_flag, srh_condition.ref_string,
+    srh_condition.ref_id_str, srh_condition.ref_text_str
     from srh_condition
-    where model_id = #{modelId,jdbcType=INTEGER}
+    inner join srh_field_type on srh_condition.field_type_id=srh_field_type.field_type_id
+    where srh_condition.model_id = #{modelId,jdbcType=INTEGER}
+    order by srh_condition.order_value
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -39,107 +44,20 @@
     where condition_id = #{conditionId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.vanguard8.search.entity.Condition">
-    <selectKey keyProperty="conditionId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into srh_condition (model_id, order_value, conditionCode, 
-      conditionName, show_width, field_type_id, 
-      init_value, must_flag, ref_flag, 
-      ref_string, ref_id_str, ref_text_str, 
-      blank_flag)
-    values (#{modelId,jdbcType=INTEGER}, #{orderValue,jdbcType=TINYINT}, #{conditioncode,jdbcType=VARCHAR}, 
-      #{conditionname,jdbcType=VARCHAR}, #{showWidth,jdbcType=INTEGER}, #{fieldTypeId,jdbcType=TINYINT}, 
-      #{initValue,jdbcType=VARCHAR}, #{mustFlag,jdbcType=BIT}, #{refFlag,jdbcType=BIT}, 
-      #{refString,jdbcType=VARCHAR}, #{refIdStr,jdbcType=VARCHAR}, #{refTextStr,jdbcType=VARCHAR}, 
-      #{blankFlag,jdbcType=BIT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.vanguard8.search.entity.Condition">
-    <selectKey keyProperty="conditionId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
+    <selectKey keyProperty="conditionId" order="BEFORE" resultType="java.lang.Integer">
+      select
+      if( exists (select 1 from srh_condition order by condition_id limit 1),
+      (select condition_id+1 from srh_condition order by condition_id desc limit 1),
+      1
+      )
+      from dual
     </selectKey>
     insert into srh_condition
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="modelId != null">
-        model_id,
-      </if>
-      <if test="orderValue != null">
-        order_value,
-      </if>
-      <if test="conditioncode != null">
-        conditionCode,
-      </if>
-      <if test="conditionname != null">
-        conditionName,
-      </if>
-      <if test="showWidth != null">
-        show_width,
-      </if>
-      <if test="fieldTypeId != null">
-        field_type_id,
-      </if>
-      <if test="initValue != null">
-        init_value,
-      </if>
-      <if test="mustFlag != null">
-        must_flag,
-      </if>
-      <if test="refFlag != null">
-        ref_flag,
-      </if>
-      <if test="refString != null">
-        ref_string,
-      </if>
-      <if test="refIdStr != null">
-        ref_id_str,
-      </if>
-      <if test="refTextStr != null">
-        ref_text_str,
-      </if>
-      <if test="blankFlag != null">
-        blank_flag,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="modelId != null">
-        #{modelId,jdbcType=INTEGER},
-      </if>
-      <if test="orderValue != null">
-        #{orderValue,jdbcType=TINYINT},
-      </if>
-      <if test="conditioncode != null">
-        #{conditioncode,jdbcType=VARCHAR},
-      </if>
-      <if test="conditionname != null">
-        #{conditionname,jdbcType=VARCHAR},
-      </if>
-      <if test="showWidth != null">
-        #{showWidth,jdbcType=INTEGER},
-      </if>
-      <if test="fieldTypeId != null">
-        #{fieldTypeId,jdbcType=TINYINT},
-      </if>
-      <if test="initValue != null">
-        #{initValue,jdbcType=VARCHAR},
-      </if>
-      <if test="mustFlag != null">
-        #{mustFlag,jdbcType=BIT},
-      </if>
-      <if test="refFlag != null">
-        #{refFlag,jdbcType=BIT},
-      </if>
-      <if test="refString != null">
-        #{refString,jdbcType=VARCHAR},
-      </if>
-      <if test="refIdStr != null">
-        #{refIdStr,jdbcType=VARCHAR},
-      </if>
-      <if test="refTextStr != null">
-        #{refTextStr,jdbcType=VARCHAR},
-      </if>
-      <if test="blankFlag != null">
-        #{blankFlag,jdbcType=BIT},
-      </if>
-    </trim>
+    values (#{conditionId,jdbcType=INTEGER}, #{modelId,jdbcType=INTEGER}, #{orderValue,jdbcType=TINYINT},
+      #{conditionCode,jdbcType=VARCHAR},
+      #{conditionName,jdbcType=VARCHAR}, #{showWidth,jdbcType=INTEGER}, #{fieldTypeId,jdbcType=TINYINT},
+      #{initValue,jdbcType=VARCHAR}, #{mustFlag,jdbcType=BIT}, #{refFlag,jdbcType=BIT}, 
+      #{refString,jdbcType=VARCHAR}, #{refIdStr,jdbcType=VARCHAR}, #{refTextStr,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.search.entity.Condition">
     update srh_condition
@@ -150,11 +68,11 @@
       <if test="orderValue != null">
         order_value = #{orderValue,jdbcType=TINYINT},
       </if>
-      <if test="conditioncode != null">
-        conditionCode = #{conditioncode,jdbcType=VARCHAR},
+      <if test="conditionCode != null">
+        condition_code = #{conditionCode,jdbcType=VARCHAR},
       </if>
-      <if test="conditionname != null">
-        conditionName = #{conditionname,jdbcType=VARCHAR},
+      <if test="conditionName != null">
+        condition_name = #{conditionName,jdbcType=VARCHAR},
       </if>
       <if test="showWidth != null">
         show_width = #{showWidth,jdbcType=INTEGER},
@@ -180,9 +98,6 @@
       <if test="refTextStr != null">
         ref_text_str = #{refTextStr,jdbcType=VARCHAR},
       </if>
-      <if test="blankFlag != null">
-        blank_flag = #{blankFlag,jdbcType=BIT},
-      </if>
     </set>
     where condition_id = #{conditionId,jdbcType=INTEGER}
   </update>
@@ -190,8 +105,8 @@
     update srh_condition
     set model_id = #{modelId,jdbcType=INTEGER},
       order_value = #{orderValue,jdbcType=TINYINT},
-      conditionCode = #{conditioncode,jdbcType=VARCHAR},
-      conditionName = #{conditionname,jdbcType=VARCHAR},
+      condition_code = #{conditionCode,jdbcType=VARCHAR},
+      condition_name = #{conditionName,jdbcType=VARCHAR},
       show_width = #{showWidth,jdbcType=INTEGER},
       field_type_id = #{fieldTypeId,jdbcType=TINYINT},
       init_value = #{initValue,jdbcType=VARCHAR},
@@ -199,8 +114,7 @@
       ref_flag = #{refFlag,jdbcType=BIT},
       ref_string = #{refString,jdbcType=VARCHAR},
       ref_id_str = #{refIdStr,jdbcType=VARCHAR},
-      ref_text_str = #{refTextStr,jdbcType=VARCHAR},
-      blank_flag = #{blankFlag,jdbcType=BIT}
+      ref_text_str = #{refTextStr,jdbcType=VARCHAR}
     where condition_id = #{conditionId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -5,12 +5,22 @@ import java.io.Serializable;
 /**
  * @author 
  */
-public class Model implements Serializable {
+public class SrhModel implements Serializable {
     private Integer modelId;
 
     private String modelName;
 
-    private Boolean sqlTypeId;
+    private Integer sqlTypeId;
+
+    private String sqlType;
+
+    public String getSqlType() {
+        return sqlType;
+    }
+
+    public void setSqlType(String sqlType) {
+        this.sqlType = sqlType;
+    }
 
     private Boolean pagination;
 
@@ -40,11 +50,11 @@ public class Model implements Serializable {
         this.modelName = modelName;
     }
 
-    public Boolean getSqlTypeId() {
+    public Integer getSqlTypeId() {
         return sqlTypeId;
     }
 
-    public void setSqlTypeId(Boolean sqlTypeId) {
+    public void setSqlTypeId(Integer sqlTypeId) {
         this.sqlTypeId = sqlTypeId;
     }
 

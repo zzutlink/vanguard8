@@ -1,17 +1,26 @@
 package com.vanguard8.search.dao;
 
-import com.vanguard8.search.entity.Model;
+import com.vanguard8.search.entity.SrhModel;
+
+import java.util.List;
+import java.util.Map;
 
 public interface ModelDao {
     int deleteByPrimaryKey(Integer modelId);
 
-    int insert(Model record);
+    int insert(SrhModel record);
 
-    int insertSelective(Model record);
+    SrhModel selectByPrimaryKey(Integer modelId);
 
-    Model selectByPrimaryKey(Integer modelId);
+    SrhModel selectModelForClient(Integer modelId);
 
-    int updateByPrimaryKeySelective(Model record);
+    List<SrhModel> selectModelList(String modelName);
 
-    int updateByPrimaryKey(Model record);
+    int updateByPrimaryKeySelective(SrhModel record);
+
+    int updateByPrimaryKey(SrhModel record);
+
+    List<Map<String,Object>> executeSelect(String sql);
+
+    Integer executeCount(String sql);
 }

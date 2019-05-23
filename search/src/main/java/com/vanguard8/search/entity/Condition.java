@@ -10,15 +10,25 @@ public class Condition implements Serializable {
 
     private Integer modelId;
 
-    private Byte orderValue;
+    private Integer orderValue;
 
-    private String conditioncode;
+    private String conditionCode;
 
-    private String conditionname;
+    private String conditionName;
 
     private Integer showWidth;
 
     private Byte fieldTypeId;
+
+    private String fieldType;
+
+    public String getFieldType() {
+        return fieldType;
+    }
+
+    public void setFieldType(String fieldType) {
+        this.fieldType = fieldType;
+    }
 
     private String initValue;
 
@@ -31,8 +41,6 @@ public class Condition implements Serializable {
     private String refIdStr;
 
     private String refTextStr;
-
-    private Boolean blankFlag;
 
     private static final long serialVersionUID = 1L;
 
@@ -52,28 +60,28 @@ public class Condition implements Serializable {
         this.modelId = modelId;
     }
 
-    public Byte getOrderValue() {
+    public Integer getOrderValue() {
         return orderValue;
     }
 
-    public void setOrderValue(Byte orderValue) {
+    public void setOrderValue(Integer orderValue) {
         this.orderValue = orderValue;
     }
 
-    public String getConditioncode() {
-        return conditioncode;
+    public String getConditionCode() {
+        return conditionCode;
     }
 
-    public void setConditioncode(String conditioncode) {
-        this.conditioncode = conditioncode;
+    public void setConditionCode(String conditionCode) {
+        this.conditionCode = conditionCode;
     }
 
-    public String getConditionname() {
-        return conditionname;
+    public String getConditionName() {
+        return conditionName;
     }
 
-    public void setConditionname(String conditionname) {
-        this.conditionname = conditionname;
+    public void setConditionName(String conditionName) {
+        this.conditionName = conditionName;
     }
 
     public Integer getShowWidth() {
@@ -138,13 +146,5 @@ public class Condition implements Serializable {
 
     public void setRefTextStr(String refTextStr) {
         this.refTextStr = refTextStr;
-    }
-
-    public Boolean getBlankFlag() {
-        return blankFlag;
-    }
-
-    public void setBlankFlag(Boolean blankFlag) {
-        this.blankFlag = blankFlag;
     }
 }

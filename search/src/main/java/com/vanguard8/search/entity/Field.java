@@ -16,6 +16,8 @@ public class Field implements Serializable {
 
     private Byte fieldTypeId;
 
+    private String fieldType;
+
     private Integer orderValue;
 
     private Integer showWidth;
@@ -23,6 +25,8 @@ public class Field implements Serializable {
     private Boolean showFooter;
 
     private Byte footerTypeId;
+
+    private String footerType;
 
     private String footerStr;
 
@@ -70,6 +74,14 @@ public class Field implements Serializable {
         this.fieldTypeId = fieldTypeId;
     }
 
+    public String getFieldType() {
+        return fieldType;
+    }
+
+    public void setFieldType(String fieldType) {
+        this.fieldType = fieldType;
+    }
+
     public Integer getOrderValue() {
         return orderValue;
     }
@@ -100,6 +112,14 @@ public class Field implements Serializable {
 
     public void setFooterTypeId(Byte footerTypeId) {
         this.footerTypeId = footerTypeId;
+    }
+
+    public String getFooterType() {
+        return footerType;
+    }
+
+    public void setFooterType(String footerType) {
+        this.footerType = footerType;
     }
 
     public String getFooterStr() {
