@@ -1,6 +1,7 @@
 package com.vanguard8.search.dao;
 
 import com.vanguard8.search.entity.Condition;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface ConditionDao {
     int updateByPrimaryKey(Condition record);
 
     List<Condition> selectByModelId(Integer modelId);
+
+    int updateConditionModelId(@Param("nModelId") Integer nModelId,@Param("modelId") Integer modelId);
+
+    int deleteByModelId(Integer modelId);
 }

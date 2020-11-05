@@ -70,6 +70,30 @@
                 }
             });
 
+            $('#formAction').form({
+                url: '/function/saveAction',
+                onSubmit:function(){
+                    if($('#actionUrl').textbox('getText')==''){
+                        $.messager.alert("提交失败", "动作URL不允许为空！");
+                        return false;
+                    }
+                    // return $('#formAction').form('validate');
+                },
+                success: function (result) {
+                    result = $.parseJSON(result);
+                    if (result && result.success) {
+                        $.messager.alert("操作成功", result.message);
+                        $('#actionList').datagrid('reload');
+                        if($('#aPlayFlag').val()!='2') {
+                            addAction();
+                        }
+                    }
+                    else {
+                        $.messager.alert("操作失败", result.message);
+                    }
+                }
+            });
+
             setTextBoxReadOnly('funcId',true);
 
             $('#isLast').combobox({
@@ -203,6 +227,91 @@
         function CloseDialog() {
             $('#DialogPlay').dialog('close');
         }
+
+        function showActions(){
+            var row = $('#GridFunction').treegrid('getSelected');
+            if (row == null || row.dsCode.length != 6) {
+                $.messager.alert("操作失败", "请选择具体的二级功能模块再进行操作！");
+                return;
+            }
+
+            $('#aFuncId').val(row.id);
+
+            $('#actionList').datagrid({
+                url: '/function/getFuncActions?funcId='+row.id,
+                pagination: false,
+                singleSelect: true,
+                fit: true,
+                fitColumns: true,
+                toolbar: '#actionToolbar',
+                columns:[ [
+                    { field: 'fId', title: '编码', width: 40},
+                    { field: 'actionUrl', title: '动作路径', width: 250 },
+                    { field: 'includeType', title: '匹配类型编码', width: 160, hidden:true },
+                    { field: 'includeTypeIntr', title: '路径匹配类型', width: 160 }
+                ] ]
+            });
+
+            $('#includeType').combobox({
+                url:'/dict/getDict?flag=12',
+                valueField:'id',
+                textField:'text',
+                editable:false,
+                panelHeight: 'auto'
+            });
+
+            $('#DialogActions').show().dialog({
+                title: '模块动作明细',
+                width: 600,
+                height: 500,
+                modal: true
+            });
+
+            addAction();
+        }
+
+        function closeActionDialog(){
+            $('#DialogActions').dialog('close');
+        }
+
+        function addAction(){
+            $('#actionPanel').panel('setTitle','新增动作');
+            $('#aPlayFlag').val('1');
+            $('#fId').textbox('setValue','自动生成');
+            $('#actionUrl').textbox('setValue','');
+            $('#includeType').combobox('select','0');
+        }
+
+        function editAction(){
+            var row = $('#actionList').datagrid('getSelected');
+            if (row == null || row.fId == null) {
+                $.messager.alert("操作失败", "请选择要进行操作的动作对象再进行操作！");
+                return;
+            }
+            $('#actionPanel').panel('setTitle','编辑动作');
+            $('#aPlayFlag').val('2');
+            $('#fId').textbox('setValue',row.fId);
+            $('#actionUrl').textbox('setValue',row.actionUrl);
+            $('#includeType').combobox('select',row.includeType);
+        }
+
+        function delAction(){
+            var row = $('#actionList').datagrid('getSelected');
+            if (row == null || row.fId == null) {
+                $.messager.alert("操作失败", "请选择要进行操作的动作对象再进行操作！");
+                return;
+            }
+
+            $.messager.confirm('确认','您确认想要删除该条数据吗？',function(r){
+                if (r){
+                    $('#aPlayFlag').val('3');
+                    $('#fId').textbox('setValue',row.fId);
+                    $('#actionUrl').textbox('setValue',row.actionUrl);
+                    $('#includeType').combobox('select',row.includeType);
+                    $('#formAction').form('submit');
+                }
+            });
+        }
     </script>
     <style type="text/css">
         .trPlay{
@@ -221,7 +330,7 @@
     <div id="divToolbar">
         <input type="button" value="新增模块" onclick="Add();" />
         <input type="button" value="编辑模块" onclick="Edit();" />
-        <input type="button" value="删除模块" onclick="Delete();" />
+        <input type="button" value="删除模块" onclick="Delete();" /> | <input type="button" value="模块动作明细" onclick="showActions();" />
     </div>
     <div id="DialogPlay" style="display: none">
         <form id="formPlay" method="post">
@@ -277,6 +386,42 @@
                 </tr>
             </table>
         </form>
+    </div>
+    <div id="DialogActions" style="display: none">
+        <div id="actionLayout" class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'center',split:false,border:false" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
+                <div id="actionToolbar" style="height:30px">
+                    <table>
+                        <tr>
+                            <td style="vertical-align: middle">
+                                <input type="button" value="新增动作" onclick="addAction();" />
+                                <input type="button" value="编辑动作" onclick="editAction();" />
+                                <input type="button" value="删除动作" onclick="delAction();" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table id="actionList"></table>
+            </div>
+            <div data-options="region:'south',split:false,border:false" style="overflow:hidden;border:none;padding:8px 8px 2px 8px;height:120px;">
+                <div id="actionPanel" class="easyui-panel" data-options="fit:true, title:'新增动作'">
+                    <form id="formAction" method="post">
+                        <input type="hidden" id="aPlayFlag" name="aPlayFlag" />
+                        <input type="hidden" id="aFuncId" name="aFuncId" />
+                    <table style="width:100%">
+                        <tr style="height:30px">
+                            <td>编码<input id="fId" name="fId" class="easyui-textbox" style="width:80px" readonly="readonly" /></td>
+                            <td>动作URL<input id="actionUrl" name="actionUrl" class="easyui-textbox" style="width:200px" /></td>
+                            <td>匹配方式<input id="includeType" name="includeType" style="width:90px" /></td>
+                        </tr>
+                        <tr style="height:30px">
+                            <td colspan="3"><input type="submit" value="提交保存" /> <input type="button" value="关闭窗口" onclick="closeActionDialog();" /> </td>
+                        </tr>
+                    </table>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

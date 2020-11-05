@@ -2,6 +2,7 @@ package com.vanguard8.framework.service.impl;
 
 import com.vanguard8.common.Result;
 import com.vanguard8.common.ResultGenerator;
+import com.vanguard8.common.SessionUser;
 import com.vanguard8.framework.dao.DeptstaDao;
 import com.vanguard8.framework.dao.FunctionDao;
 import com.vanguard8.framework.dao.LogDao;
@@ -47,7 +48,7 @@ public class DeptstaServiceImpl implements DeptstaService {
     //    { value: '6', text: '新增同级复用职位' }
     //成功则返回其父级节点的dsId，失败返回0
     @Transactional
-    public Result<Integer> saveDeptsta(String playFlag, Integer dsId, String dsName, User user) throws DataAccessException {
+    public Result<Integer> saveDeptsta(String playFlag, Integer dsId, String dsName, SessionUser user) throws DataAccessException {
         Result<Integer> r;
         //先获取选定的这个节点的数据，然后生成新节点的相关数据
         Deptsta d = deptstaDao.selectByPrimaryKey(dsId);
@@ -159,19 +160,24 @@ public class DeptstaServiceImpl implements DeptstaService {
 
     @Override
     @Transactional
-    public Result<String> saveStatFunc(Integer dsId, String funcStr)  throws DataAccessException {
+    public Result<String> saveStatFunc(Integer dsId, String funcStr) throws DataAccessException {
         Result<String> r = ResultGenerator.genSuccessResult();
         //先删除掉原有的权限，然后按最新的逐一添加
         functionDao.deleteStatFunc(dsId);
         String[] funcIds = funcStr.split("#");
-        for(int i=0;i<funcIds.length;i++){
-            String funcId=funcIds[i];
-            StaFunction record=new StaFunction();
+        for (int i = 0; i < funcIds.length; i++) {
+            String funcId = funcIds[i];
+            StaFunction record = new StaFunction();
             record.setDsId(dsId);
             record.setFuncId(funcId);
             functionDao.insertStatFunc(record);
         }
         return r;
+    }
+
+    @Override
+    public boolean checkActionRight(Integer dsId, String url) {
+        return deptstaDao.checkDsAction(dsId, url) > 0;
     }
 
     //根据当前节点的dsId获取其父节点的信息

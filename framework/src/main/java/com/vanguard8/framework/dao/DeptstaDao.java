@@ -1,6 +1,7 @@
 package com.vanguard8.framework.dao;
 
 import com.vanguard8.framework.entity.Deptsta;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.dao.DataAccessException;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface DeptstaDao {
     List<String> selectMaxCode(String dsCode);
 
     List<Deptsta> selectByDsCode(String dsCode);
+
+    Integer checkDsAction(@Param("dsId") Integer dsId, @Param("actionUrl") String actionUrl);
 }

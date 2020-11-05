@@ -117,4 +117,12 @@
       ref_text_str = #{refTextStr,jdbcType=VARCHAR}
     where condition_id = #{conditionId,jdbcType=INTEGER}
   </update>
+
+  <update id="updateConditionModelId">
+    update srh_condition set model_id=#{nModelId,jdbcType=INTEGER} where model_id=#{modelId,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteByModelId" parameterType="java.lang.Integer">
+    delete from srh_condition where model_id=#{modelId,jdbcType=INTEGER}
+  </delete>
 </mapper>

@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/static/jquery-easyui-1.5/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/static/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="/static/js/vanguard8.js"></script>
+    <script type="text/javascript" src="/static/js/echarts.min.js"></script>
     <script type="text/javascript" th:inline="javascript">
         window.onload=function(){
         }
@@ -18,14 +19,40 @@
                 $('#tableList').datagrid({
                     url: '/search/getList',
                     pagination: [[${model.pagination}]] ,
-                    pageSize: 20,
-                    pageList: [20, 30, 40, 50],
+                    pageSize: 50,
+                    pageList: [50, 100, 200, 500, 1000],
                     singleSelect: true,
                     fit: true,
-                    fitColumns: true,
-                    toolbar: '#divToolBar'
+                    //fitColumns: true,
+                    toolbar: '#divToolBar',
+                    showFooter: [[${model.showFooter}]]
                 });
         });
+
+        function formatCheckbox(val) {
+            if (val == 1) {
+                return "<input type='checkbox' checked='checked' disabled='disabled' />";
+            } else {
+                return "<input type='checkbox' disabled='disabled' />";
+            }
+        }
+
+        function getFormatter(checkboxFlag, fieldTypeId, value){
+            if(value==null){
+                return "";
+            }
+            if(checkboxFlag){
+                formatCheckbox(1);
+            }
+            else {
+                if(fieldTypeId==4){
+                    return "￥"+value.toFixed(2);
+                }
+                else{
+                    return value;
+                }
+            }
+        }
 
         function LoadGridData(flag) {
             var conditions = [[${conditions}]];
@@ -52,51 +79,93 @@
                 }
             }
 
-            if(flag=='1'){
-                var paramStr="";
-                var sepStr1 = [[${sepStr1}]];
-                var sepStr2 = [[${sepStr2}]];
-                for(var i=0;i<conditions.length;i++){
-                    var condition = conditions[i];
-                    var value = "";
-                    if(condition.fieldTypeId==3){
-                        value = $('#'.concat(condition.conditionId)).datebox('getValue');
+            var paramStr="";
+            var sepStr1 = [[${sepStr1}]];
+            var sepStr2 = [[${sepStr2}]];
+            for(var i=0;i<conditions.length;i++){
+                var condition = conditions[i];
+                var value = "";
+                if(condition.fieldTypeId==3){
+                    value = $('#'.concat(condition.conditionId)).datebox('getValue');
+                }
+                else{
+                    if(condition.refFlag){
+                        value=$('#'.concat(condition.conditionId)).combobox('getValue');
                     }
                     else{
-                        if(condition.refFlag){
-                            value=$('#'.concat(condition.conditionId)).combobox('getValue');
-                        }
-                        else{
-                            value = $('#'.concat(condition.conditionId)).textbox('getValue');
-                        }
+                        value = $('#'.concat(condition.conditionId)).textbox('getValue');
                     }
-                    paramStr = paramStr.concat(condition.conditionId)
-                        .concat(sepStr1)
-                        .concat(value)
-                        .concat(sepStr2);
                 }
+                paramStr = paramStr.concat(condition.conditionId)
+                    .concat(sepStr1)
+                    .concat(value)
+                    .concat(sepStr2);
+            }
 
-                $('#tableList').datagrid('load', {
-                    modelId:[[${model.modelId}]],
-                    paramStr:paramStr
-                } );
+            if(flag=='1'){
+                    $('#tableList').datagrid('load', {
+                        modelId:[[${model.modelId}]],
+                        paramStr:paramStr
+                    } );
             }
             else if(flag=='2'){
-                $('#formCondition').form({
-                    url: '/Search/OutputExcel?ModelID=@ViewBag.ModelID',
+                $('#exportModelId').val([[${model.modelId}]]);
+                $('#paramStr').val(paramStr);
+                $('#exportModelName').val([[${model.modelName}]]);
+                $('#formExport').form({
+                    url: '/search/exportExcel',
                     success: function (result) {
                         result = $.parseJSON(result);
-                        if (result.Success) {
+                        console.info(result);
+                        if (result.success) {
                             //将生成的EXCEL文件路径返回作为下载
-                            window.location = result.ReObj;
+                            window.location = result.data;
                         }
                         else {
-                            alert(result.Message);
+                           alert(result.message);
                         }
                     }
                 });
-                $('#formCondition').form('submit');
+                $('#formExport').form('submit');
             }
+        }
+
+        function showCharts(){
+            var data = $('#tableList').datagrid('getData');
+            if(data.total==0){
+                alert('暂无数据，请在查询数据后再展示图形报表！');
+                return;
+            }
+
+            $('#divChart').show().window({
+                title:'图形报表',
+                collapsible:false,
+                minimizable:false,
+                maximizable:false,
+                resizable:false,
+                modal:true,
+                height:620,
+                width:900
+            });
+
+            initChart();
+        }
+
+        function initChart() {
+            var charts = [[${charts}]];
+            var chartId = $('#chartList').combobox('getValue');
+            var chartName;
+            var scriptStr;
+            for(var i=0;i<charts.length;i++) {
+                var c = charts[i];
+                if(c.chartId == chartId){
+                    chartName = c.chartName;
+                    scriptStr = c.scriptStr;
+                    break;
+                }
+            }
+            var tmpFunc = new Function('chartName', scriptStr);
+            tmpFunc(chartName);
         }
 
         $(document).ready(
@@ -105,7 +174,7 @@
                 for(var i=0;i<conditions.length;i++) {
                     var condition = conditions[i];
                     if(condition.fieldTypeId==3){
-                        $('#'.concat(condition.conditionId)).datebox('setValue','2019-05-21');
+                        $('#'.concat(condition.conditionId)).datebox('setValue',GetCurrDate());
                     }
                     else{
                         if(condition.refFlag){
@@ -123,7 +192,11 @@
 <body class="easyui-layout">
 <div data-options="region:'center'" style="overflow:hidden;border:none;padding:8px 8px 2px 8px">
     <div id="divToolBar">
-        <form id="formCondition" method="post">
+        <form id="formExport" method="post">
+            <input id="exportModelId" name="exportModelId" type="hidden" />
+            <input id="paramStr" name="paramStr" type="hidden" />
+            <input id="exportModelName" name="exportModelName" type="hidden" />
+        </form>
             <table>
                 <th:block th:each="i:${#numbers.sequence(0,#lists.size(conditions)/4)}">
                     <tr style="height:30px;">
@@ -157,20 +230,44 @@
                 <tr style="height:30px;"><td colspan="6">
                     <a href="#" class="easyui-linkbutton" data-options="height:25,width:80" onclick="LoadGridData('1');">查询</a>
                     <a href="#" class="easyui-linkbutton" th:if="${model.exportFlag}" data-options="height:25,width:120" onclick="LoadGridData('2');">查询导出到EXCEL</a>
+                    <a href="#" class="easyui-linkbutton" th:if="${#lists.size(charts) ne 0}" data-options="height:25,width:100" onclick="showCharts();">显示图形报表</a>
                     </td></tr>
             </table>
-        </form>
+
     </div>
     <table id="tableList">
+        <thead frozen="true">
+        <tr>
+            <th th:each="field:${showFields}"
+                th:if="${field.frozenFlag}"
+                th:attr="data-options=|field:'${field.fieldCode}',width:${field.showWidth},sortable:true, align:'${field.align}',
+                    formatter:function(value){return getFormatter(${field.checkbox},${field.fieldTypeId},value);}|"
+                th:text="${field.fieldName}">列标题
+            </th>
+        </tr>
+        </thead>
         <thead>
         <tr>
             <th th:each="field:${showFields}"
-                th:attr="data-options=|field:'${field.fieldCode}',width:${field.showWidth},sortable:true, align:'${field.align}'|"
+                th:if="${field.frozenFlag} ne true"
+                th:attr="data-options=|field:'${field.fieldCode}',width:${field.showWidth},sortable:true, align:'${field.align}',
+                    formatter:function(value){return getFormatter(${field.checkbox},${field.fieldTypeId},value);}|"
                 th:text="${field.fieldName}">列标题
             </th>
         </tr>
         </thead>
     </table>
+</div>
+<div id="divChart" style="display: none; padding: 5px">
+    <span>请选择图形报表</span>
+    <select id="chartList" style="width:200px" class="easyui-combobox" data-options="editable:false,panelHeight:'auto'">
+        <option th:each="chart:${charts}" th:value="${chart.chartId}" th:text="${chart.chartName}"></option>
+    </select>
+    <a href="#" class="easyui-linkbutton" data-options="height:25,width:80" onclick="initChart();">查看</a>
+    <div style="text-align: center;">
+        <div id="chartMain" style="height:540px;width:870px;margin:10px 0 0 0;">
+        </div>
+    </div>
 </div>
 </body>
 </html>

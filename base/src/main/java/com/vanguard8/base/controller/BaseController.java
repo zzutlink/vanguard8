@@ -5,6 +5,7 @@ import com.vanguard8.base.entity.BaseMain;
 import com.vanguard8.base.service.BaseService;
 import com.vanguard8.common.EasyUIDataGrid;
 import com.vanguard8.common.Result;
+import com.vanguard8.common.ResultGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class BaseController {
     @RequestMapping("/base")
     public String base(Integer bsId, Model model) {
         logger.debug(bsId.toString());
+        BaseMain base = baseService.getBaseMain(bsId);
         List<BaseDetail> details = baseService.getBaseDetail(bsId);
 
         Integer showHeight = 140;
@@ -42,6 +44,7 @@ public class BaseController {
             }
         }
         model.addAttribute("bsId", bsId);
+        model.addAttribute("keyField", base.getKeyField());
         model.addAttribute("details", details);
         model.addAttribute("showHeight", showHeight);
         model.addAttribute("showWidth", showWidth + 180);
@@ -67,40 +70,41 @@ public class BaseController {
 
     @RequestMapping("/saveBaseMain")
     @ResponseBody
-    public Result<String> saveBaseMain(String playFlag, String bsId, String bsName, String tableName, String keyField, String keyFieldAutoCreate,
+    public Result<String> saveBaseMain(String playFlag, String oBsId, String bsId, String bsName, String tableName, String keyField, String keyFieldAutoCreate,
                                        String keyFieldLength, String sortField, String checkUseTable, String checkUseField, String fieldStr,
-                                       String tableStr, String conditionStr){
+                                       String tableStr, String conditionStr) {
         Result<String> r = null;
         BaseMain main = new BaseMain();
-        if(!playFlag.equals("1")){
-            main.setBsId(Integer.valueOf(bsId));
+        Integer o;
+        if (playFlag.equals("1")) {
+            o = 0;
+        } else {
+            o = Integer.valueOf(oBsId);
         }
-        if(playFlag.equals("1")||playFlag.equals("2")) {
-            main.setBsName(bsName);
-            main.setTableName(tableName);
-            main.setKeyField(keyField);
-            if (keyFieldAutoCreate == null) {
-                keyFieldAutoCreate = "0";
-            }
-            main.setKeyFieldAutoCreate(Integer.valueOf(keyFieldAutoCreate));
-            main.setKeyFieldLength(Integer.valueOf(keyFieldLength));
-            main.setSortField(sortField);
-            main.setCheckUseTable(checkUseTable);
-            main.setCheckUseField(checkUseField);
-            main.setFieldStr(fieldStr);
-            main.setTableStr(tableStr);
-            main.setConditionStr(conditionStr);
+        main.setBsId(Integer.valueOf(bsId));
+        main.setBsName(bsName);
+        main.setTableName(tableName);
+        main.setKeyField(keyField);
+        if (keyFieldAutoCreate == null) {
+            keyFieldAutoCreate = "0";
         }
-        r = baseService.saveBaseMain(playFlag,main);
+        main.setKeyFieldAutoCreate(Integer.valueOf(keyFieldAutoCreate));
+        main.setKeyFieldLength(Integer.valueOf(keyFieldLength));
+        main.setSortField(sortField);
+        main.setCheckUseTable(checkUseTable);
+        main.setCheckUseField(checkUseField);
+        main.setFieldStr(fieldStr);
+        main.setTableStr(tableStr);
+        main.setConditionStr(conditionStr);
+        r = baseService.saveBaseMain(playFlag, o, main);
         return r;
     }
 
     @RequestMapping("/getBaseDetails")
     @ResponseBody
-    public EasyUIDataGrid getBaseDetails(String bsId){
+    public EasyUIDataGrid getBaseDetails(String bsId) {
         EasyUIDataGrid grid = new EasyUIDataGrid();
-        if(bsId!=null)
-        {
+        if (bsId != null) {
             List<BaseDetail> details = baseService.getBaseDetail(Integer.valueOf(bsId));
             grid.setRows(details);
         }
@@ -110,15 +114,20 @@ public class BaseController {
 
     @RequestMapping("/saveBaseDetail")
     @ResponseBody
-    public Result<String> saveBaseDetail(Integer detailPlayFlag, @RequestParam(defaultValue = "0") String detailId, Integer pBsId, String fieldCode,
-                                         String fieldName, Integer fieldType, @RequestParam(defaultValue = "0") String showFlag, Integer showWidth,
+    public Result<String> saveBaseDetail(Integer detailPlayFlag, @RequestParam(defaultValue = "0") String detailId, Integer pBsId, Integer orderValue, String fieldCode,
+                                         String fieldName, Integer fieldType, Integer controlTypeId, @RequestParam(defaultValue = "0") String showFlag, Integer showWidth,
                                          Integer showHeight, @RequestParam(defaultValue = "0") String searchFlag, @RequestParam(defaultValue = "0") String editFlag,
-                                         @RequestParam(defaultValue = "0") String readonlyFlag,@RequestParam(defaultValue = "0")  String repeatFlag,
-                                         @RequestParam(defaultValue = "0") String nullFlag, @RequestParam(defaultValue = "0") String refFlag, String refString,
-                                         String refIdStr, String refTextStr, String defaultValue){
+                                         @RequestParam(defaultValue = "0") String readonlyFlag, @RequestParam(defaultValue = "0") String repeatFlag,
+                                         @RequestParam(defaultValue = "0") String nullFlag, String refString, String refIdStr, String refTextStr,
+                                         @RequestParam(defaultValue = "0") String chainFlag, String chainDetailId, String defaultValue,
+                                         @RequestParam(defaultValue = "0") String saveFlag) {
         Result<String> r = null;
+        if (fieldCode.equals("PlayFlag") || fieldCode.equals("bsId") || fieldCode.equals("keyValue")) {
+            r = ResultGenerator.genFailResult("PlayFlag,bsId,keyValue为系统保留名称，请使用其他字段字符串！");
+            return r;
+        }
         BaseDetail detail = new BaseDetail();
-        if(!detailPlayFlag.equals("1")){
+        if (!detailPlayFlag.equals("1")) {
             detail.setDetailId(Integer.valueOf(detailId));
         }
         detail.setBsId(pBsId);
@@ -133,13 +142,20 @@ public class BaseController {
         detail.setReadonlyFlag(Integer.valueOf(readonlyFlag));
         detail.setRepeatFlag(Integer.valueOf(repeatFlag));
         detail.setNullFlag(Integer.valueOf(nullFlag));
-        detail.setRefFlag(Integer.valueOf(refFlag));
         detail.setRefString(refString);
         detail.setRefIdStr(refIdStr);
         detail.setRefTextStr(refTextStr);
         detail.setDefaultValue(defaultValue);
+        detail.setOrderValue(orderValue);
+        detail.setControlTypeId(controlTypeId);
+        detail.setChainFlag(Integer.valueOf(chainFlag));
+        if (chainDetailId.equals("")) {
+            chainDetailId = "0";
+        }
+        detail.setChainDetailId(Integer.valueOf(chainDetailId));
+        detail.setSaveFlag(Integer.valueOf(saveFlag));
 
-        r = baseService.saveBaseDetail(detailPlayFlag,detail);
+        r = baseService.saveBaseDetail(detailPlayFlag, detail);
         return r;
     }
 
@@ -161,20 +177,23 @@ public class BaseController {
 
         String playFlag = request.getParameter("PlayFlag");
         Integer bsId = Integer.parseInt(request.getParameter("bsId"));
+        String keyValue = request.getParameter("keyValue");
 
         HashMap<String, String> maps = new HashMap<String, String>();
         Enumeration<String> names = request.getParameterNames();
         while (names.hasMoreElements()) {
             String name = names.nextElement();
-            if (name.equals("PlayFlag") || name.equals("bsId")) {
+            if (name.equals("PlayFlag") || name.equals("bsId") || name.equals("keyValue")) {
                 continue;
             }
-            //参数名是一个组合字符串 例如 0#userName，前面0#代表fieldType，0数值1文本，以区分拼装sql是否加引号'
+            // 参数名是一个组合字符串 例如 0#userName#userName#1
+            // 前面0#代表fieldType，0数值1文本，以区分拼装sql是否加引号'
+            // ${detail.fieldType}+'#'+${detail.repeatFlag}+'#'+${detail.fieldCode}+'#'+${detail.saveFlag}
             maps.put(name, request.getParameter(name));
             logger.debug(name);
             logger.debug(request.getParameter(name));
         }
-        r = baseService.save(bsId, playFlag, maps);
+        r = baseService.save(bsId, playFlag, keyValue, maps);
 
         return r;
     }

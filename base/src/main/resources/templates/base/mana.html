@@ -79,7 +79,9 @@
                         if ($('#playFlag').val() == 1) {
                             showBaseMainDialog(1);
                         }
-
+                        else if ($('#playFlag').val() == 2) {
+                            $('#oBsId').val($('#bsId').numberbox('getValue'));
+                        }
                         LoadGridData();
                         $.messager.alert("操作成功", result.message);
                     }
@@ -111,7 +113,7 @@
             var sTitle = "";
             if(playFlag==1){
                 sTitle="新增基础模板";
-                $('#bsId').textbox('setValue','自动生成');
+                $('#bsId').numberbox('setValue','51');
                 $('#keyFieldLength').numberspinner('setValue',3);
             }
             else if(playFlag==2){
@@ -121,7 +123,8 @@
                     return;
                 }
                 sTitle="编辑基础模板";
-                $('#bsId').textbox('setValue',row.bsId);
+                $('#oBsId').val(row.bsId);
+                $('#bsId').numberbox('setValue',row.bsId);
                 $('#bsName').textbox('setValue',row.bsName);
                 $('#tableName').textbox('setValue',row.tableName);
                 $('#keyField').textbox('setValue',row.keyField);
@@ -149,6 +152,10 @@
             $('#baseMainDialog').dialog('close');
         }
 
+        function CloseDetailDialog() {
+            $('#baseDetailDialog').dialog('close');
+        }
+
         function deleteBaseMain(){
             var row = $('#baseMainList').datagrid('getSelected');
             if (row==null) {
@@ -158,7 +165,7 @@
             $.messager.confirm('确认','您确认想要删除记录吗？',function(r){
                 if (r){
                     $('#playFlag').val(3);
-                    $('#bsId').textbox('setValue',row.bsId);
+                    $('#bsId').numberbox('setValue',row.bsId);
                     $('#formBaseMain').form('submit');
                 }
             });
@@ -182,10 +189,12 @@
                 toolbar: '#detailToolBar',
                 columns:[ [
                     { field: 'detailId', title: '编码', width: 40, hidden:true},
+                    { field: 'orderValue', title: '排序', width: 50 },
                     { field: 'fieldCode', title: '字段字符串', width: 100 },
                     { field: 'fieldName', title: '字段名称', width: 70 },
-                    { field: 'fieldTypeName', title: '字段类型', width: 120 },
-                    { field: 'showFlag', title: '是否显示', width: 60, sortable: true, align:'center',
+                    { field: 'fieldTypeName', title: '值类型', width: 60 },
+                    { field: 'controlType', title: '控件类型', width: 80 },
+                    { field: 'showFlag', title: '显示在Grid', width: 70, sortable: true, align:'center',
                         formatter:formatCheckbox,
                         editor:{
                             type:'checkbox',
@@ -209,11 +218,13 @@
                         }
                     },
                     { field: 'nullFlag', title: '是否可空', width: 60, sortable: true, align:'center', formatter:formatCheckbox},
-                    { field: 'refFlag', title: '是否引用', width: 60, sortable: true, align:'center', formatter:formatCheckbox },
                     { field: 'refString', title: '引用Url', width: 160, sortable: true },
                     { field: 'refIdStr', title: '引用ID', width: 60, sortable: true},
                     { field: 'refTextStr', title: '引用TEXT', width: 60, sortable: true},
-                    { field: 'defaultValue', title: '默认值', width: 80, sortable: true}
+                    { field: 'chainFlag', title: '是否联动', width: 60, sortable: true, align:'center', formatter:formatCheckbox },
+                    { field: 'chainFieldName', title: '联动上级字段', width: 100, sortable: true },
+                    { field: 'defaultValue', title: '默认值', width: 80, sortable: true},
+                    { field: 'saveFlag', title: '是否写表', width: 60, sortable: true, align:'center', formatter:formatCheckbox }
                 ] ],
                 onDblClickRow:function(){
                     EditDetail();
@@ -233,6 +244,7 @@
                             AddDetail();
                         }
                         $('#detailList').datagrid('reload');
+                        $('#chainDetailId').combobox('reload');
                     }
                     else {
                         $.messager.alert("操作失败", result.message);
@@ -242,6 +254,19 @@
 
             G_BsId = row.bsId;
             //$('#pBsId').val(G_BsId);
+            $('#chainDetailId').combobox({
+                url:'/dict/getDict?flag=11&condition='+G_BsId,
+                valueField:'id',
+                textField:'text',
+                editable:false,
+                panelHeight:'auto',
+                onLoadSuccess: function () {
+                    var data = $('#chainDetailId').combobox('getData');
+                    if (data.length > 0) {
+                        $('#chainDetailId').combobox('select', data[0].id);
+                    }
+                }
+            });
 
             $('#baseDetailDialog').show().window({
                 title:'模板明细['+row.bsName+']',
@@ -261,14 +286,23 @@
             $('#formDetail').form('clear');
             $('#detailPlayFlag').val('1');
             $('#detailPanel').panel('setTitle','新增明细');
+            $('#orderValue').numberbox('setValue',100);
             $('#showWidth').numberbox('setValue',100);
             $('#showHeight').numberbox('setValue',35);
             var data = $('#fieldType').combobox('getData');
             if(data) {
                 $('#fieldType').combobox('select', data[0].id);
             }
-            $('#repeatFlag').combobox('select','1');
 
+            data = $('#controlTypeId').combobox('getData');
+            if(data) {
+                $('#controlTypeId').combobox('select', data[0].id);
+            }
+            $('#refIdStr').textbox('setValue','id');
+            $('#refTextStr').textbox('setValue','text');
+            $('#showFlag').prop('checked','checked');
+            $('#repeatFlag').combobox('select','1');
+            $('#saveFlag').prop('checked','checked');
             $('#fieldCode').focus();
         }
 
@@ -284,9 +318,11 @@
             $('#detailPanel').panel('setTitle','编辑明细');
 
             $('#detailId').val(row.detailId);
+            $('#orderValue').numberbox('setValue',row.orderValue);
             $('#fieldCode').textbox('setValue',row.fieldCode);
             $('#fieldName').textbox('setValue',row.fieldName);
             $('#fieldType').combobox('select', row.fieldType);
+            $('#controlTypeId').combobox('select', row.controlTypeId);
             if(row.showFlag==1){
                 $('#showFlag').prop('checked','checked');
             }
@@ -305,13 +341,17 @@
             if(row.nullFlag==1){
                 $('#nullFlag').prop('checked','checked');
             }
-            if(row.refFlag==1){
-                $('#refFlag').prop('checked','checked');
-            }
             $('#refString').textbox('setValue',row.refString);
             $('#refIdStr').textbox('setValue',row.refIdStr);
             $('#refTextStr').textbox('setValue',row.refTextStr);
             $('#defaultValue').textbox('setValue',row.defaultValue);
+            if(row.chainFlag==1){
+                $('#chainFlag').prop('checked','checked');
+            }
+            if(row.saveFlag==1){
+                $('#saveFlag').prop('checked','checked');
+            }
+            $('#chainDetailId').combobox('select',row.chainDetailId);
         }
 
         function DeleteDetail(){
@@ -363,10 +403,10 @@
         </div>
         <table id="baseMainList"></table>
         <div id="baseMainDialog" style="display:none;">
-            <form id="formBaseMain" method="post"><input type="hidden" id="playFlag" name="playFlag" />
+            <form id="formBaseMain" method="post"><input type="hidden" id="playFlag" name="playFlag" /><input type="hidden" id="oBsId" name="oBsId" />
             <table style="width:100%">
                 <tr class="trPlay">
-                    <td class="tdTitle">编码</td><td><input id="bsId" name="bsId" class="easyui-textbox" style="width:80px" readonly="readonly" /></td>
+                    <td class="tdTitle">编码</td><td><input id="bsId" name="bsId" class="easyui-numberbox" data-options="min:1,precision:0" style="width:80px" /></td>
                     <td class="tdTitle">基础模板名称</td><td><input id="bsName" name="bsName" class="easyui-textbox" style="width:140px" /></td>
                     <td class="tdTitle">表名称</td><td><input id="tableName" name="tableName" class="easyui-textbox" style="width:140px" /></td>
                     <td style="width:50px"></td>
@@ -385,8 +425,9 @@
                     <td></td>
                 </tr>
                 <tr class="trPlay"><td class="tdTitle">字段字符串</td><td colspan="6"><input id="fieldStr" name="fieldStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:60px" /></td></tr>
-                <tr class="trPlay"><td class="tdTitle">表格字符串</td><td colspan="6"><input id="tableStr" name="tableStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:60px" /></td></tr>
+                <tr class="trPlay"><td class="tdTitle">表关联字符串</td><td colspan="6"><input id="tableStr" name="tableStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:60px" /></td></tr>
                 <tr class="trPlay"><td class="tdTitle">条件字符串</td><td colspan="6"><input id="conditionStr" name="conditionStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:60px" /></td></tr>
+                <tr class="trPlay"><td></td><td colspan="6">备注：产生语句为"select 字段字符串 from 表格字符串 where 条件字符串"</td></tr>
                 <tr style="height:50px">
                     <td></td>
                     <td colspan="6">
@@ -419,33 +460,43 @@
                             <input type="hidden" id="pBsId" name="pBsId" />
                             <table>
                                 <tr class="trPlay">
+                                    <td class="tdTitle">排序</td><td><input id="orderValue" name="orderValue" class="easyui-numberbox" style="width:60px" data-options="value:100" /></td>
                                     <td class="tdTitle">字段字符串</td><td><input id="fieldCode" name="fieldCode" class="easyui-textbox" style="width:120px" data-options="required:true" /></td>
                                     <td class="tdTitle">字段名称</td><td><input id="fieldName" name="fieldName" class="easyui-textbox" style="width:120px" data-options="required:true" /></td>
-                                    <td class="tdTitle">字段类型</td><td>
+                                    <td class="tdTitle">数值类型</td><td>
                                     <input id="fieldType" name="fieldType" class="easyui-combobox"
                                            data-options="url:'/dict/getDict?flag=4',valueField:'id',textField:'text',editable:false,panelHeight:'auto',
                                            onLoadSuccess: function () { var data = $('#fieldType').combobox('getData'); if (data.length > 0) { $('#fieldType').combobox('select', data[0].id); }}"
                                            style="width:140px" /></td>
-                                    <td class="tdTitle">是否显示</td><td><input id="showFlag" name="showFlag" type="checkbox" value="1" /></td>
-                                    <td class="tdTitle">宽度</td><td><input id="showWidth" name="showWidth" class="easyui-numberbox" style="width:60px" data-options="value:100" /></td>
-                                    <td class="tdTitle">高度</td><td><input id="showHeight" name="showHeight" class="easyui-numberbox" style="width:60px" data-options="value:35" /></td>
+                                    <td class="tdTitle">控件类型</td><td>
+                                    <input id="controlTypeId" name="controlTypeId" class="easyui-combobox"
+                                           data-options="url:'/dict/getDict?flag=10',valueField:'id',textField:'text',editable:false,panelHeight:'auto',
+                                           onLoadSuccess: function () { var data = $('#controlTypeId').combobox('getData'); if (data.length > 0) { $('#controlTypeId').combobox('select', data[0].id); }}"
+                                           style="width:140px" /></td>
+                                    <td class="tdTitle">显示在Grid</td><td><input id="showFlag" name="showFlag" type="checkbox" value="1" /></td>
                                 </tr>
                                 <tr class="trPlay">
+                                    <td class="tdTitle">宽度</td><td><input id="showWidth" name="showWidth" class="easyui-numberbox" style="width:60px" data-options="value:100" /></td>
+                                    <td class="tdTitle">高度</td><td><input id="showHeight" name="showHeight" class="easyui-numberbox" style="width:60px" data-options="value:35" /></td>
                                     <td class="tdTitle">是否可查询</td><td><input id="searchFlag" name="searchFlag" type="checkbox" value="1" /></td>
                                     <td class="tdTitle">是否编辑</td><td><input id="editFlag" name="editFlag" type="checkbox" value="1" /></td>
                                     <td class="tdTitle">是否只读</td><td><input id="readonlyFlag" name="readonlyFlag" type="checkbox" value="1" /></td>
                                     <td class="tdTitle">是否重复</td><td><input id="repeatFlag" name="repeatFlag" class="easyui-combobox" style="width:80px"
                                         data-options="valueField:'id',textField:'text',editable:false,panelHeight:'auto',data:[{'id':1,'text':'允许重复'},{'id':0,'text':'不可重复'},{'id':2,'text':'主键'}]" /></td>
-                                    <td class="tdTitle">是否可空</td><td><input id="nullFlag" name="nullFlag" type="checkbox" value="1" /></td>
-                                    <td class="tdTitle">是否引用</td><td><input id="refFlag" name="refType" type="checkbox" value="1" /></td>
                                 </tr>
                                 <tr class="trPlay">
-                                    <td class="tdTitle">引用Url</td><td colspan="5"><input id="refString" name="refString" class="easyui-textbox" style="width:560px" /></td>
+                                    <td class="tdTitle">引用Url</td><td colspan="3"><input id="refString" name="refString" class="easyui-textbox" style="width:300px" /></td>
                                     <td class="tdTitle">引用ID</td><td><input id="refIdStr" name="refIdStr" class="easyui-textbox" style="width:100px" /></td>
                                     <td class="tdTitle">引用TEXT</td><td><input id="refTextStr" name="refTextStr" class="easyui-textbox" style="width:100px" /></td>
-                                    <td class="tdTitle">默认值</td><td><input id="defaultValue" name="defaultValue" class="easyui-textbox" style="width:100px" /></td>
+                                    <td class="tdTitle">是否联动</td><td><input id="chainFlag" name="chainFlag" type="checkbox" value="1" /></td>
+                                    <td class="tdTitle">上级联动字段</td><td>
+                                    <input id="chainDetailId" name="chainDetailId" class="easyui-combobox" style="width:140px" /></td>
                                 </tr>
-                                <tr class="trPlay"><td></td><td colspan="11"><input type="submit" value="保存明细" /></td></tr>
+                                <tr class="trPlay">
+                                    <td class="tdTitle">是否可空</td><td><input id="nullFlag" name="nullFlag" type="checkbox" value="1" /></td>
+                                    <td class="tdTitle">默认值</td><td><input id="defaultValue" name="defaultValue" class="easyui-textbox" style="width:100px" /></td>
+                                    <td class="tdTitle">是否写表</td><td><input id="saveFlag" name="saveFlag" type="checkbox" value="1" /></td>
+                                    <td colspan="6"><input type="submit" value="保存明细" /> <input type="button" value="关闭窗口" onclick="CloseDetailDialog();" /></td></tr>
                             </table>
                         </form>
                     </div>

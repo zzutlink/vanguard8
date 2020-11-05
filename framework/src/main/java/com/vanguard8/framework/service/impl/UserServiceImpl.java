@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.vanguard8.common.EasyUIDataGrid;
 import com.vanguard8.common.Result;
 import com.vanguard8.common.ResultGenerator;
+import com.vanguard8.common.SessionUser;
 import com.vanguard8.framework.dao.LogDao;
 import com.vanguard8.framework.dao.UserDao;
 import com.vanguard8.framework.entity.User;
@@ -89,7 +90,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public Result<String> saveUser(String playFlag, User user, String pwdFlag, User sessionUser) throws DataAccessException {
+    public Result<String> saveUser(String playFlag, User user, String pwdFlag, SessionUser sessionUser) throws DataAccessException {
         Result<String> r;
         //playFlag:0新增1修改2删除
         int i = userDao.checkLoginName(user.getLoginName(),user.getUserId());

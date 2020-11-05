@@ -1,6 +1,7 @@
 package com.vanguard8.framework.dao;
 
 
+import com.vanguard8.framework.entity.Action;
 import com.vanguard8.framework.entity.Function;
 import com.vanguard8.framework.entity.StaFunction;
 import org.apache.ibatis.annotations.Param;
@@ -29,4 +30,12 @@ public interface FunctionDao {
     List<Function> selectLevelFunctions(Integer funcId);
 
     String selectMaxCode(String funcCode);
+
+    List<Action> selectFuncActions(Integer funcId);
+
+    int insertAction(Action action);
+
+    int updateAction(Action action);
+
+    int deleteAction(Integer fId);
 }

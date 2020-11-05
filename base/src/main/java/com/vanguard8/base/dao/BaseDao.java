@@ -3,6 +3,7 @@ package com.vanguard8.base.dao;
 import com.vanguard8.base.entity.BaseDetail;
 import com.vanguard8.base.entity.BaseMain;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.dao.DataAccessException;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface BaseDao {
 
     Integer insertBaseMain(BaseMain main);
 
-    Integer updateBaseMain(BaseMain main);
+    Integer updateBaseMain(@Param("oBsId") Integer oBsId, @Param("base") BaseMain main);
 
     Integer deleteBaseMain(Integer bsId);
 
@@ -40,4 +41,6 @@ public interface BaseDao {
     Integer executeDelete(String sql) throws DataAccessException;
 
     String selectMaxId(String sql);
+
+    Integer updateDetailBsId(@Param("nBsId") Integer nBsId,@Param("bsId") Integer bsId);
 }

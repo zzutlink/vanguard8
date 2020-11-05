@@ -1,5 +1,7 @@
 package com.vanguard8.base.entity;
 
+import java.util.List;
+
 public class BaseDetail {
     private Integer detailId;
     private Integer bsId;
@@ -7,12 +9,16 @@ public class BaseDetail {
     private String fieldName;
     private Integer fieldType;
     private String fieldTypeName;
-    private Integer showFlag;
+    private Integer controlTypeId;
+    private String controlType;
     private Integer showWidth;
     private Integer showHeight;
+    private Integer showFlag;
     private Integer searchFlag;
     private Integer editFlag;
-    private Integer refFlag;
+    private Integer chainFlag;
+    private Integer chainDetailId;
+    private String chainFieldName;
     private String refString;
     private String refIdStr;
     private String refTextStr;
@@ -20,6 +26,9 @@ public class BaseDetail {
     private Integer repeatFlag;
     private Integer nullFlag;
     private String defaultValue;
+    private Integer orderValue;
+    private Integer saveFlag;
+    private List<BaseDetail> comboboxList;
 
     public Integer getDetailId() {
         return detailId;
@@ -109,14 +118,6 @@ public class BaseDetail {
         this.editFlag = editFlag;
     }
 
-    public Integer getRefFlag() {
-        return refFlag;
-    }
-
-    public void setRefFlag(Integer refFlag) {
-        this.refFlag = refFlag;
-    }
-
     public String getRefString() {
         return refString;
     }
@@ -171,5 +172,69 @@ public class BaseDetail {
 
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
+    }
+
+    public Integer getControlTypeId() {
+        return controlTypeId;
+    }
+
+    public void setControlTypeId(Integer controlTypeId) {
+        this.controlTypeId = controlTypeId;
+    }
+
+    public String getControlType() {
+        return controlType;
+    }
+
+    public void setControlType(String controlType) {
+        this.controlType = controlType;
+    }
+
+    public Integer getChainFlag() {
+        return chainFlag;
+    }
+
+    public void setChainFlag(Integer chainFlag) {
+        this.chainFlag = chainFlag;
+    }
+
+    public Integer getChainDetailId() {
+        return chainDetailId;
+    }
+
+    public void setChainDetailId(Integer chainDetailId) {
+        this.chainDetailId = chainDetailId;
+    }
+
+    public Integer getOrderValue() {
+        return orderValue;
+    }
+
+    public void setOrderValue(Integer orderValue) {
+        this.orderValue = orderValue;
+    }
+
+    public String getChainFieldName() {
+        return chainFieldName;
+    }
+
+    public void setChainFieldName(String chainFieldName) {
+        this.chainFieldName = chainFieldName;
+    }
+
+    public List<BaseDetail> getComboboxList() {
+        return comboboxList;
+    }
+
+    public void setComboboxList(List<BaseDetail> comboboxList) {
+        this.comboboxList = comboboxList;
+    }
+
+    public Integer getSaveFlag() {
+        return saveFlag;
+    }
+
+    public void setSaveFlag(Integer saveFlag) {
+        this.saveFlag = saveFlag;
     }
 }

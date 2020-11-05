@@ -13,9 +13,11 @@ public interface ModelService {
 
     EasyUIDataGrid selectModelList(Integer page, Integer rows, String sort, String order, String pModelName);
 
-    Result<String> saveModel(String playFlag, SrhModel model);
+    Result<String> saveModel(String playFlag, Integer oModelId, SrhModel model);
 
     EasyUIDataGrid executeSelect(Integer page, Integer rows, String sort, String order, Integer modelId, HashMap<String, String> params);
+
+    List<Map<String,Object>> executeSelectAll(Integer modelId,HashMap<String, String> params);
 
     Integer executeCount(Integer modelId, HashMap<String, String> params);
 }

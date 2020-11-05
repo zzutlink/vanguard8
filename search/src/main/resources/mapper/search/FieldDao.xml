@@ -15,16 +15,20 @@
     <result column="footer_type" jdbcType="VARCHAR" property="footerType" />
     <result column="footer_str" jdbcType="VARCHAR" property="footerStr" />
     <result column="align" jdbcType="VARCHAR" property="align" />
+    <result column="frozen_flag" jdbcType="BIT" property="frozenFlag" />
+    <result column="is_checkbox" jdbcType="BIT" property="checkbox" />
+    <result column="style_str" jdbcType="VARCHAR" property="styleStr" />
   </resultMap>
   <sql id="Base_Column_List">
     field_id, model_id, field_name, field_code, field_type_id, order_value, show_width, 
-    show_footer, footer_type_id, footer_str, align
+    show_footer, footer_type_id, footer_str, align, frozen_flag, is_checkbox, style_str
   </sql>
   <select id="selectByModelId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     srh_field.field_id, srh_field.model_id, srh_field.field_name, srh_field.field_code, srh_field.field_type_id,
     srh_field_type.field_type, srh_field.order_value, srh_field.show_width,
-    srh_field.show_footer, srh_field.footer_type_id, srh_footer_type.footer_type, srh_field.footer_str, srh_field.align
+    srh_field.show_footer, srh_field.footer_type_id, srh_footer_type.footer_type, srh_field.footer_str, srh_field.align,
+    srh_field.frozen_flag,srh_field.is_checkbox,srh_field.style_str
     from srh_field
     inner join srh_field_type on srh_field.field_type_id=srh_field_type.field_type_id
     inner join srh_footer_type on srh_field.footer_type_id=srh_footer_type.footer_type_id
@@ -54,7 +58,7 @@
     values (#{fieldId,jdbcType=INTEGER}, #{modelId,jdbcType=INTEGER}, #{fieldName,jdbcType=VARCHAR}, #{fieldCode,jdbcType=VARCHAR},
       #{fieldTypeId,jdbcType=TINYINT}, #{orderValue,jdbcType=INTEGER}, #{showWidth,jdbcType=INTEGER}, 
       #{showFooter,jdbcType=BIT}, #{footerTypeId,jdbcType=TINYINT}, #{footerStr,jdbcType=VARCHAR}, 
-      #{align,jdbcType=VARCHAR})
+      #{align,jdbcType=VARCHAR},#{frozenFlag,jdbcType=BIT},#{checkbox,jdbcType=BIT},#{styleStr,jdbcType=VARCHAR})
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="com.vanguard8.search.entity.Field">
@@ -68,7 +72,19 @@
       show_footer = #{showFooter,jdbcType=BIT},
       footer_type_id = #{footerTypeId,jdbcType=TINYINT},
       footer_str = #{footerStr,jdbcType=VARCHAR},
-      align = #{align,jdbcType=VARCHAR}
+      align = #{align,jdbcType=VARCHAR},
+      frozen_flag = #{frozenFlag,jdbcType=BIT},
+      is_checkbox = #{checkbox,jdbcType=BIT},
+      align = #{align,jdbcType=VARCHAR},
+      style_str = #{styleStr,jdbcType=VARCHAR}
     where field_id = #{fieldId,jdbcType=INTEGER}
   </update>
+
+  <update id="updateFieldModelId">
+    update srh_field set model_id=#{nModelId,jdbcType=INTEGER} where model_id=#{modelId,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteByModelId" parameterType="java.lang.Integer">
+    delete from srh_field where model_id=#{modelId,jdbcType=INTEGER}
+  </delete>
 </mapper>

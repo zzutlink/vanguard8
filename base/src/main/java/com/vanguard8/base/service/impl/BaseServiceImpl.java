@@ -34,13 +34,16 @@ public class BaseServiceImpl implements BaseService {
 
     @Override
     @Transactional
-    public Result<String> saveBaseMain(String playFlag, BaseMain main) {
+    public Result<String> saveBaseMain(String playFlag, Integer oBsId, BaseMain main) {
         Result<String> r = null;
         Integer i = 0;
         if (playFlag.equals("1")) {
             i = baseDao.insertBaseMain(main);
         } else if (playFlag.equals("2")) {
-            i = baseDao.updateBaseMain(main);
+            i = baseDao.updateBaseMain(oBsId, main);
+            if(main.getBsId()!=oBsId) {
+                baseDao.updateDetailBsId(main.getBsId(), oBsId);
+            }
         } else if (playFlag.equals("3")) {
             Integer bsId = main.getBsId();
             baseDao.deleteBaseDetail(bsId);
@@ -103,7 +106,7 @@ public class BaseServiceImpl implements BaseService {
         return baseDao.executeCount(sql);
     }
 
-    public Result<String> save(Integer bsId, String playFlag, HashMap<String, String> maps) {
+    public Result<String> save(Integer bsId, String playFlag, String keyValue, HashMap<String, String> maps) {
         BaseMain base = baseDao.getBaseMain(bsId);
         Result<String> r = new Result<String>();
         //新增一条基础资料
@@ -129,16 +132,22 @@ public class BaseServiceImpl implements BaseService {
                     }
                 } else {
                     int iTmp = (int) Math.pow(10, base.getKeyFieldLength());
+                    if (maxId == null) {
+                        maxId = "0";
+                    }
                     maxId = String.valueOf(iTmp + 1 + Integer.valueOf(maxId)).substring(1);
                 }
             }
             for (Map.Entry<String, String> map : maps.entrySet()) {
+                tmpStr = map.getKey();
+                String[] s = tmpStr.split("#");
+                if (s[3].equals("0")) {
+                    continue;
+                }
                 if (fieldStr.length() != 0) {
                     fieldStr = fieldStr + ",";
                     valueStr = valueStr + ",";
                 }
-                tmpStr = map.getKey();
-                String[] s = tmpStr.split("#");
                 value = map.getValue();
 
                 //检查是否是不允许重复的字段，若是，则到表中查找是否重复
@@ -163,7 +172,7 @@ public class BaseServiceImpl implements BaseService {
                     valueStr += value;
                 } else {
                     //先把单引号替换成两个单引号，否则将导致sql语句格式不正确
-                    value = value.replaceAll("'","''");
+                    value = value.replaceAll("'", "''");
                     valueStr += "'".concat(value).concat("'");
                 }
             }
@@ -179,36 +188,34 @@ public class BaseServiceImpl implements BaseService {
                 r = ResultGenerator.genFailResult("新增失败！");
             }
         } else if (playFlag.equals("2")) {  //编辑 update tbname set xxxx where keyfield=xxxx
-            //多循环一次先把主键及主键的值找出来
-            String keyValue = "";
-            for (Map.Entry<String, String> map : maps.entrySet()) {
-                tmpStr = map.getKey();
-                String[] s = tmpStr.split("#");
-                if (s[2].equals(base.getKeyField())) { //如果字段是主键字段
-                    keyValue = map.getValue();
-                    if (!s[0].equals("0")) {
-                        keyValue = "'".concat(keyValue).concat("'");
-                    }
-                }
+            if (base.getKeyFieldLength() > 0) {
+                keyValue = keyValue.replaceAll("'", "''");
+                keyValue = "'".concat(keyValue).concat("'");
             }
 
             for (Map.Entry<String, String> map : maps.entrySet()) {
                 tmpStr = map.getKey();
                 String[] s = tmpStr.split("#");
 
-                if ((fieldStr.length() != 0) && (!s[2].equals(base.getKeyField()))) {
+                //如果是不需要写表的字段则放弃
+                if (s[3].equals("0")) {
+                    continue;
+                }
+
+                //如果当前fieldStr有其他值，则加上一个,逗号
+                if (fieldStr.length() != 0) {
                     fieldStr = fieldStr + ",";
                 }
 
                 value = map.getValue();
                 if (!s[0].equals("0")) {
                     //先把单引号替换成两个单引号，否则将导致sql语句格式不正确
-                    value = value.replaceAll("'","''");
+                    value = value.replaceAll("'", "''");
                     value = "'".concat(value).concat("'");
                 }
 
                 //检查是否是不允许重复的字段，若是，则到表中查找是否重复
-                if (s[1].equals("0")) {
+                if (!s[1].equals("1")) {
                     sql = "select count(*) from " + base.getTableName() + " where " + base.getKeyField() + "<>" + keyValue + " and " + s[2] + "=" + value;
                     Integer i = baseDao.executeCount(sql);
                     if (i > 0) {
@@ -216,13 +223,9 @@ public class BaseServiceImpl implements BaseService {
                         return r;
                     }
                 }
-
-                if (s[2].equals(base.getKeyField())) { //如果字段是主键字段
-                    valueStr = base.getKeyField().concat("=").concat(value);
-                } else {
-                    fieldStr += s[2].concat("=").concat(value);
-                }
+                fieldStr += s[2].concat("=").concat(value);
             }
+            valueStr = base.getKeyField().concat("=").concat(keyValue);
             sql = "update " + base.getTableName() + " set " + fieldStr + " where " + valueStr;
             try {
                 Integer i = baseDao.executeUpdate(sql);
@@ -235,28 +238,23 @@ public class BaseServiceImpl implements BaseService {
                 r = ResultGenerator.genFailResult("编辑失败！");
             }
         } else if (playFlag.equals("3")) {
-            for (Map.Entry<String, String> map : maps.entrySet()) {
-                tmpStr = map.getKey();
-                String[] s = tmpStr.split("#");
+            if (base.getKeyFieldLength() > 0) {
+                keyValue = keyValue.replaceAll("'", "''");
+                keyValue = "'".concat(keyValue).concat("'");
+            }
 
-                if (s[2].equals(base.getKeyField())) { //如果字段是主键字段
-                    //检查是否已经使用，已经使用则不允许删除
-                    //select count(*) from use_tbname where fieldname=value
-                    value = map.getValue();
-                    if (!s[0].equals("0")) {
-                        //先把单引号替换成两个单引号，否则将导致sql语句格式不正确
-                        value = value.replaceAll("'","''");
-                        value = "'".concat(value).concat("'");
-                    }
-                    sql = "select count(*) from " + base.getCheckUseTable() + " where " + base.getCheckUseField() + "=" + value;
-                    Integer existCount = baseDao.executeCount(sql);
-                    if (existCount > 0) {  //该数据已经使用，不允许删除
-                        r = ResultGenerator.genFailResult("该数据已经使用，无法删除！");
-                        return r;
-                    }
-                    valueStr = base.getKeyField().concat("=").concat(value);
+            //检查是否已经使用，已经使用则不允许删除
+            //select count(*) from use_tbname where fieldname=value
+
+            if (!base.getCheckUseTable().equals("")) {
+                sql = "select count(*) from " + base.getCheckUseTable() + " where " + base.getCheckUseField() + "=" + keyValue;
+                Integer existCount = baseDao.executeCount(sql);
+                if (existCount > 0) {  //该数据已经使用，不允许删除
+                    r = ResultGenerator.genFailResult("该数据已经使用，无法删除！");
+                    return r;
                 }
             }
+            valueStr = base.getKeyField().concat("=").concat(keyValue);
             sql = "delete from " + base.getTableName() + " where " + valueStr;
             try {
                 Integer i = baseDao.executeDelete(sql);
@@ -290,5 +288,10 @@ public class BaseServiceImpl implements BaseService {
             r = ResultGenerator.genFailResult("保存数据失败！");
         }
         return r;
+    }
+
+    @Override
+    public Integer executeInsert(String sql) {
+        return baseDao.executeInsert(sql);
     }
 }

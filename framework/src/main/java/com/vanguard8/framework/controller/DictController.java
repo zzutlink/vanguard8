@@ -1,7 +1,7 @@
 package com.vanguard8.framework.controller;
 
 import com.vanguard8.common.SessionName;
-import com.vanguard8.framework.entity.User;
+import com.vanguard8.common.SessionUser;
 import com.vanguard8.framework.service.DictService;
 import com.vanguard8.framework.vo.Dict;
 import com.vanguard8.framework.vo.DictCondition;
@@ -24,12 +24,13 @@ public class DictController {
 
     @RequestMapping("/getDict")
     @ResponseBody
-    public List<Dict> getDict(HttpServletRequest request, @RequestParam(defaultValue = "0") Integer flag, @RequestParam(defaultValue = "") String condition){
+    public List<Dict> getDict(HttpServletRequest request, @RequestParam(defaultValue = "0") Integer flag,
+                              @RequestParam(defaultValue = "") String condition){
         DictCondition c = new DictCondition();
         c.setFlag(flag);
         c.setCondition(decode(condition));
 
-        User u = (User)request.getSession().getAttribute(SessionName.USER);
+        SessionUser u = (SessionUser)request.getSession().getAttribute(SessionName.USER);
         c.setUserId(u.getUserId());
 
         return dictService.getDict(c);

@@ -130,4 +130,16 @@
     where ds_code like concat(ifnull((select ds_code from sys_deptsta where ds_id=#{dsId}),''),'___')
     order by ds_flag desc,ds_code
   </select>
+
+  <select id="checkDsAction" resultType="java.lang.Integer">
+    select count(*) from
+    (
+      select func_id,func_path as action_url,'0' as include_type from sys_function where is_last=1
+      union all
+      select func_id,action_url,include_type from sys_func_action
+    ) tmp inner join (select ds_id,func_id from sys_sta_function where ds_id=#{dsId} union all select #{dsId} as ds_id,0 as func_id) tmp2
+        on tmp.func_id=tmp2.func_id
+    where ((tmp.include_type='1' and #{actionUrl} like concat(tmp.action_url,'%'))
+            or (tmp.include_type='0' and #{actionUrl}=tmp.action_url))
+  </select>
 </mapper>

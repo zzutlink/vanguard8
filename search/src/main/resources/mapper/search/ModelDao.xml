@@ -7,17 +7,21 @@
     <result column="sql_type_id" jdbcType="INTEGER" property="sqlTypeId" />
     <result column="sql_type" jdbcType="VARCHAR" property="sqlType" />
     <result column="pagination" jdbcType="BIT" property="pagination" />
+    <result column="field_str" jdbcType="VARCHAR" property="fieldStr" />
     <result column="sql_str" jdbcType="VARCHAR" property="sqlStr" />
+    <result column="proc_str" jdbcType="VARCHAR" property="procStr" />
     <result column="sort_field" jdbcType="VARCHAR" property="sortField" />
     <result column="export_flag" jdbcType="BIT" property="exportFlag" />
     <result column="print_flag" jdbcType="BIT" property="printFlag" />
+    <result column="showFooter" jdbcType="BIT" property="showFooter" />
   </resultMap>
   <sql id="Base_Column_List">
-    model_id, model_name, sql_type_id, pagination, sql_str, sort_field, export_flag, 
-    print_flag
+    model_id, model_name, sql_type_id, pagination, field_str, sql_str, proc_str, sort_field, export_flag,
+    print_flag,if((select count(*) from srh_field where show_footer=1 and srh_field.model_id=srh_model.model_id)>0,1,0) as showFooter
   </sql>
   <sql id="Base_Column_CanShow">
-    model_id, model_name, pagination, sort_field, export_flag, print_flag
+    model_id, model_name, pagination, sort_field, export_flag, print_flag,
+    if((select count(*) from srh_field where show_footer=1 and srh_field.model_id=srh_model.model_id)>0,1,0) as showFooter
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -35,8 +39,9 @@
   </select>
 
   <select id="selectModelList" parameterType="String" resultMap="BaseResultMap">
-    select srh_model.model_id, srh_model.model_name, srh_model.sql_type_id, srh_model.pagination,
-      srh_model.sql_str, srh_model.sort_field, srh_model.export_flag, srh_model.print_flag, srh_sql_type.sql_type
+    select srh_model.model_id, srh_model.model_name, srh_model.sql_type_id, srh_model.pagination,srh_model.field_str,
+      srh_model.sql_str, srh_model.proc_str, srh_model.sort_field, srh_model.export_flag, srh_model.print_flag,
+      srh_sql_type.sql_type
     from srh_model
     inner join srh_sql_type on srh_model.sql_type_id=srh_sql_type.sql_type_id
     where srh_model.model_name like concat('%',#{modelName},'%')
@@ -48,57 +53,34 @@
   </delete>
 
   <insert id="insert" parameterType="com.vanguard8.search.entity.SrhModel">
-    <selectKey keyProperty="modelId" order="BEFORE" resultType="java.lang.Integer">
-      select
-      if( exists (select 1 from srh_model order by model_id limit 1),
-      (select model_id+1 from srh_model order by model_id desc limit 1),
-      1
-      )
-      from dual
-    </selectKey>
+    <!--<selectKey keyProperty="modelId" order="BEFORE" resultType="java.lang.Integer">-->
+      <!--select-->
+      <!--if( exists (select 1 from srh_model order by model_id limit 1),-->
+      <!--(select model_id+1 from srh_model order by model_id desc limit 1),-->
+      <!--1-->
+      <!--)-->
+      <!--from dual-->
+    <!--</selectKey>-->
     insert into srh_model
     values (#{modelId,jdbcType=INTEGER}, #{modelName,jdbcType=VARCHAR}, #{sqlTypeId,jdbcType=INTEGER},
-      #{pagination,jdbcType=BIT}, #{sqlStr,jdbcType=VARCHAR}, #{sortField,jdbcType=VARCHAR},
+      #{pagination,jdbcType=BIT}, #{fieldStr,jdbcType=VARCHAR}, #{sqlStr,jdbcType=VARCHAR},
+      #{procStr,jdbcType=VARCHAR}, #{sortField,jdbcType=VARCHAR},
       #{exportFlag,jdbcType=BIT}, #{printFlag,jdbcType=BIT})
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.vanguard8.search.entity.SrhModel">
+  <update id="updateByPrimaryKey">
     update srh_model
-    <set>
-      <if test="modelName != null">
-        model_name = #{modelName,jdbcType=VARCHAR},
-      </if>
-      <if test="sqlTypeId != null">
-        sql_type_id = #{sqlTypeId,jdbcType=INTEGER},
-      </if>
-      <if test="pagination != null">
-        pagination = #{pagination,jdbcType=BIT},
-      </if>
-      <if test="sqlStr != null">
-        sql_str = #{sqlStr,jdbcType=VARCHAR},
-      </if>
-      <if test="sortField != null">
-        sort_field = #{sortField,jdbcType=VARCHAR},
-      </if>
-      <if test="exportFlag != null">
-        export_flag = #{exportFlag,jdbcType=BIT},
-      </if>
-      <if test="printFlag != null">
-        print_flag = #{printFlag,jdbcType=BIT},
-      </if>
-    </set>
-    where model_id = #{modelId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.vanguard8.search.entity.SrhModel">
-    update srh_model
-    set model_name = #{modelName,jdbcType=VARCHAR},
-      sql_type_id = #{sqlTypeId,jdbcType=INTEGER},
-      pagination = #{pagination,jdbcType=BIT},
-      sql_str = #{sqlStr,jdbcType=VARCHAR},
-      sort_field = #{sortField,jdbcType=VARCHAR},
-      export_flag = #{exportFlag,jdbcType=BIT},
-      print_flag = #{printFlag,jdbcType=BIT}
-    where model_id = #{modelId,jdbcType=INTEGER}
+    set model_id = #{model.modelId,jdbcType=INTEGER},
+      model_name = #{model.modelName,jdbcType=VARCHAR},
+      sql_type_id = #{model.sqlTypeId,jdbcType=INTEGER},
+      pagination = #{model.pagination,jdbcType=BIT},
+      field_str= #{model.fieldStr,jdbcType=VARCHAR},
+      sql_str = #{model.sqlStr,jdbcType=VARCHAR},
+      proc_str= #{model.procStr,jdbcType=VARCHAR},
+      sort_field = #{model.sortField,jdbcType=VARCHAR},
+      export_flag = #{model.exportFlag,jdbcType=BIT},
+      print_flag = #{model.printFlag,jdbcType=BIT}
+    where model_id = #{oModelId,jdbcType=INTEGER}
   </update>
 
   <!--执行一个sql语句返回结果集-->
@@ -107,7 +89,12 @@
     </select>
 
   <!--执行一个sql语句返回结果集的数量-->
-  <select id="executeCount" parameterType="String" resultType="Integer">
+  <select id="executeCalc" parameterType="String" resultType="java.math.BigDecimal">
+        ${value}
+    </select>
+
+  <!--执行调用存储过程，返回结果集-->
+    <select id="executeSelectByProc" parameterType="String" resultType="java.util.HashMap" statementType="CALLABLE">
         ${value}
     </select>
 </mapper>

@@ -6,7 +6,7 @@ spring:
     druid:
       url: jdbc:mysql://localhost:3306/vanguard?useUnicode=true&characterEncoding=utf8&autoReconnect=true
       username: root
-      password: 123456
+      password: 13526458168
       initial-size: 2
       min-idle: 2
       max-active: 10
@@ -30,12 +30,8 @@ spring:
           slow-sql-millis: 3000
           merge-sql: true
 
-#    url: jdbc:mysql://localhost:3306/vanguard?useUnicode=true&characterEncoding=utf8&autoReconnect=true
-#    username: root
-#    password: 123456
-#    driver-class-name: com.mysql.jdbc.Driver
-  mvc:
-    static-path-pattern: /static/**
+#  mvc:
+#    static-path-pattern: /static/**
     view:
       prefix: /templates/
       suffix: .html
@@ -43,11 +39,11 @@ spring:
       enabled: false
   jmx:
     enabled: false
-  resources:
-    static-locations: /static/**
-#  thymeleaf:
-#    prefix: /templates/
-#    suffix: .html
+#  resources:
+#    static-locations: classpath:/static
+  thymeleaf:
+    prefix: classpath:/templates
+    suffix: .html
 
 mybatis:
 #  type-aliases-package: com.vanguard8.*.core.entity

@@ -1,9 +1,6 @@
 package com.vanguard8.framework.controller;
 
-import com.vanguard8.common.Result;
-import com.vanguard8.common.ResultGenerator;
-import com.vanguard8.common.SessionName;
-import com.vanguard8.common.TreeNode;
+import com.vanguard8.common.*;
 import com.vanguard8.framework.entity.Deptsta;
 import com.vanguard8.framework.entity.Function;
 import com.vanguard8.framework.entity.User;
@@ -69,7 +66,7 @@ public class DeptstaController {
     public Result<Integer> saveDeptsta(HttpServletRequest request, String playFlag, Integer dsId, String dsName) {
         Result<Integer> r;
         try {
-            User user = (User) request.getSession().getAttribute(SessionName.USER);
+            SessionUser user = (SessionUser) request.getSession().getAttribute(SessionName.USER);
             r = deptstaService.saveDeptsta(playFlag, dsId, dsName, user);
         } catch (DataAccessException e) {
             logger.error(e.getMessage());
@@ -115,6 +112,8 @@ public class DeptstaController {
     @ResponseBody
     public Result<String> saveStatFunc(Integer FuncDSID, String SelectedFuncStr) {
         Result<String> r;
+//        r = ResultGenerator.genFailResult("演示系统为了便于大家使用，此功能暂停！");
+//        return r;
         try {
             r = deptstaService.saveStatFunc(FuncDSID, SelectedFuncStr);
         } catch (DataAccessException e) {

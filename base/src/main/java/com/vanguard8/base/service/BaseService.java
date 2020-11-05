@@ -14,7 +14,7 @@ public interface BaseService {
 
     BaseMain getBaseMain(Integer bsId);
 
-    Result<String> saveBaseMain(String playFlag, BaseMain main);
+    Result<String> saveBaseMain(String playFlag, Integer oBsId, BaseMain main);
 
     EasyUIDataGrid getAllBaseMain(Integer page, Integer rows, String sort, String order, BaseMain main);
 
@@ -24,7 +24,9 @@ public interface BaseService {
 
     Integer executeCount(Integer bsId, String paramName, String paramValue);
 
-    Result<String> save(Integer bsId, String playFlag, HashMap<String, String> maps);
+    Result<String> save(Integer bsId, String playFlag, String keyValue, HashMap<String, String> maps);
 
     Result<String> saveBaseDetail(Integer playFlag, BaseDetail detail);
+
+    Integer executeInsert(String sql);
 }

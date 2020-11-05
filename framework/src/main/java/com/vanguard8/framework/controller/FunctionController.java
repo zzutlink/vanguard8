@@ -1,8 +1,7 @@
 package com.vanguard8.framework.controller;
 
-import com.vanguard8.common.Result;
-import com.vanguard8.common.SessionName;
-import com.vanguard8.common.TreeNode;
+import com.vanguard8.common.*;
+import com.vanguard8.framework.entity.Action;
 import com.vanguard8.framework.entity.Function;
 import com.vanguard8.framework.entity.User;
 import com.vanguard8.framework.service.FunctionService;
@@ -38,8 +37,8 @@ public class FunctionController {
     @ResponseBody
     public List<MenuGroup> getMenu(HttpServletRequest request) {
         //Session中取出登录人的岗位信息
-        User u = (User) request.getSession().getAttribute(SessionName.USER);
-        List<Function> functions = functionService.getFunctions(u.getDeptsta().getDsId());
+        SessionUser u = (SessionUser) request.getSession().getAttribute(SessionName.USER);
+        List<Function> functions = functionService.getFunctions(u.getDsId());
 
         List<MenuGroup> menu = new ArrayList<>();
         MenuGroup g = null;
@@ -106,6 +105,31 @@ public class FunctionController {
         function.setOrderValue(orderValue);
 
         Result<String> r = functionService.saveFunction(playFlag, function);
+        return r;
+    }
+
+    @RequestMapping("/getFuncActions")
+    @ResponseBody
+    public EasyUIDataGrid getFuncActions(Integer funcId) {
+        EasyUIDataGrid g = new EasyUIDataGrid();
+        List<Action> list = functionService.getFuncActions(funcId);
+        g.setRows(list);
+        return g;
+    }
+
+    @RequestMapping("/saveAction")
+    @ResponseBody
+    public Result<String> saveAction(String aPlayFlag, String fId, Integer aFuncId, String actionUrl, String includeType) {
+        Action action = new Action();
+        if (aPlayFlag.equals("1")) {
+            action.setfId(0);
+        } else {
+            action.setfId(Integer.valueOf(fId));
+        }
+        action.setFuncId(aFuncId);
+        action.setActionUrl(actionUrl);
+        action.setIncludeType(includeType);
+        Result<String> r = functionService.saveAction(aPlayFlag, action);
         return r;
     }
 }

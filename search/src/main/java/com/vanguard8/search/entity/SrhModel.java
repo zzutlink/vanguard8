@@ -24,13 +24,19 @@ public class SrhModel implements Serializable {
 
     private Boolean pagination;
 
+    private String fieldStr;
+
     private String sqlStr;
+
+    private String procStr;
 
     private String sortField;
 
     private Boolean exportFlag;
 
     private Boolean printFlag;
+
+    private Boolean showFooter;
 
     private static final long serialVersionUID = 1L;
 
@@ -96,5 +102,29 @@ public class SrhModel implements Serializable {
 
     public void setPrintFlag(Boolean printFlag) {
         this.printFlag = printFlag;
+    }
+
+    public Boolean getShowFooter() {
+        return showFooter;
+    }
+
+    public void setShowFooter(Boolean showFooter) {
+        this.showFooter = showFooter;
+    }
+
+    public String getFieldStr() {
+        return fieldStr;
+    }
+
+    public void setFieldStr(String fieldStr) {
+        this.fieldStr = fieldStr;
+    }
+
+    public String getProcStr() {
+        return procStr;
+    }
+
+    public void setProcStr(String procStr) {
+        this.procStr = procStr;
     }
 }

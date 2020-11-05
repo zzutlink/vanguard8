@@ -1,9 +1,6 @@
 package com.vanguard8.framework.controller;
 
-import com.vanguard8.common.EasyUIDataGrid;
-import com.vanguard8.common.Result;
-import com.vanguard8.common.ResultGenerator;
-import com.vanguard8.common.SessionName;
+import com.vanguard8.common.*;
 import com.vanguard8.framework.entity.Dept;
 import com.vanguard8.framework.entity.Deptsta;
 import com.vanguard8.framework.entity.User;
@@ -43,8 +40,10 @@ public class UserController {
     @ResponseBody
     public Result<String> submitChange(HttpServletRequest request, String oldPassword, String newPassword, String confirmPassword) {
         Result<String> r = null;
+//        r = ResultGenerator.genFailResult("演示系统为了便于大家使用，此功能暂停！");
+//        return r;
         if (newPassword.equals(confirmPassword)) {
-            User user = (User) request.getSession().getAttribute(SessionName.USER);
+            SessionUser user = (SessionUser) request.getSession().getAttribute(SessionName.USER);
             r = userService.changePwd(user.getUserId(), oldPassword, newPassword);
         } else {
             r = ResultGenerator.genFailResult("新密码与确认密码不匹配，请重新输入！");
@@ -95,9 +94,10 @@ public class UserController {
 
         //playflag,user,pwdflag参数进行接下来传递
         Result<String> r;
-
+//        r = ResultGenerator.genFailResult("演示系统为了便于大家使用，此功能暂停！");
+//        return r;
         try {
-            User sessionUser = (User) request.getSession().getAttribute(SessionName.USER);
+            SessionUser sessionUser = (SessionUser) request.getSession().getAttribute(SessionName.USER);
             r = userService.saveUser(PlayFlag, user, PwdFlag, sessionUser);
         }catch(DataAccessException e){
             logger.error(e.getMessage());

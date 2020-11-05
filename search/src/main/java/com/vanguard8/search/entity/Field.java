@@ -32,6 +32,12 @@ public class Field implements Serializable {
 
     private String align;
 
+    private Boolean frozenFlag;
+
+    private Boolean checkbox;
+
+    private String styleStr;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getFieldId() {
@@ -136,5 +142,29 @@ public class Field implements Serializable {
 
     public void setAlign(String align) {
         this.align = align;
+    }
+
+    public Boolean getFrozenFlag() {
+        return frozenFlag;
+    }
+
+    public void setFrozenFlag(Boolean frozenFlag) {
+        this.frozenFlag = frozenFlag;
+    }
+
+    public Boolean getCheckbox() {
+        return checkbox;
+    }
+
+    public void setCheckbox(Boolean checkbox) {
+        this.checkbox = checkbox;
+    }
+
+    public String getStyleStr() {
+        return styleStr;
+    }
+
+    public void setStyleStr(String styleStr) {
+        this.styleStr = styleStr;
     }
 }

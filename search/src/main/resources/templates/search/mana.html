@@ -16,7 +16,9 @@
                 'modelId':'model_id',
                 'modelName':'model_name',
                 'sqlType':'sql_type',
+                'fieldStr':'field_str',
                 'sqlStr':'sql_str',
+                'procStr':'proc_str',
                 'sortField':'sort_field',
                 'pagination':'pagination',
                 'exportFlag':'export_flag',
@@ -48,7 +50,9 @@
                     {field: 'modelName', title: '查询模板名称', width: 100, sortable: true},
                     {field: 'sqlTypeId', title: '语句类型编码', width: 100, hidden: true},
                     {field: 'sqlType', title: '查询语句类型', width: 100, sortable: true},
-                    {field: 'sqlStr', title: '查询语句', width: 300, sortable: true},
+                    {field: 'fieldStr', title: '显示字段语句', width: 200, sortable: true},
+                    {field: 'sqlStr', title: '表关联语句', width: 300, sortable: true},
+                    {field: 'procStr', title: '存储过程调用', width: 200, sortable: true},
                     {field: 'sortField', title: '默认排序字段', width: 100, sortable: true},
                     {field: 'pagination', title: '是否分页', width: 60, sortable: true},
                     {field: 'exportFlag', title: '是否导出', width: 60, sortable: true},
@@ -72,12 +76,14 @@
                 success: function (result) {
                     result = $.parseJSON(result);
                     if (result && result.success) {
-                        // if ($('#playFlag').val() == 1) {
-                        //     showBaseMainDialog(1);
-                        // }
-
                         LoadGridData();
                         $.messager.alert("操作成功", result.message);
+                        if ($('#playFlag').val() == 1) {
+                            CloseModelDialog();
+                        }
+                        else if($('#playFlag').val() == 2){
+                            $('#oModelId').val($('#modelId').numberbox('getValue'));
+                        }
                     }
                     else {
                         $.messager.alert("操作失败", result.message);
@@ -98,7 +104,7 @@
             var sTitle = "";
             if(playFlag==1){
                 sTitle="新增查询模板";
-                $('#modelId').textbox('setValue','自动生成');
+                $('#modelId').numberbox('setValue','51');
                 $('#sqlTypeId').combobox('setValue',0);
             }
             else if(playFlag==2){
@@ -109,7 +115,8 @@
                 }
 
                 sTitle="编辑查询模板";
-                $('#modelId').textbox('setValue',row.modelId);
+                $('#oModelId').val(row.modelId);
+                $('#modelId').numberbox('setValue',row.modelId);
                 $('#modelName').textbox('setValue',row.modelName);
                 $('#sqlTypeId').combobox('setValue',row.sqlTypeId);
                 $('#sortField').textbox('setValue',row.sortField);
@@ -118,7 +125,9 @@
                 document.getElementById('exportFlag').checked = row.exportFlag==1;
                 document.getElementById('printFlag').checked = row.printFlag==1;
 
+                $('#fieldStr').textbox('setValue',row.fieldStr);
                 $('#sqlStr').textbox('setValue',row.sqlStr);
+                $('#procStr').textbox('setValue',row.procStr);
             }
             $('#ModelDialog').show().dialog({
                 title: sTitle,
@@ -314,7 +323,14 @@
             }
             $('#fFooterTypeId').combobox('setValue',row.footerTypeId);
             $('#fFooterStr').textbox('setValue',row.footerStr);
+            if(row.frozenFlag==1){
+                $('#fFrozenFlag').prop('checked','checked');
+            }
             $('#fAlign').combobox('setValue',row.align);
+            if(row.isCheckbox==1){
+                $('#fIsCheckbox').prop('checked','checked');
+            }
+            $('#fStyleStr').textbox('setValue',row.styleStr);
         }
 
         function deleteField(){
@@ -378,7 +394,10 @@
                     { field: 'footerTypeId', title: '脚注类型', width: 50, hidden:true},
                     { field: 'footerType', title: '脚注类型', width: 80},
                     { field: 'footerStr', title: '脚注字符串', width: 120},
-                    { field: 'align', title: '对齐方式', width: 70}
+                    { field: 'frozenFlag', title: '是否固定', width: 60, align:'center', formatter:formatCheckbox },
+                    { field: 'align', title: '对齐方式', width: 70},
+                    { field: 'isCheckbox', title: 'Checkbox形式', width: 80, align:'center', formatter:formatCheckbox },
+                    { field: 'styleStr', title: '样式代码', width: 200}
                 ] ],
                 onDblClickRow:function(){
                     editField();
@@ -418,6 +437,14 @@
 
             addField();
         }
+
+        function closeConditionDialog(){
+            $('#ConditionDialog').dialog('close');
+        }
+
+        function closeFieldDialog(){
+            $('#fieldsDialog').dialog('close');
+        }
     </script>
     <style type="text/css">
         #playTable tr {
@@ -448,8 +475,9 @@
     <div id="ModelDialog" style="display:none;">
         <form id="formModel" method="post">
             <input type="hidden" id="playFlag" name="playFlag" />
+            <input type="hidden" id="oModelId" name="oModelId" />
             <table id="playTable" style="width:100%">
-                <tr><td>模板编码</td><td colspan="5"><input id="modelId" name="modelId" class="easyui-textbox" style="width:80px" readonly="readonly" /></td></tr>
+                <tr><td>模板编码</td><td colspan="5"><input id="modelId" name="modelId" class="easyui-numberbox" style="width:80px" /></td></tr>
                 <tr>
                     <td>模板名称</td><td><input id="modelName" name="modelName" class="easyui-textbox" style="width:140px" /></td>
                     <td>语句类型</td><td><input id="sqlTypeId" name="sqlTypeId" class="easyui-combobox" style="width:140px" /></td>
@@ -460,8 +488,16 @@
                     <td colspan="2"><input type="checkbox" id="exportFlag" name="exportFlag" value="1" />是否导出</td>
                     <td colspan="2"><input type="checkbox" id="printFlag" name="printFlag" value="1" />是否打印</td></tr>
                 <tr>
-                    <td>查询语句</td><td colspan="5"><input id="sqlStr" name="sqlStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:250px" /></td>
+                    <td>显示字段语句</td><td colspan="5"><input id="fieldStr" name="fieldStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:100px" /></td>
                 </tr>
+                <tr>
+                    <td>表关联语句</td><td colspan="5"><input id="sqlStr" name="sqlStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:200px" /></td>
+                </tr>
+                <tr>
+                    <td>存储过程调用</td><td colspan="5"><input id="procStr" name="procStr" class="easyui-textbox" data-options="multiline:true" style="width:640px;height:50px" /></td>
+                </tr>
+                <tr><td></td><td colspan="5">备注：当sql语句方式查询时，语句组合为(select+'显示字段'+'表关联字段')，表关联字段需要从from开始写</td></tr>
+                <tr><td></td><td colspan="5">系统预设参数，#userId#操作人编码 #dsId#操作人岗位编码</td></tr>
                 <tr><td></td><td colspan="5"><input type="submit" value="保存模板" />
                     <input type="button" value="关闭窗口" onclick="CloseModelDialog();" /></td></tr>
             </table>
@@ -509,7 +545,7 @@
                                 <td class="tdTitle">引用ID</td><td><input id="cRefIdStr" name="cRefIdStr" class="easyui-textbox" value="id" style="width:100px" /></td>
                                 <td class="tdTitle">引用TEXT</td><td><input id="cRefTextStr" name="cRefTextStr" class="easyui-textbox" value="text" style="width:100px" /></td>
                             </tr>
-                            <tr class="trPlay"><td></td><td colspan="7"><input type="submit" value="保存明细" /></td></tr>
+                            <tr class="trPlay"><td></td><td colspan="7"><input type="submit" value="保存明细" /> <input type="button" value="关闭窗口" onclick="closeConditionDialog();" /></td></tr>
                         </table>
                     </form>
                 </div>
@@ -554,8 +590,13 @@
                                 <td class="tdTitle">脚注设置</td><td><input id="fFooterStr" name="fFooterStr" class="easyui-textbox" style="width:250px" /></td>
                             </tr>
                             <tr class="trPlay">
+                                <td class="tdTitle">是否固定</td><td><input id="fFrozenFlag" name="fFrozenFlag" type="checkbox" value="1" /></td>
                                 <td class="tdTitle">对齐方式</td><td><input id="fAlign" name="fAlign" class="easyui-combobox" style="width:100px" /></td>
-                                <td colspan="6"><input type="submit" value="保存字段" /></td></td>
+                                <td class="tdTitle">Checkbox形式</td><td><input id="fIsCheckbox" name="fIsCheckbox" type="checkbox" value="1" /></td>
+                                <td class="tdTitle">样式代码</td><td><input id="fStyleStr" name="fStyleStr" class="easyui-textbox" style="width:250px" /></td>
+                            </tr>
+                            <tr class="trPlay">
+                                <td colspan="8"><input type="submit" value="保存字段" /> <input type="button" value="关闭窗口" onclick="closeFieldDialog();" />样式代码举例：function(value,row,index){if (value < 20){return 'background-color:#ffee00;color:red;';}}</td></td>
                             </tr>
                         </table>
                     </form>

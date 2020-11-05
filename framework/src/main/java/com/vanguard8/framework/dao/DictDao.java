@@ -10,4 +10,6 @@ public interface DictDao {
     List<Dict> executeSelect(String sql);
 
     String getDictSql(Integer dictId);
+
+    String getBussDictSql(Integer dictId);
 }

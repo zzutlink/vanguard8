@@ -20,8 +20,7 @@ public class DictServiceImpl implements DictService {
     @Override
     public List<Dict> getDict(DictCondition condition) {
         String sql = dictDao.getDictSql(condition.getFlag());
-        sql = sql.replaceAll(CONDITION,condition.getCondition());
-
+        sql = sql.replaceAll(CONDITION,condition.getCondition()).replaceAll(USERID,condition.getUserId().toString());
         return dictDao.executeSelect(sql);
     }
 }

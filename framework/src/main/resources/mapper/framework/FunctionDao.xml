@@ -11,6 +11,13 @@
     <result column="extField" property="extField" />
   </resultMap>
 
+    <resultMap id="actionMap" type="com.vanguard8.framework.entity.Action">
+        <id column="f_id" jdbcType="INTEGER" property="fId" />
+        <result column="func_id" jdbcType="INTEGER" property="funcId" />
+        <result column="action_url" jdbcType="VARCHAR" property="actionUrl" />
+        <result column="include_type" jdbcType="VARCHAR" property="includeType" />
+        <result column="include_type_intr" jdbcType="VARCHAR" property="includeTypeIntr" />
+    </resultMap>
   <!--<resultMap id="StatFunctionMap" type="com.vanguard8.framework.entity.StaFunction">-->
     <!--<id column="ds_id" jdbcType="INTEGER" property="dsId" />-->
     <!--<id column="func_id" jdbcType="CHAR" property="funcId" />-->
@@ -30,14 +37,14 @@
   <!--查询某岗位对应的功能权限-->
   <select id="selectFuncsWithRight" parameterType="Integer" resultMap="BaseResultMap">
           select a.func_id, a.func_code, a.func_name, a.func_path, a.is_last,
-            ifnull(b.ds_id,0) as extField from sys_function a left join sys_sta_function b on a.func_id=b.func_id and b.ds_id=#{dsId}
+            ifnull(b.ds_id,0) as extField from sys_function a left join view_sys_sta_function b on a.func_id=b.func_id and b.ds_id=#{dsId}
           order by (case a.is_last when 0 then a.order_value else (select order_value from sys_function where substring(a.func_code,1,3)=func_code) end),a.func_code
   </select>
 
   <!--查询某岗位对应的功能权限-->
   <select id="selectFunctions" parameterType="Integer" resultMap="BaseResultMap">
           select a.func_id, a.func_code, a.func_name, a.func_path, a.is_last
-          from sys_function a inner join sys_sta_function b on a.func_id=b.func_id
+          from sys_function a inner join view_sys_sta_function b on a.func_id=b.func_id
           where b.ds_id=#{dsId}
           order by (case a.is_last when 0 then a.order_value else (select order_value from sys_function where substring(a.func_code,1,3)=func_code) end),a.func_code
   </select>
@@ -91,4 +98,34 @@
       order_value = #{orderValue,jdbcType=INTEGER}
     where func_id = #{funcId,jdbcType=INTEGER}
   </update>
+
+    <select id="selectFuncActions" parameterType="java.lang.Integer" resultMap="actionMap">
+        select sys_func_action.f_id,sys_func_action.func_id,sys_func_action.action_url,sys_func_action.include_type,
+          sys_func_action_inctype.include_type_intr
+        from sys_func_action inner join sys_func_action_inctype on sys_func_action.include_type=sys_func_action_inctype.include_type
+        where sys_func_action.func_id=#{funcId}
+    </select>
+
+    <insert id="insertAction" parameterType="com.vanguard8.framework.entity.Action">
+        <selectKey keyProperty="fId" order="BEFORE" resultType="java.lang.Integer">
+            select
+            if( exists (select 1 from sys_func_action order by f_id limit 1),
+            (select f_id+1 from sys_func_action order by f_id desc limit 1),
+            1
+            )
+            from dual
+        </selectKey>
+        insert into sys_func_action (f_id, func_id, action_url, include_type)
+        values (#{fId,jdbcType=INTEGER}, #{funcId,jdbcType=INTEGER}, #{actionUrl,jdbcType=VARCHAR},
+          #{includeType,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="updateAction" parameterType="com.vanguard8.framework.entity.Action">
+          update sys_func_action set action_url=#{actionUrl,jdbcType=VARCHAR},include_type=#{includeType,jdbcType=VARCHAR}
+          where f_id=#{fId,jdbcType=INTEGER}
+    </insert>
+
+    <delete id="deleteAction" parameterType="java.lang.Integer">
+        delete from sys_func_action where f_id=#{fId,jdbcType=INTEGER}
+    </delete>
 </mapper>
